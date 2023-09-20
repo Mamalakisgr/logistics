@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Company Admin</title>
+ 
+  <link rel="stylesheet" type="text/css" href="../css/back.css">
+
+</head>
+<body>
+ <!-- Navbar -->
+ <nav>
+  <a href="/html/backoffice.html" id="nav-home">Home</a>
+  <a href="/html/company-admin.html">Company</a>
+  <a href="/html/services-admin.html">Services</a>
+
+</nav>
+  <h1>Update Company Info</h1>
+<!-- History Section -->
+<div id="historySection">
+    <h2>History</h2>
+    <input type="text" id="historyTitleInput" placeholder="Title">
+    <textarea id="historyDescriptionInput" placeholder="Description"></textarea>
+    <button id="saveHistoryButton">Save History</button>
+     <!-- Dropdown for selecting a history image -->
+ <select id="historyImageDropdown">
+  <!-- Options will be populated dynamically -->
+</select>
+
+<!-- Button to update the current history image -->
+<button id="updateHistoryImage">Update History Image</button>
+
+<!-- Button to delete the selected history image -->
+<button id="deleteHistoryImage">Delete Selected History Image</button>
+
+  </div>
+  
+  <!-- Values Section -->
+  <div id="valuesSection">
+    <h2>Values</h2>
+    <input type="text" id="valuesTitleInput" placeholder="Title">
+    <textarea id="valuesDescriptionInput" placeholder="Description"></textarea>
+    <button id="saveValuesButton">Save Values</button>
+     <!-- Dropdown for selecting a history image -->
+ <select id="valuesImageDropdown">
+  <!-- Options will be populated dynamically -->
+</select>
+
+<!-- Button to update the current history image -->
+<button id="updateValuesImage">Update Values Image</button>
+
+<!-- Button to delete the selected history image -->
+<button id="deleteValuesImage">Delete Selected Values Image</button>
+
+
+  </div>
+  
+  <!-- Vision Section -->
+  <div id="visionSection">
+    <h2>Vision</h2>
+    <input type="text" id="visionTitleInput" placeholder="Title">
+    <textarea id="visionDescriptionInput" placeholder="Description"></textarea>
+    <button id="saveVisionButton">Save Vision</button>
+     <!-- Dropdown for selecting a history image -->
+ <select id="visionImageDropdown">
+  <!-- Options will be populated dynamically -->
+</select>
+
+<!-- Button to update the current history image -->
+<button id="updateVisionImage">Update Vision Image</button>
+
+<!-- Button to delete the selected history image -->
+<button id="deleteVisionImage">Delete Selected Vision Image</button>
+
+  </div>
+  
+    <form id="historyImageForm" action="/api/upload-history-image" method="POST" enctype="multipart/form-data">
+    <input type="file" name="historyImage" accept="image/*">
+    <button type="submit">Upload History Image</button>
+  </form>
+
+  <form id="valuesImageForm" action="/api/upload-values-image" method="POST" enctype="multipart/form-data">
+    <input type="file" name="valuesImage" accept="image/*">
+    <button type="submit">Upload Values Image</button>
+  </form>
+
+  <form id="visionImageForm" action="/api/upload-vision-image" method="POST" enctype="multipart/form-data">
+    <input type="file" name="visionImage" accept="image/*">
+    <button type="submit">Upload Vision Image</button>
+  </form>
+
+
+
+
+</body>
+<script src="../js/company-admin.js" ></script>
+</html>

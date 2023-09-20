@@ -1,0 +1,38 @@
+<!-- services-admin.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Services Admin</title>
+  <link rel="stylesheet" type="text/css" href="../css/back.css">
+</head>
+<body>
+    <!-- Navbar -->
+ <nav>
+    <a href="/html/backoffice.html" id="nav-home">Home</a>
+    <a href="/html/company-admin.html">Company</a>
+    <a href="/html/services-admin.html">Services</a>
+</nav>
+  <h1>Manage Services</h1>
+  
+  <h2>Add/Update Service Category</h2>
+  <form id="service-form">
+    <label for="categoryName">Category Name:</label>
+    <input type="text" id="categoryName" name="categoryName">
+    
+    <label for="serviceName">Service Name:</label>
+    <input type="text" id="serviceName" name="serviceName">
+    
+    <label for="description">Description:</label>
+    <input type="text" id="description" name="description">
+    
+    <button type="submit">Add/Update</button>
+  </form>
+  
+  <h2>Existing Services</h2>
+  <div id="service-list">
+    <!-- Existing services will be populated here -->
+  </div>
+  
+  <script src="../js/company-admin.js"></script>
+</body>
+</html>

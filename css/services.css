@@ -1,0 +1,164 @@
+/* Reset some default browser styles */
+body, h1, h2, h3, p, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+/* Make a background color for the whole page */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  line-height: 1.6;
+}
+
+/* Add background and centering for header */
+header {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+/* Style for navigation */
+nav {
+  text-align: center;
+  background-color: #444;
+}
+
+nav a {
+  padding: 14px 20px;
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+}
+/* services.css */
+section {
+padding: 50px 0;  /* Adjust as needed */
+}
+
+/* Container for service categories */
+#service-list {
+display: flex;
+flex-wrap: wrap;
+gap: 20px;
+justify-content: center;
+}
+/* Container for service categories */
+#service-categories {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 20px;
+justify-items: center;
+align-items: center;
+}
+
+/* Individual service category styling */
+.service-category {
+border: 2px solid #ccc;
+border-radius: 10px;
+padding: 15px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+text-align: center;
+}
+
+/* Individual service category styling */
+.service-category:hover {
+  transform: scale(1.075);
+  transition: 0.3s ease-in;
+  cursor: pointer;
+  }
+
+.header-text{
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100%; /* You can specify another height if you prefer */
+background-image: url('/images/Accounting-News.jpg');
+background-size: cover; /* Cover the entire header */
+background-position: center; /* Center the background image */
+background-repeat: no-repeat; /* Do not repeat the background image */
+
+}
+.header-text h1 {
+color: white;
+
+}
+
+.idiotes-text{
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100%; /* You can specify another height if you prefer */
+background-color: white;
+}
+.idiotes-text h1 {
+color: rgb(8, 8, 8);
+
+}
+
+/* Service category title */
+.service-category h2 {
+font-size: 1.5em;
+margin-bottom: 15px;
+}
+
+/* Service detail */
+.service-detail {
+text-align: left;
+}
+
+/* Service name */
+.service-detail h3 {
+font-size: 1.2em;
+margin-bottom: 10px;
+}
+
+/* Service description */
+.service-detail p {
+margin-bottom: 15px;
+}
+
+/* Centering the header text */
+#detailed-services h2 {
+text-align: center;
+}
+
+/* Creating a container for service details */
+.service-details-container {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+}
+
+/* Styling individual service details */
+.service-detail {
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+  padding: 20px;
+  text-align: center;
+  flex-basis: calc(33.33% - 20px);
+  margin: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.service-detail:hover {
+  transform: scale(1.075);
+  transition: 0.3s ease-in;
+  cursor: pointer;
+}
+
+
+/* Make only the logo and static categories sticky */
+.logo,
+#categories-list {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Make sure other headers are not sticky */
+.header-text,
+.idiotes-text {
+  position: static;  /* Override any inherited sticky position */
+}

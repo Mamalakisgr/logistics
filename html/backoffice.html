@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin</title>
+  <link rel="stylesheet" type="text/css" href="../css/back.css">
+</head>
+ 
+<body>
+ <!-- Navbar -->
+ <nav>
+  <a href="/html/backoffice.html" id="nav-home">Home</a>
+  <a href="/html/company-admin.html">Company</a>
+  <a href="/html/services-admin.html">Services</a>
+
+</nav>
+<div id="home-section">
+
+  <h1>Home</h1>
+  
+  <!-- Upload Logo Section -->
+  <h2>Upload Logo</h2>
+  <form id="logo-upload-form" enctype="multipart/form-data">
+    <input type="file" id="logo-file" name="logo">
+    <button type="submit">Upload Logo</button>
+    <select id="logo-dropdown">
+      <!-- Options here will be dynamically generated -->
+    </select>
+    <button id="select-logo-button">Select Logo</button>
+  </form>
+
+  <!-- Upload Banner Section -->
+  <h2>Upload Banner</h2>
+  <form id="banner-upload-form" enctype="multipart/form-data">
+    <input type="file" id="banner-file" name="banner">
+    <button type="submit">Upload Banner</button>
+  </form>
+
+  <!-- Delete Banner Section -->
+  <h2>Delete Banner</h2>
+  <select id="banner-dropdown">
+    <!-- Options here will be dynamically generated -->
+  </select>
+  <button id="delete-banner-button">Delete Selected Banner</button>
+
+  <!-- SEO Content Editor Section -->
+  <h1>SEO Content Editor</h1>
+  <label for="titleInput">Title:</label>
+  <input type="text" id="titleInput" placeholder="Enter title">
+
+  <label for="descriptionInput">Description:</label>
+  <textarea id="descriptionInput" rows="4" cols="50" placeholder="Enter description"></textarea>
+
+  <button id="saveSeoContentButton">Save</button>
+
+  <!-- Upload SEO Image Section -->
+  <form id="seo-image-upload-form">
+    <h2>Upload SEO Image</h2>
+    <label for="seoImage">Upload Image:</label>
+    <input type="file" id="seoImage" accept="image/*">
+    <button type="submit">Upload</button>
+  </form>
+
+  <!-- Select Existing SEO Image Section -->
+  <h2>Select Existing SEO Image</h2>
+  <select id="seo-image-dropdown">
+    <!-- Options will be populated via JavaScript -->
+  </select>
+</body>
+
+<h1>Edit News Section</h1>
+
+<div class="edit-container">
+  <label for="dynamicTitleInput">Title:</label>
+  <input type="text" id="dynamicTitleInput" placeholder="Enter title">
+  <label for="dynamicDescriptionInput">Description:</label>
+  <textarea id="dynamicDescriptionInput" rows="4" cols="50" placeholder="Enter description"></textarea>
+  <button id="saveDynamicContentButton">Save</button>
+
+
+
+
+  
+<script src="../js/backadmin.js"></script>
+</html>

@@ -1,0 +1,164 @@
+/* Common style for all three sections */
+.history-vision-values-section {
+  position: relative; /* Add this line */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh; /* Or set to the height you prefer */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.lazy-load {
+  background-image: url('/api/placeholder-image'); /* your placeholder image */
+}
+#history-section {
+  background-image: url('/api/history-image');
+}
+
+
+#history-section .section-content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1527px;
+  height: 1244px;
+}
+#history-section .image-container {
+  background-position: center; /* Center the background */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+}
+#history-section .section-content .image-container {
+  position: relative;
+ 
+  max-width: fit-content;
+}
+
+/* Text placement for history section */
+#history-section .text-content {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#history-section .section-content .text-content h1,
+#history-section .section-content .text-content p {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6); /* Optional: for better text visibility */
+  padding: 10px;
+}
+  /* Style for the values section */
+  #values-section {
+    background-image: url('/api/values-image');
+  }
+  #values-section .section-content, #vision-section .section-content {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    width: 50%;  
+    height: 100%;
+}
+  /* Style for the image container in values section */
+  #values-section .image-container {
+    flex: 1;
+    padding: 0; /* No padding for the image container */
+    text-align: center;
+  }
+  
+  #values-section .image-container img {
+    max-width: 50%;
+    height: auto;
+    border-radius: 10px; /* Add rounded corners to the image */
+  }
+  
+  #vision-section .text-content {
+    position: absolute;
+    top: 10%;
+    left: 10%; /* Already aligns the text to the right */
+    z-index: 2;
+    text-align: center;
+    width: 570px;
+  }
+  #values-section .text-content {
+    position: absolute;
+    bottom: 10%;
+    right: 10%;  /* Aligns the text to the left */
+    z-index: 2;
+    text-align: center;
+    width: 570px;
+
+  }
+  #values-section h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  #values-section p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  /* Style for the vision section */
+  #vision-section {
+    background-image: url('/api/vision-image');
+  }
+  #vision-section  .section-content {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    width: 50%;  
+    height: 100%;
+}
+
+  /* Style for the image container in vision section */
+  #vision-section .image-container {
+    flex: 1;
+    padding: 0; /* No padding for the image container */
+    text-align: center;
+  }
+  
+  #vision-section .image-container img {
+    max-width: 50%;
+    height: auto;
+    border-radius: 10px; /* Add rounded corners to the image */
+  }
+  /* Common text style for all sections */
+.text-content {
+  position: absolute;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6); /* Optional: for better text visibility */
+  padding: 10px;
+}
+
+
+  
+  #vision-section h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  #vision-section p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+
+/* Refined style for the image in history section */
+#history-section .image-container img {
+  /* Increase the size of the image */
+  width: 80%;  /* You can adjust this value */
+  height: 80%;  /* You can adjust this value */
+  margin: auto;
+  object-fit: fill;
+}
+
+
+
+/* Adding spacing between History, Values, and Vision sections */
+.history-vision-values-section {
+  margin-bottom: 50px; /* Adjust this value to set the amount of spacing */
+}
