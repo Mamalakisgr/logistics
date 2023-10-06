@@ -6,82 +6,107 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin</title>
   <link rel="stylesheet" type="text/css" href="../css/back.css">
-</head>
- 
-<body>
- <!-- Navbar -->
- <nav>
-  <a href="/html/backoffice.html" id="nav-home">Home</a>
-  <a href="/html/company-admin.html">Company</a>
-  <a href="/html/services-admin.html">Services</a>
-
-</nav>
-<div id="home-section">
-
-  <h1>Home</h1>
   
-  <!-- Upload Logo Section -->
-  <h2>Upload Logo</h2>
-  <form id="logo-upload-form" enctype="multipart/form-data">
-    <input type="file" id="logo-file" name="logo">
-    <button type="submit">Upload Logo</button>
-    <select id="logo-dropdown">
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav>
+    <a href="/html/backoffice.html" id="nav-home">Home</a>
+    <a href="/html/company-admin.html">Company</a>
+    <a href="/html/services-admin.html">Services</a>
+
+  </nav>
+  <div id="home-section">
+
+    <h1>Home</h1>
+
+    <!-- Upload Logo Section -->
+    <h2>Upload Logo</h2>
+    <form id="logo-upload-form" enctype="multipart/form-data">
+      <input type="file" id="logo-file" name="logo">
+      <button type="submit">Upload Logo</button>
+      <select id="logo-dropdown">
+        <!-- Options here will be dynamically generated -->
+      </select>
+      <button id="select-logo-button">Select Logo</button>
+    </form>
+
+    <!-- Upload Banner Section -->
+    <h2>Upload Banner</h2>
+    <form id="banner-upload-form" enctype="multipart/form-data">
+      <input type="file" id="banner-file" name="banner">
+      <button type="submit">Upload Banner</button>
+    </form>
+
+    <!-- Delete Banner Section -->
+    <h2>Delete Banner</h2>
+    <select id="banner-dropdown">
       <!-- Options here will be dynamically generated -->
     </select>
-    <button id="select-logo-button">Select Logo</button>
-  </form>
+    <button id="delete-banner-button">Delete Selected Banner</button>
 
-  <!-- Upload Banner Section -->
-  <h2>Upload Banner</h2>
-  <form id="banner-upload-form" enctype="multipart/form-data">
-    <input type="file" id="banner-file" name="banner">
-    <button type="submit">Upload Banner</button>
-  </form>
+    <!-- >Home Region One Content Editor Section -->
+    <h1>Home Region One Editor</h1>
+    <label for="titleInput">Title:</label>
+    <input type="text" id="titleInput" placeholder="Enter title">
 
-  <!-- Delete Banner Section -->
-  <h2>Delete Banner</h2>
-  <select id="banner-dropdown">
-    <!-- Options here will be dynamically generated -->
-  </select>
-  <button id="delete-banner-button">Delete Selected Banner</button>
+    <label for="descriptionInput">Description:</label>
+    <textarea id="descriptionInput" rows="4" cols="50" placeholder="Enter description"></textarea>
 
-  <!-- SEO Content Editor Section -->
-  <h1>SEO Content Editor</h1>
-  <label for="titleInput">Title:</label>
-  <input type="text" id="titleInput" placeholder="Enter title">
+    <button id="saveSeoContentButton">Save</button>
+    <h2>Upload Region One Image</h2>
+    <form id="regionOneImageForm" enctype="multipart/form-data">
+      <input type="file" name="regionOneImage" id="regionOneImageInput" accept="image/*">
+      <button type="submit">Upload Image</button>
+    </form>
+    <h2>Select Region One Image</h2>
+    <select id="regionOneImagesDropdown">
+      <!-- Options will be populated dynamically -->
+    </select>
+    <button id="selectRegionOneImageButton">Select Image</button>
+    <button id="delete-region-one-image-button">Delete Selected Region One Image</button>
+    <h1>Home Region Two Editor</h1>
 
-  <label for="descriptionInput">Description:</label>
-  <textarea id="descriptionInput" rows="4" cols="50" placeholder="Enter description"></textarea>
 
-  <button id="saveSeoContentButton">Save</button>
+    <!-- Upload Region Two Image Section -->
+    <form id="seo-image-upload-form">
+      <h2>Upload Region Two Image</h2>
+      <label for="seoImage">Upload Image:</label>
+      <input type="file" name="seoImage">
+      <button type="submit">Upload</button>
+    </form>
 
-  <!-- Upload SEO Image Section -->
-  <form id="seo-image-upload-form">
-    <h2>Upload SEO Image</h2>
-    <label for="seoImage">Upload Image:</label>
-    <input type="file" id="seoImage" accept="image/*">
-    <button type="submit">Upload</button>
-  </form>
+    <!-- Select Existing Region Two Section -->
+    <h2>Select Existing Region Two Image</h2>
+    <select id="seo-image-dropdown">
+      <!-- Options will be populated via JavaScript -->
+    </select>
+    <button id="select-seo-image-button">Select SEO Image</button>
+    <button id="delete-seo-image-button">Delete Selected SEO Image</button>
 
-  <!-- Select Existing SEO Image Section -->
-  <h2>Select Existing SEO Image</h2>
-  <select id="seo-image-dropdown">
-    <!-- Options will be populated via JavaScript -->
-  </select>
-</body>
 
-<h1>Edit News Section</h1>
+    <h1>Contact Us Edit Region</h1>
+    <h2>Edit Number</h2>
+    <form id="edit-number-form">
+      <input type="text" id="editNumberInput" placeholder="Enter the number">
+      <button type="submit">Update Number</button>
+    </form>
+    <h2>Edit Paragraph</h2>
+    <textarea id="descriptionInput-2"></textarea>
+    <button onclick="handleDescriptionUpdate()">Update Description</button>
+    <!-- <h1>Edit News Section</h1>
 
 <div class="edit-container">
   <label for="dynamicTitleInput">Title:</label>
   <input type="text" id="dynamicTitleInput" placeholder="Enter title">
   <label for="dynamicDescriptionInput">Description:</label>
   <textarea id="dynamicDescriptionInput" rows="4" cols="50" placeholder="Enter description"></textarea>
-  <button id="saveDynamicContentButton">Save</button>
+  <button id="saveDynamicContentButton">Save</button> -->
+
+</body>
 
 
-
-
-  
 <script src="../js/backadmin.js"></script>
+
 </html>

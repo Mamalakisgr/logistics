@@ -1,44 +1,113 @@
+// Imports
 const express = require('express');
 const mongoose = require('mongoose');
-require('dotenv').config();
-const path = require('path');
+const bodyParser = require('body-parser');
 const multer = require('multer');
 const nodemailer = require('nodemailer');
-const upload = multer();
-const Logo = require('./models/Logo'); // Make sure the path is correct
-const SEOContent = require('./models/SEOContent'); // Import the model
-const SEOImage = require('./models/SEOImage');  // Adjust the path to match your project structure
-const DynamicContent = require('./models/DynamicContent');  // Adjust the path to match your project structure
-const CompanyContent = require('./models/CompanyContent');  // Adjust the path to match your project structure
-const ValuesImage = require('./models/ValuesImage');  // Adjust the path to match your project structure
-const HistoryImage = require('./models/HistoryImage');  // Adjust the path to match your project structure
-const VisionImage = require('./models/VisionImage');  // Adjust the path to match your project structure
-const bodyParser = require('body-parser');  // Add this if it's not already in your file
-const Service = require('./models/Service');
+const path = require('path');
+require('dotenv').config();
 
-process.env.EMAIL_USER="nikosionianisia@gmail.com";
-process.env.EMAIL_PASS="byep dnan ipbv dpfo";
-const Banner = require('./models/Banner');
+// Model Imports
+const [
+    Logo, SEOContent, SEOImage, DynamicContent, CompanyContent,
+    ValuesImage, HistoryImage, VisionImage, ServiceDetail, ServiceCategory,
+    RegionOneImage, CompanyCount, Banner
+] = [
+    './models/Logo', './models/SEOContent', './models/SEOImage', './models/DynamicContent',
+    './models/CompanyContent', './models/ValuesImage', './models/HistoryImage',
+    './models/VisionImage', './models/ServiceDetail', './models/ServiceCategory',
+    './models/RegionOneImage', './models/CompanyCount', './models/Banner'
+].map(require);
 
+// App Configurations
 const app = express();
-app.use(bodyParser.urlencoded({ extended: false }));  // Add this if it's not already in your file
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 // Serve static files
-app.use('/css', express.static(path.join(__dirname, 'css')));
-app.use('/js', express.static(path.join(__dirname, 'js')));
-app.use('/html', express.static(path.join(__dirname, 'html')));
-app.use('/images', express.static(path.join(__dirname, 'images')));
-// Connect to MongoDB via Mongoose
-mongoose.connect('mongodb+srv://admin:pass@cluster0.gsxb8us.mongodb.net/your_database_name', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-.then(() => console.log("Successfully connected to MongoDB"))
-.catch(error => console.log("Failed to connect to MongoDB: ", error));
+const staticDirs = ['css', 'js', 'html', 'images'];
+staticDirs.forEach(dir => app.use(`/${dir}`, express.static(path.join(__dirname, dir))));
 
-// Middleware
-app.use(express.json());
+// MongoDB Connection
+mongoose.connect('mongodb+srv://admin:kolotripida12@cluster0.gsxb8us.mongodb.net/your_database_name', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+}).then(() => {
+    console.log("Successfully connected to MongoDB");
+}).catch(error => {
+    console.log("Failed to connect to MongoDB: ", error);
+});
 
+// Email Configurations
+process.env.EMAIL_USER = "nikosionianisia@gmail.com";
+process.env.EMAIL_PASS = "byep dnan ipbv dpfo";
+
+// Middlewares
+const upload = multer();
+
+// Routes
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'html', 'index.html')));
+app.get('/js/backadmin.js', (req, res) => res.sendFile(path.join(__dirname, 'js', 'backadmin.js')));
+
+// Company Count Routes
+app.get('/api/get-company-count', async (req, res) => {
+    try {
+        const countData = await CompanyCount.findOne();
+        res.json({ count: countData?.count || 0 });
+    } catch (error) {
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+});
+
+app.post('/api/update-company-count', async (req, res) => {
+    try {
+        const { count } = req.body;
+        const countData = await CompanyCount.findOneAndUpdate({}, { count }, { new: true, upsert: true });
+        res.json({ count: countData.count });
+    } catch (error) {
+        res.status(500).json({ message: 'Internal Server Error' });
+    }
+});
+
+
+app.get('/api/get-description', async (req, res) => {
+  try {
+    const companyParagraph = await CompanyCount.findOne();
+    if (companyParagraph) {
+      res.json({ description: companyParagraph.description });
+    } 
+  } catch (error) {
+    console.error('Error fetching description:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+app.post('/api/update-description', async (req, res) => {
+  try {
+    const { description } = req.body;
+
+    // Update the description, or create a new record if none exists
+    const updatedParagraph = await CompanyCount.findOneAndUpdate({}, { description }, { upsert: true, new: true });
+    
+    res.json({ success: true, description: updatedParagraph.description });
+    console.log(req.body.description);  // Log the received description
+
+  } catch (error) {
+    console.error('Error updating description:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
+// Update the company count
+app.post('/api/update-company-count', async (req, res) => {
+  try {
+    const { count } = req.body;
+    const countData = await CompanyCount.findOneAndUpdate({}, { count }, { new: true, upsert: true });
+    res.json({ count: countData.count });
+  } catch (error) {
+    console.error('Error updating company count:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
 
 // server.js
 app.get('/api/update-dynamic-content', async (req, res) => {
@@ -53,7 +122,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'html', 'index.html'));
 });
 
-app.put('/api/set-active-image/:section/:id', async (req, res) => {
+app.post('/api/set-active-image/:section/:id', async (req, res) => {
   const { section, id } = req.params;
   
   let Model;
@@ -73,7 +142,7 @@ app.put('/api/set-active-image/:section/:id', async (req, res) => {
   
   try {
     await Model.updateMany({}, { isActive: false });
-    await Model.findByIdAndUpdate(id, { isActive: true });
+    await Model.findByIdAndUpdate(id, { isActive: true }, { new: true });
     res.json({ message: `Image set as active in ${section} section.` });
   } catch (error) {
     console.error(`Failed to set image as active: ${error}`);
@@ -82,40 +151,100 @@ app.put('/api/set-active-image/:section/:id', async (req, res) => {
 });
 
 
+// Create a new detailed service
+app.post('/api/service-details', async (req, res) => {
+  try {
+    const detail = new ServiceDetail(req.body);
+    await detail.save();
+    res.json(detail);
+} catch (error) {
+    console.error("Detailed error:", error);  // Log the detailed error
+    res.status(500).json({ message: "Error adding service detail.", detailedError: error.message });
+}
+});
+
+// Fetch all detailed services
+app.get('/api/service-details', async (req, res) => {
+  try {
+      const details = await ServiceDetail.find();
+      res.json(details);
+  } catch (error) {
+      res.status(500).json({ message: "Error fetching service details." });
+  }
+});
+
+// Fetch a single detailed service by ID
+app.get('/api/service-details/:id', async (req, res) => {
+  try {
+      const detail = await ServiceDetail.findById(req.params.id);
+      if (!detail) {
+          res.status(404).json({ message: "Service detail not found." });
+      } else {
+          res.json(detail);
+      }
+  } catch (error) {
+      res.status(500).json({ message: "Error fetching service detail." });
+  }
+});
+
+// Update an existing detailed service by ID
+app.put('/api/service-details/:id', async (req, res) => {
+  try {
+      const updatedDetail = await ServiceDetail.findByIdAndUpdate(req.params.id, req.body, { new: true });
+      if (!updatedDetail) {
+          res.status(404).json({ message: "Service detail not found." });
+      } else {
+          res.json(updatedDetail);
+      }
+  } catch (error) {
+      res.status(500).json({ message: "Error updating service detail." });
+  }
+});
+
+// Delete a detailed service by ID
+app.delete('/api/service-details/:id', async (req, res) => {
+  try {
+      const deletedDetail = await ServiceDetail.findByIdAndDelete(req.params.id);
+      if (!deletedDetail) {
+          res.status(404).json({ message: "Service detail not found." });
+      } else {
+          res.json({ message: "Service detail deleted successfully." });
+      }
+  } catch (error) {
+      res.status(500).json({ message: "Error deleting service detail." });
+  }
+});
 //listen logo
 // API Endpoints for logos
-app.get('', async (req, res) => {
+app.get('/api/logo', async (req, res) => {
   const logo = await Logo.findOne(); // gets the first logo, adjust as needed
   res.set('Content-Type', logo.contentType);
   res.send(logo.data);
 });
 
+
 app.post('/api/upload-logo', upload.single('logo'), async (req, res) => {
-  console.log("Received request to upload logo");
-  
-  // Debugging: Check what's in req.file
-  if (req.file) {
-    console.log("Received file:", req.file);
-  } else {
-    console.log("Did not receive any file");
+  try {
+      // Create new logo instance
+      const newLogo = new Logo({
+          name: req.body.name || 'Unnamed Logo', // Get name from request body or default to 'Unnamed Logo'
+          data: req.file.buffer,
+          contentType: req.file.mimetype, 
+          isActive: true
+      });
+
+      // Save to database
+      await newLogo.save();
+
+      // Optionally, deactivate other logos if you want only one active logo at a time
+      await Logo.updateMany({ _id: { $ne: newLogo._id } }, { isActive: false });
+
+      res.status(200).send({ message: 'Logo uploaded and activated successfully!' });
+  } catch (error) {
+      console.error("Error uploading logo:", error);
+      res.status(500).send({ message: 'Failed to upload logo' });
   }
-    // Deactivate all existing logos
-    await Logo.updateMany({}, { isActive: false });
-    console.log("Deactivated all existing logos.");  // Debugging line
-    
-    // Upload and activate new logo
-    const newLogo = new Logo({
-      data: req.file.buffer,
-      contentType: 'image/png',
-      isActive: true
-    });
-    await newLogo.save();
-    console.log("New logo uploaded and activated.");  // Debugging line
-  
-    res.json({ message: 'Logo uploaded and activated' });
-  } 
-  
-);
+});
 //   Get all banners
 app.get('/api/banners', async (req, res) => {
   const banners = await Banner.find({});
@@ -165,16 +294,23 @@ app.get('/api/seo-content', async (req, res) => {
 app.post('/api/select-logo', async (req, res) => {
   const { logoId } = req.body;
   
-  // Deactivate all logos
-  await Logo.updateMany({}, { isActive: false });
-  
-  // Activate the selected logo
-  await Logo.findByIdAndUpdate(logoId, { isActive: true });
-  
-  res.json({ message: 'Logo has been updated' });
+  try {
+    // Deactivate all logos
+    await Logo.updateMany({}, { isActive: false });
+    
+    // Activate the selected logo
+    const updatedLogo = await Logo.findByIdAndUpdate(logoId, { isActive: true });
+    
+    if (!updatedLogo) {
+      return res.status(404).json({ message: 'Logo not found' });
+    }
+
+    res.json({ message: 'Logo has been updated' });
+  } catch (error) {
+    console.error("Error selecting logo:", error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
 });
-
-
 
 // Upload a new banner
 app.post('/api/upload-banner', upload.single('banner'), async (req, res) => {
@@ -223,15 +359,177 @@ app.post('/api/update-dynamic-content', async (req, res) => {
 
   res.json(content);
 });
+app.get('/api/seoimages', async (req, res) => {
+  try {
+    const seoImages = await SEOImage.find();  // Fetch all SEOImage records
+    const simplifiedImages = seoImages.map(img => ({
+      _id: img._id,
+      contentType: img.contentType
+      // Add any other fields you might want to send to the client
+    }));
+    res.json(simplifiedImages);
+  } catch (error) {
+    console.error("Fetch failed:", error);
+    res.status(500).json({ message: "Internal Server Error", error: error.toString() });
+  }
+});
+app.delete('/api/delete-seo-image/:id', async (req, res) => {
+  try {
+    const imageId = req.params.id;
+    await SEOImage.findByIdAndDelete(imageId);
+    res.json({ message: 'SEO Image deleted successfully' });
+  } catch (error) {
+    console.error("Delete failed:", error);
+    res.status(500).json({ message: "Internal Server Error", error: error.toString() });
+  }
+});
+
+app.post('/api/upload-region-one-image', upload.single('regionOneImage'), async (req, res) => {
+  try {
+      if (!req.file) {
+          return res.status(400).json({ message: 'No file uploaded' });
+      }
+
+      const newImage = new RegionOneImage({
+          name: req.file.originalname,
+          image: req.file.buffer,
+          contentType: req.file.mimetype,
+          isActive: false // By default, new uploads are not active. Change this if needed.
+      });
+
+      await newImage.save();
+
+      res.json({ message: 'Image uploaded successfully!' });
+  } catch (error) {
+      console.error('Error uploading region one image:', error);
+      res.status(500).json({ message: 'Internal Server Error', error: error.toString() });
+  }
+});
+app.get('/api/get-region-one-image/:id', async (req, res) => {
+  try {
+      const image = await RegionOneImage.findById(req.params.id);
+      if (image) {
+          res.set('Content-Type', image.contentType);
+          res.send(image.image);
+      } else {
+          res.status(404).send('Image not found');
+      }
+  } catch (error) {
+      console.error('Error fetching region one image:', error);
+      res.status(500).json({ message: 'Internal Server Error', error: error.toString() });
+  }
+});
+
+app.get('/api/fetch-all-region-one-images', async (req, res) => {
+  try {
+    const images = await RegionOneImage.find(); // You might want to modify the model if you store images separately
+    res.json(images);
+  } catch (error) {
+    console.error('Error fetching all region one images:', error);
+    res.status(500).json({ message: 'Internal Server Error', error: error.toString() });
+  }
+});
+
+app.post('/api/select-region-one-image', async (req, res) => {
+  try {
+    const { imageId } = req.body;
+
+    // First, set all images to inactive
+    await RegionOneImage.updateMany({}, { isActive: false });
+
+    // Then, set the selected image to active
+    const updatedImage = await RegionOneImage.findByIdAndUpdate(imageId, { isActive: true }, { new: true });
+
+    if (updatedImage) {
+      res.json({ success: true, message: 'Image set as active.' });
+    } else {
+      res.status(404).send("Image not found.");
+    }
+  } catch (error) {
+    console.error("Error selecting the active image:", error);
+    res.status(500).json({ message: "Internal Server Error", error: error.toString() });
+  }
+});
+app.get('/api/fetch-active-region-one-image', async (req, res) => {
+  try {
+    const activeImage = await RegionOneImage.findOne({ isActive: true });
+
+    if (activeImage && activeImage.image) {
+      res.set('Content-Type', activeImage.contentType);
+      res.send(activeImage.image);  // Sending the image data from the 'image' field
+    } else {
+      res.status(404).send('Active image not found');
+    }
+  } catch (error) {
+    console.error("Failed to fetch active region one image:", error);
+    res.status(500).json({ message: "Internal Server Error", error: error.toString() });
+  }
+});
+app.delete('/api/delete-region-one-image/:id', async (req, res) => {
+  try {
+      // Find the image using the ID from the request parameters and delete it
+      const deletedImage = await RegionOneImage.findByIdAndDelete(req.params.id);
+
+      if (deletedImage) {
+          res.json({ message: 'Image deleted successfully!' });
+      } else {
+          res.status(404).send('Image not found');
+      }
+  } catch (error) {
+      console.error('Error deleting region one image:', error);
+      res.status(500).json({ message: 'Internal Server Error', error: error.toString() });
+  }
+});
+app.get('/api/get-selected-seo-image', async (req, res) => {
+  try {
+    const selectedImage = await SEOImage.findOne({ isActive: true });
+    if (selectedImage && selectedImage.image) {
+      res.set('Content-Type', selectedImage.contentType);
+      res.send(selectedImage.image);  // Sending the image data from the 'image' field
+    } else {
+      res.status(404).send("No selected SEO image found.");
+    }
+  } catch (error) {
+    console.error("Fetch failed:", error);
+    res.status(500).json({ message: "Internal Server Error", error: error.toString() });
+  }
+});
+app.post('/api/select-seo-image', async (req, res) => {
+  try {
+    const { seoImageId } = req.body;
+
+    // First, set all images to inactive
+    await SEOImage.updateMany({}, { isActive: false });
+
+    // Then, set the chosen image to active
+    await SEOImage.findByIdAndUpdate(seoImageId, { isActive: true });
+
+    res.json({ message: 'SEO Image selected successfully' });
+  } catch (error) {
+    console.error("Failed to select SEO image:", error);
+    res.status(500).json({ message: "Internal Server Error", error: error.toString() });
+  }
+});
 app.post('/api/upload-seo', upload.single('seoImage'), async (req, res) => {
   try {
-    // Your upload logic here
-    const newSEOImage = new SEOImage({
-      data: req.file.buffer,
+    // Check if file is uploaded
+    if (!req.file) {
+      console.error('No file uploaded.');
+      return res.status(400).send('No file uploaded.');
+    }
+
+    // Save the image filename or path to the database
+    const newSEOImage = {
+      name: req.file.originalname,
+      image: req.file.buffer, // Storing the image data in the 'image' field
       contentType: req.file.mimetype
-    });
-    await newSEOImage.save();
-    res.json({ message: 'SEO Image uploaded' });
+    };
+
+    const seoImage = new SEOImage(newSEOImage);
+    await seoImage.save();
+
+    res.json({ message: 'SEO Image uploaded', filename: req.file.filename });
+
   } catch (error) {
     console.error("Upload failed:", error);
     res.status(500).json({ message: "Internal Server Error", error: error.toString() });
@@ -253,27 +551,7 @@ app.post('/api/company-content', async (req, res) => {
 
   res.json(content);
 });
-// Add this to your existing API routes
-app.get('/api/services', async (req, res) => {
-  const services = await Service.find({});
-  res.json(services);
-});
 
-app.post('/api/services', async (req, res) => {
-  const newService = new Service(req.body);
-  await newService.save();
-  res.json({ message: 'Service or category added successfully' });
-});
-
-app.put('/api/services/:id', async (req, res) => {
-  await Service.findByIdAndUpdate(req.params.id, req.body);
-  res.json({ message: 'Service or category updated successfully' });
-});
-
-app.delete('/api/services/:id', async (req, res) => {
-  await Service.findByIdAndDelete(req.params.id);
-  res.json({ message: 'Service or category deleted successfully' });
-});
 // Serve history image
 app.get('/api/history-image', async (req, res) => {
   try {
@@ -503,6 +781,63 @@ app.post('/submit', async (req, res) => {
     await transporter.sendMail(mailOptions);
   } catch (error) {
     console.error('Failed to send email:', error);
+  }
+});
+
+// Fetch all service categories and their associated services
+app.get('/api/service-categories', async (req, res) => {
+  try {
+      const categories = await ServiceCategory.find();
+      res.json(categories);
+  } catch (error) {
+      res.status(500).json({ message: "Failed to fetch categories." });
+  }
+});
+
+// Add a new service category
+app.post('/api/service-categories', async (req, res) => {
+  const newCategory = new ServiceCategory(req.body);
+
+  try {
+      const savedCategory = await newCategory.save();
+      res.json(savedCategory);
+  } catch (error) {
+      res.status(500).json({ message: "Failed to add category." });
+  }
+});
+app.get('/api/service-categories/:id', async (req, res) => {
+  try {
+      const category = await ServiceCategory.findById(req.params.id);
+      if (!category) {
+          res.status(404).json({ message: "Service category not found." });
+      } else {
+          res.json(category);
+      }
+  } catch (error) {
+      res.status(500).json({ message: "Error fetching service category." });
+  }
+});
+
+
+
+
+// Update an existing service category
+app.put('/api/service-categories/:id', async (req, res) => {
+  try {
+      const updatedCategory = await ServiceCategory.findByIdAndUpdate(req.params.id, req.body, { new: true });
+      res.json(updatedCategory);
+  } catch (error) {
+      res.status(500).json({ message: "Failed to update category." });
+  }
+});
+
+// Delete a service category
+app.delete('/api/service-categories/:id', async (req, res) => {
+  try {
+      await ServiceCategory.findByIdAndDelete(req.params.id);
+      res.json({ message: "Category deleted successfully." });
+  } catch (error) {
+      res.status(500).json({ message: "Failed to delete category." });
   }
 });
 

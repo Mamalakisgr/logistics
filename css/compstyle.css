@@ -45,8 +45,8 @@
 }
 #history-section .section-content .text-content h1,
 #history-section .section-content .text-content p {
-  color: white;
-  background-color: rgba(0, 0, 0, 0.6); /* Optional: for better text visibility */
+  color: black;
+  background-color: transparent; /* Optional: for better text visibility */
   padding: 10px;
 }
   /* Style for the values section */
@@ -129,9 +129,10 @@
   position: absolute;
   z-index: 2;
   text-align: center;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.6); /* Optional: for better text visibility */
+  color: rgb(0, 0, 0);
+  background-color: transparent; /* Optional: for better text visibility */
   padding: 10px;
+  border: 2px solid #131313; /* Adding the border here */
 }
 
 

@@ -54,11 +54,12 @@ align-items: center;
 
 /* Individual service category styling */
 .service-category {
-border: 2px solid #ccc;
+border: 2px solid black;
 border-radius: 10px;
 padding: 15px;
 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 text-align: center;
+width: 350px;
 }
 
 /* Individual service category styling */
@@ -73,7 +74,6 @@ display: flex;
 justify-content: center;
 align-items: center;
 height: 100%; /* You can specify another height if you prefer */
-background-image: url('/images/Accounting-News.jpg');
 background-size: cover; /* Cover the entire header */
 background-position: center; /* Center the background image */
 background-repeat: no-repeat; /* Do not repeat the background image */
@@ -132,9 +132,9 @@ justify-content: center;
 
 /* Styling individual service details */
 .service-detail {
-  background-color: black;
-  color: white;
-  border: 1px solid white;
+  background-color: white;
+  color: black;
+  border: 2px solid black;
   padding: 20px;
   text-align: center;
   flex-basis: calc(33.33% - 20px);

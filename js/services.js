@@ -21,43 +21,49 @@ const fetchAndDisplayLogo = async (elementId) => {
       console.error("There was a problem", error);
     }
   };
+  fetch("/api/service-details")
+  .then(response => response.json())
+  .then(data => {
+      populateDetailedServices(data);
+  });
 
+  function populateDetailedServices(details) {
+    // Target the "service-details-container" div
+    const serviceDetailsContainer = document.querySelector(".service-details-container");
+    details.forEach(detail => {
+        const detailDiv = document.createElement('div');
+        detailDiv.className = "service-detail";
+        detailDiv.innerHTML = `
+            <h3>${detail.title}</h3>
+            <p>${detail.description}</p>
+        `;
+        serviceDetailsContainer.appendChild(detailDiv);
+    });
+}
 
 
 document.addEventListener("DOMContentLoaded", function() {
     fetchAndDisplayLogo('logo-image'); 
-    const serviceList = document.getElementById("service-list");
-  
-    // Fetch existing services from the server
-    fetch("/api/services")
+    const serviceCategoriesDiv = document.getElementById("service-categories");
+    
+    // Utility function to populate service categories
+    function populateServiceCategories(categories) {
+        serviceCategoriesDiv.innerHTML = '';  // Clear existing content
+        categories.forEach(category => {
+            const categoryDiv = document.createElement('div');
+            categoryDiv.className = "service-category";
+            categoryDiv.innerHTML = `
+                <h2>${category.categoryName}</h2>
+                <p>${category.services[0] ? category.services[0].description : ""}</p>
+            `;
+            serviceCategoriesDiv.appendChild(categoryDiv);
+        });
+    }
+    
+    // Load existing service categories
+    fetch("/api/service-categories")
       .then(response => response.json())
       .then(data => {
-        // Populate the service list
-        data.forEach(category => {
-          const categoryDiv = document.createElement("div");
-          categoryDiv.className = "service-category";
-          
-          const categoryName = document.createElement("h2");
-          categoryName.innerText = category.categoryName;
-          
-          categoryDiv.appendChild(categoryName);
-          
-          category.services.forEach(service => {
-            const serviceDiv = document.createElement("div");
-            serviceDiv.className = "service-detail";
-            
-            const serviceName = document.createElement("h3");
-            serviceName.innerText = service.serviceName;
-            
-            const serviceDescription = document.createElement("p");
-            serviceDescription.innerText = service.description;
-            
-            serviceDiv.appendChild(serviceName);
-            serviceDiv.appendChild(serviceDescription);
-            categoryDiv.appendChild(serviceDiv);
-          });
-          
-          serviceList.appendChild(categoryDiv);
-        });
+        populateServiceCategories(data);
       });
-  });
+});

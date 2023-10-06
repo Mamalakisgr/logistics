@@ -73,16 +73,18 @@ async function deleteSelectedImage(section) {
 async function updateCurrentImage(section) {
   const selectedImageId = document.getElementById(`${section}ImageDropdown`).value;
   const options = {
-    method: 'PUT'
+    method: 'POST'
   };
   const response = await fetch(`/api/set-active-image/${section}/${selectedImageId}`, options);
   if (response.ok) {
     console.log(`Successfully set active ${section} image.`);
     alert("Image updated. Please refresh the company.html page to see the changes.");
+   // fetchAndUpdateCompanyContent(); // Refresh the content immediately
   } else {
     console.error(`Failed to set active ${section} image.`);
   }
 }
+
 // Function to Update All Section Content
 async function updateAllSections() {
   try {

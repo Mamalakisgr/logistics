@@ -20,8 +20,8 @@ body {
 header {
   position: sticky;
   top: 0;
-  background-color: #131313;
-  color: #131313;
+  background-color: black;
+  color: black;
   
   display: flex;
   justify-content: space-between;
@@ -74,17 +74,17 @@ header {
   width: auto;
   padding: 16px;
   margin-top: -22px;
-  color: white;
+  color: black;
   font-weight: bold;
   font-size: 24px;
   transition: 0.6s ease;
   border-radius: 0 3px 3px 0;
   user-select: none;
-  z-index: 5;  /* Show on top */
+  z-index: 125;  /* Show on top */
 }
 
 .prev {
-  left: 0;
+  left: 10px; /* Adjust if necessary */
   border-radius: 3px 0 0 3px;
 }
 
@@ -94,7 +94,7 @@ header {
 }
 
 .prev:hover, .next:hover {
-  background-color: rgba(0, 0, 0, 0.8);
+  border: 1px solid #131313; /* Adding the border here */
 }
 
 /* Slide number text */
@@ -108,9 +108,21 @@ header {
 
 /* Optional: Add a background color and some padding to the body to prevent the images from flickering on load */
 body {
-  background-color: #f3f3f3;
-}
+  background-color: white;
+  overflow-x: hidden;
 
+}
+#dynamicDescription span {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #ff4500; /* Or any other color you like */
+}
+.region-two .flex-container {
+  background-size: cover;
+  background-position: center;
+  height: 400px; /* Adjust height as needed */
+  position: relative;
+}
 /* Style for the category items */
 .category-name-Home,
 .category-name-Company,
@@ -183,7 +195,7 @@ body {
 }
 /* SEO Container styles */
 .seo-container {
-  background-color: #b4b4b4; /* Change the background color to your preference */
+  background-color: white; /* Change the background color to your preference */
   padding: 20px;
   color: white; /* Set text color to white */
   border-radius: 8px;
@@ -192,7 +204,7 @@ body {
 }
 .title-container {
   margin-bottom: 10px;
-  background-color: #ccc;
+  background-color: white;
   display: flex;          /* Enable flexbox */
   justify-content: center; /* Center horizontally */
   align-items: center;     /* Center vertically */
@@ -207,9 +219,10 @@ body {
 }
 
 .description-container {
-  display: flex;           /* Enable flexbox */
-  justify-content: center; /* Center horizontally */
-  align-items: center;     /* Center vertically */
+  display: flex;           
+  flex-direction: column;  /* Stack child elements vertically */
+  justify-content: center; 
+  align-items: center;     
 }
 
 .description-container p {
@@ -225,7 +238,19 @@ body {
 
 /* Logo */
 .logo {
+  margin-right: 10px;  /* Space between the logo and the text */
+
   padding: 10px;
+}
+.logo-text a {
+  font-weight: bold;
+  font-size: 24px;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(to bottom, #f5f5f5, #999);
+  -webkit-background-clip: text;
+  color: transparent;
+  transition: all 0.3s ease;
 }
 
 .logo img {
@@ -233,16 +258,97 @@ body {
   height: auto;
 }
 
+.language-selector {
+  position: relative;
+  display: inline-block;
+  padding-left: 20px;  /* Spacing from previous element */
+
+}
+
+.language-selector a {
+  text-decoration: none;
+  color: #ffffff;
+  padding: 10px 15px;
+  display: block;
+  border: 1px solid #ffffff; /* Adding the border here */
+}
+
+.language-selector #selected-lang:hover {
+  background-color: #333;  /* Change color on hover */
+}
+
+.language-dropdown {
+  display: none;
+  position: absolute;
+  background-color: #2d2d2d;
+  min-width: 60px;  /* Set width of the dropdown */
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.language-dropdown a:hover {
+  background-color: #555;
+}
+
+.language-selector:hover .language-dropdown {
+  display: block;
+}
+.region-two .flex-container {
+  display: flex;
+  justify-content: flex-start; /* Align children to the left */
+  align-items: center;     /* Vertically center the children */
+  height: 30%;            /* Make it full height of its parent */
+  width: 100%;             /* Make it full width of its parent */
+  position: relative;      /* Relative positioning for background image */
+  background-image: url('/api/get-selected-seo-image');
+  background-size: cover;  /* Cover the entire container */
+  background-position: center; /* Center the background image */
+}
+.region-two .image-wrapper {
+  background-size: cover;      /* Make the image cover the entire div */
+  background-position: center; /* Center the background image */
+  width: 100%;                 /* Adjust width and height as required */
+  height: 100px;               /* Example height */
+}
+.region-two .seo-container {
+  position: absolute; /* Allow for precise positioning */
+  top: 50%;           /* Center it vertically */
+  transform: translateY(-50%); /* Ensure it remains vertically centered */
+  left: 40%;
+  display: inline-block; /* This makes it fit its content */
+  text-align: center;
+  padding: 20px;
+  height: 50px;
+  background-color: #e9e3e30e;
+  background-size: 50% auto; /* Adjust the width percentage as needed, auto will maintain the aspect ratio */
+}
+
+.region-two .description {
+  color: #131313;
+  font-size: 1.8rem; /* Increase font size */
+  font-weight: bold; /* Make it bolder */
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6); /* Text shadow for depth */
+  padding: 10px 0px; /* Some padding for spacing */
+  border-radius: 8px; /* Rounded corners for a modern look */
+  border: 2px solid rgba(255, 255, 255, 0.5); /* Subtle border */
+}
+
+/* For the counter specifically to make it stand out even more */
+.region-two #counter {
+  font-size: 2.2rem; /* Bigger font size */
+  color: #FFD700; /* Golden color for emphasis */
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8); /* More pronounced shadow */
+}
 /* Main content area */
 .main-content {
-  background-color: #f4f4f4;
+  background-color: white;
   padding: 20px;
 }
 
 /* Home Region */
 .home-region {
   padding: 40px 0;
-  background-color: #f0ebeb;
+  background-color: white;
   color: white;
   text-align: center;
 }
@@ -280,10 +386,50 @@ body {
   align-items: center;
   margin-top: 10px;
 }
+.overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-family: 'Arial', sans-serif;  /* Choose a modern, sans-serif font */
+  font-size: 24px;  /* Set the desired font size */
+  font-weight: bold;  /* Bold for emphasis */
+  color: white;  /* White color for the text */
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);  /* Subtle text-shadow for depth */
+  padding: 10px 20px;  /* Ample padding for spacing */
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));  /* Semi-transparent background for legibility */
+  border-radius: 5px;  /* Rounded edges for a modern look */
+  /* Initially set the opacity to 0 so it starts as invisible */
+  opacity: 0;
+
+  /* Start from the right and center vertically */
+  transform: translate(100%, -50%);
+
+  /* Transition effect for smooth change */
+  transition: opacity 1.5s ease, transform 1.5s ease;
+}
+@keyframes fadeInEffect {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+/* When the slide becomes active, change the properties to make it visible and move it to center */
+.mySlides.fade .overlay-text {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+
+.fade-in {
+  animation-name: fadeInEffect;
+  animation-timing-function: ease-in;
+  animation-duration: 1s; /* Adjust duration as needed */
+}
 
 /* Style for phone icon */
 .phone-icon {
-  color: #007bff;
+  color: white;
   margin-right: 10px;
 }
 /* Style for the About Us container */
@@ -320,7 +466,7 @@ body {
   flex-wrap: wrap; /* Enable wrapping */
   justify-content: center;
   align-items: center;
-  background-color: #e4e4e4;
+  background-color: white;
   border-radius: 12px;
   max-width: 100%;
 }
@@ -350,7 +496,7 @@ body {
   flex: 1;
   width: 500px; /* Static width */
   height: 500px; /* Static height */
-  background-color: #fdfff1; /* Change the background color to your preference */
+  background-color: white; /* Change the background color to your preference */
   padding: 20px;
   color: white; /* Set text color to white */
   border-radius: 8px;
@@ -360,14 +506,13 @@ body {
 }
 /*Services Section*/
 .services{
-  background: #e4e4e4;
+  background: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;
   padding: 10rem 0;
-  background-image: url('/images/test.jpg');
   background-size: cover; /* Cover the entire header */
   background-position: center; /* Center the background image */
   background-repeat: no-repeat; /* Do not repeat the background image */
@@ -399,20 +544,25 @@ body {
   flex-direction: column;
   justify-content: center;
   color: #000000;
-  background: #fffdd0 ;
+  background: white ;
   transition: 0.3s ease-in;
+  border: 6px solid #131313; /* Adding the border here */
 }
 
 .services__card:nth-child(2) {
-  background: #333333;
-  
+  background: white ;
+  border: 6px solid #131313; /* Adding the border here */
+
 }
 
 .services__card:nth-child(3){
-  background: #333333;
+  background: white ;
+  border: 6px solid #131313; /* Adding the border here */
+
     }
     .services__card:nth-child(4){
-      background: #333333;  /* fallback for old browsers */
+      background: white ;
+      border: 6px solid #131313; /* Adding the border here */
 
 
     }
@@ -432,17 +582,21 @@ body {
     }
 
     .services__card button{
-        color: #fff;
+        color: black;
         padding: 14px 24px;
         border: none;
         outline: none;
         border-radius: 4px;
-        background: #131313;
+        background: white;
         font-size: 1rem;
+        
+        border: 2px solid #131313; /* Adding the border here */
     }
 
     .services__card button:hover {
         cursor: pointer;
+        border: 6px solid #131313; /* Adding the border here */
+        transition: 0.1s ease-in;
     }
 
     .services__card:hover {
@@ -460,14 +614,15 @@ body {
 .seo-button.button.fifth {
   padding: 20px 40px;
   margin-top: 10px;
-  background-color: #131313;
-  color: white;
+  background-color: white;
+  color: black;
   text-decoration: none;
   border-radius: 12px;
   display: inline-block; /* Ensure it behaves as a block element */
   transition: background-color 0.3s;
   border: none; /* Remove default button border */
   cursor: pointer;
+  border: 2px solid #131313; /* Adding the border here */
 }
 .lazyload {
   opacity: 0;
@@ -479,11 +634,17 @@ body {
 }
 /* Add hover effect */
 .seo-button.button.fifth:hover {
-  background-color: #a8a8a8; /* Change background color on hover */
+  background-color: white; /* Change background color on hover */
   color: #131313;
   text-decoration: none;
+  border: 6px solid #131313; /* Adding the border here */
+  transition: 0.1s ease-in;
+  
 }
 @media screen and (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+}
   /* Adjust the styling for smaller screens */
   .container {
     padding: 10px;
@@ -502,11 +663,14 @@ body {
 }
 
 /* Slideshow container */
-.slideshow-container,
-.banner-list {
-  max-width: 100%;
+.slideshow-container, .banner-list {
+  max-width: 80%;
 }
-
+  /* Adjust the styles for slides */
+  .mySlides img {
+    width: 80%;  /* Adjust to be responsive */
+    height: auto;
+  }
   /* Responsive styles for Region One and Region Two */
   .flex-container {
     flex-direction: column;
@@ -517,18 +681,44 @@ body {
     max-width: 100%;
   }
  /* Category names */
- .category-name-Home,
- .category-name-Company,
- .category-name-Services,
- .category-name-News,
+ .category-name-Home{
+  width: 80%; /* full width */
+  text-align: center; /* center the text */
+}
+ .category-name-Company{
+  width: 80%; /* full width */
+  text-align: center; /* center the text */
+}
+ .category-name-Services{
+  width: 80%; /* full width */
+  text-align: center; /* center the text */
+}
+ .category-name-News{
+  width: 80%; /* full width */
+  text-align: center; /* center the text */
+}
  .category-name-Contact {
-   width: 100%; /* full width */
+   width: 80%; /* full width */
    text-align: center; /* center the text */
  }
 
+ .region-container {
+  flex-direction: column;
+}
+
+.region-container img {
+  width: 80%;
+  margin-bottom: 15px;
+} /* Adjust the SEO and Image containers within Region One and Region Two */
+.flex-container {
+  flex-direction: column;
+}
 
 
-
+.description-container {
+  padding: 10px; /* Add some padding for better spacing on smaller screens */
+  font-size: 14px; /* Reduce font size if necessary */
+}
 
 } /*END OPF MEDIA SCREEN*
 
@@ -655,4 +845,410 @@ body {
                   padding: 10px;
                   width: 100%;
               }
+              .description-container {
+                padding: 5px; /* Reduce padding for mobile screens */
+                font-size: 12px; /* Further reduce font size for mobile devices */
+              }
           }
+          
+
+
+          
+        .contact-form-section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        .input-group label {
+          color: white;
+
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        .input-group input,
+        .input-group textarea {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: border-color 0.3s; /* smooth transition */
+        }
+        
+        .input-group input:focus,
+        .input-group textarea:focus {
+            border-color: #007BFF; /* change this to your theme color if required */
+            outline: none;
+        }
+        
+        .input-group textarea {
+            resize: vertical; /* allow vertical resizing only */
+        }
+        
+        .input-group button {
+            padding: 10px 20px;
+            background-color: white; /* change this to your theme color */
+            color: black;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* smooth transition */
+            border: 2px solid black; /* Adding the border here */
+        }
+        
+        .input-group button:hover {
+            transition: background-color 0.3s; /* smooth transition */
+            border: 4px solid black; /* Adding the border here */
+        }
+
+
+
+        /* Hamburger Menu Styling */
+.hamburger-menu {
+  display: none;
+  cursor: pointer;
+  font-size: 30px;
+}
+#menu-icon {
+  font-size: 30px;
+}
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 30px;
+  color: white;
+  z-index: 10;
+}
+.side-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 250px;
+  background-color: #333;
+  z-index: 1000;
+  padding-top: 60px;
+}
+
+.side-menu a {
+  padding: 10px 15px;
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+}
+
+.side-menu a:hover {
+  color: #f1f1f1;
+}
+
+/* Media Query for Tablet and smaller screens */
+@media screen and (max-width: 768px) {
+  .logo {
+    display: none;
+}
+  #categories-list {
+      display: none;
+  }
+  .hamburger-menu {
+      display: block;
+      z-index: 100;
+      color: white;
+  }
+}
+
+/* Media Query for Mobile screens */
+@media screen and (max-width: 425px) {
+  body{
+        overflow-x: hidden;
+
+  }
+   /* Adjust header layout */
+   header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+    width: 100%;
+  }
+
+  /* Adjust slideshow and banner list dimensions */
+  .slideshow-container, .banner-list {
+    max-width: 100%;
+  }
+
+  /* Adjust the styles for slides */
+  .mySlides img {
+    width: 100%;  /* Adjust to be responsive */
+    height: auto;
+  }
+  .close-btn {
+    top: 5px;        /* Adjusted position to be closer to the top */
+    right: 5px;      /* Adjusted position to be closer to the side */
+    font-size: 24px; /* Slightly reduced size */
+    padding: 10px;   /* Added padding to increase touch target */
+    z-index: 10;
+    color: white;
+  }
+  /* Adjust Region content styling */
+  .region-container {
+    flex-direction: column;
+  }
+
+  .region-container img {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  /* Adjust the SEO and Image containers within Region One and Region Two */
+  .image-container, .seo-container {
+    width: 100%;
+  }
+
+  /* Adjust the category names layout */
+  #categories-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Adjust the contact form styling */
+  
+
+  /* Adjust footer links layout */
+  .footer__link--items {
+    width: 100%;
+  }
+
+  /* Adjust the service cards layout for mobile */
+  .services__wrapper {
+    grid-template-columns: 1fr;  /* Single column for mobile */
+  }
+
+  /* Adjust the side menu width */
+  .side-menu {
+    width: 100%; /* Utilize the full width of the viewport */
+  }
+
+  /* Adjust the description container font size for better readability */
+  .description-container {
+    font-size: 14px;
+  }
+}
+
+/* Footer Styling */
+.footer__container {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+}
+
+.footer__link {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer__link--wrapper {
+    flex: 1;
+}
+
+.footer__link--items {
+    margin-bottom: 20px;
+}
+
+.footer__link--items h2 {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.footer__link--items a {
+    display: block;
+    margin: 5px 0;
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer__link--items a:hover {
+    text-decoration: underline;
+}
+
+.social__media {
+    margin-top: 20px;
+}
+
+.social__media--wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.website__rights {
+    margin-right: 20px;
+}
+
+.social__icons a {
+    margin-left: 10px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.social__icons a:hover {
+    text-decoration: underline;
+}
+
+.footer__link {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);  /* Light border with some transparency */
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+/* Styling for <hr> elements in the footer */
+.footer__container hr {
+    border: none;  /* Remove default border */
+    border-top: 1px solid rgba(255, 255, 255, 0.5);  /* Add top border with some transparency */
+    margin: 10px 0;  /* Add some spacing around the <hr> */
+    clear: both;  /* Ensure it doesn't float next to any element */
+}
+
+/* Vertical dividers for sections in the footer */
+.footer__link--wrapper:not(:last-child) {
+    border-right: 2px solid rgba(255, 255, 255, 0.5);  /* Add a vertical border to the right */
+    padding-right: 20px;  /* Add some spacing to the right of the content */
+    margin-right: 20px;  /* Add some spacing to the right of the border */
+}
+
+/* Vertical divider for .footer__link--items */
+.footer__link--wrapper .footer__link--items:not(:last-child) {
+    border-right: 2px solid rgba(255, 255, 255, 0.5);  /* Add a vertical border to the right */
+    padding-right: 20px;  /* Add some spacing to the right of the content */
+    margin-right: 20px;  /* Add some spacing to the right of the border */
+}
+
+/* Styling for the contact form in the footer */
+
+
+/* Style the input fields and text areas */
+.contact-form-section input,
+.contact-form-section textarea {
+    width: 90%;  /* Increase the width to almost full width of the container */
+    padding: 10px;  /* Add more padding for a bigger appearance */
+    font-size: 1rem;  /* Increase font size for readability */
+}
+
+/* Style the textarea specifically */
+.contact-form-section textarea {
+    height: 100px;  /* Set a fixed height for the textarea */
+}
+
+/* Further increase the width of the contact form */
+
+
+/* Adjust the vertical line for social media links */
+
+
+.contact-form-section {
+    padding: 15px;
+    background-color: #131313; /* Light grey background for contrast */
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* subtle shadow */
+    max-width: 360px; /* Set a larger maximum width to span the space indicated by the red border */
+    margin: 0 auto; /* center the form if it's not in a flex/grid container */
+    border: 2px solid white; /* Adding the border here */
+    width: 100%;  /* Utilize the full width */
+    flex: 2.5;  /* Increase the space allocated to the contact form */
+    margin-right: 20px;  /* Add some margin to separate it from the vertical divider */
+}
+
+.footer__link--wrapper:last-child {
+    padding-left: 5px;  /* Further reduce the padding to move the vertical line even closer to the items */
+    margin-left: -10px;  /* Slight negative margin to move the vertical line closer */
+}
+/* Further increase the width of the .footer__link--wrapper for the contact form */
+.footer__link--wrapper:nth-child(3) {
+  flex: 4;  /* Increase the space allocated to the contact form */
+}
+
+/* Adjustments for the vertical line between the contact form and the social media links */
+.footer__link--wrapper:nth-child(2) {
+  padding-right: 10px;  /* Adjust the padding to space the content from the border */
+  margin-right: 5px;  /* Adjust the margin to move the vertical line closer */
+}
+
+.footer__link--wrapper:nth-child(2) .footer__link--items {
+  padding-right: 5px;  /* Adjust the padding to move the vertical line even closer */
+  margin-right: 0;  /* Adjust the margin to move the vertical line even closer */
+}
+.red-text {
+  color: #ff6666; /* Adjust this color as needed */
+}
+.fa-map-marker-alt{
+  color: #ff6666; /* Adjust this color as needed */
+  
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;  /* Vertically center the logo and text */
+}
+/* Position the .logo-text in the center of the header */
+.logo-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-100%, -50%); /* This centers the element both vertically and horizontally */
+  z-index: 10; /* Ensure it's above other elements */
+}
+
+/* Top Header Styles */
+.top-bar {
+  background-color: #e2e1e1; /* Light gray background */
+  font-size: 14px;
+  color: #666666; /* Dark gray text */
+}
+
+.top-bar-inner {
+  display: flex;
+  justify-content: space-between; /* Distribute the left and right sections */
+  max-width: 1200px; /* You can adjust this based on your website's design */
+  margin: 0 auto; /* Center the inner content */
+  padding: 5px 15px; /* Add some padding for better appearance */
+}
+
+.top-bar-left, .top-bar-right {
+  display: flex;
+  align-items: center;
+}
+.top-bar-left{
+  gap: 3px; /* Space between working hours and social icons */
+
+}
+.top-bar-right {
+  display: flex; /* Make sure the right side uses flex */
+  align-items: center; /* Align items vertically in the center */
+  justify-content: flex-end; /* Push items to the right */
+  gap: 20px; /* Space between working hours and social icons */
+}
+.top-bar-left  .fa-phone{
+  color: #131313;
+}
+.top-bar-right .social__icons {
+  display: flex; /* Layout the social icons in a row */
+  gap: 10px; /* Space between each social icon */
+}
+
+
+  .top-bar-right .social__icons a{
+    color: #131313;
+  }

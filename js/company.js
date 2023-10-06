@@ -74,7 +74,7 @@ window.addEventListener('storage', function(event) {
   // Execute these functions when the page loads
   document.addEventListener('DOMContentLoaded', function() {
     fetchAndDisplayLogo('logo-image'); // Fetch and display header logo
-    fetchAndDisplayLogo('logo-image-footer'); // Fetch and display footer logo
+   // fetchAndDisplayLogo('logo-image-footer'); // Fetch and display footer logo
     fetchAndUpdateCompanyContent();  // Add this line to fetch and update the company content
   });
   

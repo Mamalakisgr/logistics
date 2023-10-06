@@ -30,9 +30,26 @@
   
   <h2>Existing Services</h2>
   <div id="service-list">
+
     <!-- Existing services will be populated here -->
   </div>
-  
-  <script src="../js/company-admin.js"></script>
+  <h2>Manage Detailed Services</h2>
+
+<form id="detail-form">
+    <label for="detailTitle">Service Detail Title:</label>
+    <input type="text" id="detailTitle" name="detailTitle">
+
+    <label for="detailDescription">Description:</label>
+    <input type="text" id="detailDescription" name="detailDescription">
+
+    <button type="submit">Add/Update</button>
+</form>
+
+<h2>Existing Detailed Services</h2>
+<div id="detail-list">
+    <!-- Existing detailed services will be populated here -->
+</div>
+
+  <script src="../js/services-admin.js"></script>
 </body>
 </html>

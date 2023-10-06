@@ -14,32 +14,49 @@
 <body>
 
   <!-- Header -->
-  <header class="sticky-header">
-
-    <!-- Logo -->
-    <div class="logo">
-      <img id="logo-image" src="" alt="Logo">
+  <header>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Add this inside your <header> -->
+    <div class="hamburger-menu" onclick="toggleSideMenu()">
+      <span id="menu-icon">&#9776;</span>
     </div>
+    <!-- Logo and Logo Text -->
+    <div class="logo-container">
+      <!-- Logo -->
+      <div class="logo">
+        <img id="logo-image" src="" alt="Logo">
+      </div>
 
+      <!-- Logo Text -->
+      <div class="logo-text">
+        <a href="/">LOYALTAX</a>
+      </div>
+    </div>
     <!-- Static categories -->
 
     <div id="categories-list">
       <div class="category-name-Home">
-        <a href="/home">Αρχική</a>
+        <a href="../html/index.html">Αρχική</a>
       </div>
       <div class="category-name-Company">
         <a href="../html/company.html">Εταιρεία</a>
       </div>
       <div class="category-name-Services">
-        <a href="/html/services.html">Υπηρεσίες</a>
+        <a href="../html/services.html">Υπηρεσίες</a>
       </div>
       <div class="category-name-News">
-        <a href="/news">Ενημέρωση</a>
+        <a href="../html/news.html">Ενημέρωση</a>
       </div>
       <div class="category-name-Contact">
-        <a href="/html/contactus.html">Επικοινωνία</a>
-
-    </div>
+        <a href="../html/contactus.html">Επικοινωνία</a>
+      </div>
+      <div class="language-selector">
+        <a href="#" id="selected-lang">GR</a>
+        <div class="language-dropdown">
+          <a href="#">GR</a>
+          <a href="#">ENG</a>
+        </div>
+      </div>
   </header>
 
   <!-- Main Header -->
@@ -90,30 +107,7 @@
     <section id="detailed-services">
       <h2>Υπηρεσίες για Επαγγελματίες</h2>
       <div class="service-details-container">
-          <div class="service-detail">
-              <h3>Service Detail 1</h3>
-              <p>Description for service detail 1.</p>
-          </div>
-          <div class="service-detail">
-              <h3>Service Detail 2</h3>
-              <p>Description for service detail 2.</p>
-          </div>
-          <div class="service-detail">
-              <h3>Service Detail 3</h3>
-              <p>Description for service detail 3.</p>
-          </div>
-          <div class="service-detail">
-            <h3>Service Detail 1</h3>
-            <p>Έλεγχος Εισοδήματος Περιουσίας – Δικαιολόγηση Κεφαλαίων.</p>
-        </div>
-        <div class="service-detail">
-            <h3>Ενδικοφανής Προσφυγή</h3>
-            <p>Description for service detail 2.</p>
-        </div>
-        <div class="service-detail">
-            <h3>Service Detail 3</h3>
-            <p>Description for service detail 3.</p>
-        </div>
+
     </section>
 
     <!-- Footer -->
@@ -134,7 +128,10 @@
           <div class="footer__link--items">
               <h2>Contact us</h2>
               <a href="mailto:info@loyaltax.gr">info@loyaltax.gr</a>
-              <i class="fas fa-phone"></i>6957553954
+              <span class="phone-container">
+                <i class="fas fa-phone phone-icon"></i>
+                <span class="phone-number">6957553954</span>
+              </span>
                <a href="https://tinyurl.com/2dd25urk">Δεληγιάννη &, Κασου 1, Βάρη 166 72</a>
           </div>
           </div>
