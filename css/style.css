@@ -39,7 +39,7 @@ header {
 }
 /* Slideshow container */
 .slideshow-container {
-  max-width: 1000px;
+
   position: relative;
   margin: auto;
   overflow: hidden;  /* Hide anything that goes out of the container */
@@ -47,7 +47,7 @@ header {
 
 /* Banner list to match the slideshow container */
 .banner-list {
-  max-width: 1000px;
+
   position: relative;
   margin: auto;
   overflow: hidden; /* Hide anything that goes out of the container */
@@ -55,17 +55,19 @@ header {
 /* Slides */
 .mySlides {
   display: none;
-  width: 100%;
-  height: auto;
+  width: 120%;
+  height: 650px;
   position: relative;
   transition: opacity 1s ease-in-out;
+  
 }
 
-.mySlides img {
-  width: 1000px;  /* Static width */
-  height: 415px;  /* Static height */
-  object-fit: contain;  /* Cover the entire area */
+.mySlides img{
+  width: 100%;       /* This will make the image span the full width of its container */
+  height: 100%;      /* This will make the image span the full height of its container */
+  object-fit:cover;  /* This will ensure the image's aspect ratio is maintained */
 }
+
 /* Navigational buttons */
 .prev, .next {
   cursor: pointer;
@@ -390,23 +392,21 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  font-family: 'Arial', sans-serif;  /* Choose a modern, sans-serif font */
-  font-size: 24px;  /* Set the desired font size */
-  font-weight: bold;  /* Bold for emphasis */
-  color: white;  /* White color for the text */
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);  /* Subtle text-shadow for depth */
-  padding: 10px 20px;  /* Ample padding for spacing */
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));  /* Semi-transparent background for legibility */
-  border-radius: 5px;  /* Rounded edges for a modern look */
-  /* Initially set the opacity to 0 so it starts as invisible */
+  font-family: 'Arial', sans-serif;
+  font-size: 28px;  /* Slightly increased font size for prominence */
+  font-weight: bold;
+  letter-spacing: 1.5px;  /* Increased letter spacing */
+  line-height: 1.4;  /* Adjusted line height */
+  color: white;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+  padding: 15px 25px;  /* Increased padding for more space */
+  border-radius: 7px;  /* Slightly more rounded edges */
   opacity: 0;
-
-  /* Start from the right and center vertically */
   transform: translate(100%, -50%);
-
-  /* Transition effect for smooth change */
-  transition: opacity 1.5s ease, transform 1.5s ease;
+  transition: opacity 1.5s ease 0.5s, transform 1.5s ease 0.5s;  /* Added a delay of 0.5s */
+  filter: brightness(1.2);  /* Increased brightness slightly */
 }
+
 @keyframes fadeInEffect {
   from {
       opacity: 0;
@@ -662,10 +662,6 @@ body {
   align-items: flex-start;
 }
 
-/* Slideshow container */
-.slideshow-container, .banner-list {
-  max-width: 80%;
-}
   /* Adjust the styles for slides */
   .mySlides img {
     width: 80%;  /* Adjust to be responsive */
@@ -811,7 +807,7 @@ body {
            display: flex;
            justify-content: space-between;
            align-items: center;
-           width: 240px;
+           width: 100px;
        }
 
        .website__rights {
@@ -1201,15 +1197,11 @@ body {
 .logo-container {
   display: flex;
   align-items: center;  /* Vertically center the logo and text */
+  justify-content: start; /* Layout children (logo and text) from start to end */
+
 }
 /* Position the .logo-text in the center of the header */
-.logo-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-100%, -50%); /* This centers the element both vertically and horizontally */
-  z-index: 10; /* Ensure it's above other elements */
-}
+
 
 /* Top Header Styles */
 .top-bar {
