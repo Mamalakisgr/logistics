@@ -21,3 +21,5 @@ const fetchAndDisplayLogo = async (elementId) => {
     console.error("There was a problem", error);
   }
 };
+document.addEventListener("DOMContentLoaded", () => {
+  fetchAndDisplayLogo("logo-image");});
