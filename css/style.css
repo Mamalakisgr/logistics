@@ -1263,14 +1263,19 @@ body {
   justify-content: flex-end; /* Push items to the right */
   gap: 20px; /* Space between working hours and social icons */
 }
-.top-bar-left  .fa-phone{
+.top-bar-left  .phone-icon{
   color: #131313;
 }
 .top-bar-right .social__icons {
   display: flex; /* Layout the social icons in a row */
   gap: 10px; /* Space between each social icon */
-}
 
+
+}
+.top-bar-right .social__icons .fa-phone{
+  color: #131313;
+
+}
 
   .top-bar-right .social__icons a{
     color: #131313;
