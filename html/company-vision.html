@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Company</title>
+    <link rel="stylesheet" type="text/css" href="/css/contactus.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/compstyle.css"/>
+    <link rel="icon" href="/images/292435385_399551102196302_8171052786653938864_n.png" type="image/x-icon" />
+  </head>
+<body>
+      <!-- Header -->
+  <header>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Add this inside your <header> -->
+    <div class="hamburger-menu" onclick="toggleSideMenu()">
+      <span id="menu-icon">&#9776;</span>
+    </div>
+    <!-- Logo and Logo Text -->
+    <div class="logo-container">
+      <!-- Logo -->
+      <div class="logo">
+        <a href="/">
+          <img id="logo-image" src="" alt="Logo">
+        </a>
+      </div>
+
+      <!-- Logo Text -->
+      <div class="logo-text">
+        <img id="logo-text-image" src="/images/logotext.jpg" alt="">
+      </div>
+    </div>
+    <!-- Static categories -->
+
+    <div id="categories-list">
+      <div class="category-name-Home">
+        <a href="../html/index.html">Αρχική</a>
+      </div>
+      <div class="category-name-Company">
+        <!-- Removed href from the following line -->
+        <span class="dropdown-header">Εταιρεία</span>
+        <div class="company-selector">
+            <div class="company-dropdown">
+                <a href="/html/company-history.html">History</a>
+                <a href="/html/company-values.html">Values</a>
+                <a href="/html/company-vision.html">Vision</a>
+            </div>
+        </div>
+    </div>
+      <div class="category-name-Services">
+        <a href="../html/services.html">Υπηρεσίες</a>
+      </div>
+      <div class="category-name-News">
+        <a href="../html/news.html">Ενημέρωση</a>
+      </div>
+      <div class="category-name-Contact">
+        <a href="../html/contactus.html">Επικοινωνία</a>
+      </div>
+      <div class="language-selector">
+        <a href="#" id="selected-lang" data-lang="gr">GR</a>
+        <div class="language-dropdown">
+            <a href="#" data-lang="Gr">GR</a>
+            <a href="#" data-lang="En">ENG</a>
+        </div>
+    </div>
+    
+  </header>
+  <!-- Vision Section -->
+<section id="vision-section" class="history-vision-values-section lazy-load">
+  <div class="section-content">
+    <div class="text-content">
+      <h1 id="visionTitle">Placeholder for Vision Title</h1>
+      <p id="visionDescription">Placeholder for Vision Description</p>
+    </div>
+  </div>
+</section>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+
+      <!--Footer Section-->
+      <div class="footer__container">
+        <div class="footer__link">
+          <div class="footer__link--wrapper">
+            <div class="footer__link--items">
+              <a href="https://tinyurl.com/2dd25urk">
+                <i class="fas fa-map-marker-alt"></i>Αγίου Μελετίου 23, Αθήνα
+              </a>
+              <a href="https://tinyurl.com/2dd25urk">
+                <i class="fas fa-map-marker-alt"></i> Δεληγιάννη & Κασου 1, Βάρη 166 72
+              </a>
+              <span class="phone-container">
+                <i class="fas fa-phone phone-icon"></i>
+                <span class="phone-number">6957553954</span>
+              </span>
+              <span class="phone-container">
+                <i class="fas fa-phone phone-icon"></i>
+                <span class="phone-number">2107217046</span>
+              </span>
+              <a href="mailto:info@loyaltax.gr">
+                <i class="fa fa-envelope"></i> info@loyaltax.gr
+              </a>
+            </div>
+            <div class="footer__link--wrapper">
+              <div class="footer__link--items">
+                <a href="https://tinyurl.com/2dd25urk">
+                  <i class="fa fa-location-arrow" style="color: white;"></i>
+                  Αγίου Μελετίου 23, Αθήνα
+                </a>
+                <!-- Working hours for the first location -->
+                <div class="working-hours">
+                  <i class="fas fa-clock"></i> Δευ - Παρ: 08:00 - 14:00
+                </div>
+                <div class="working-hours">
+                  <i class="fas fa-clock"></i> Σάββατα & Απογεύματα: Κατόπιν Ραντεβού
+                </div>
+                <a href="https://tinyurl.com/2dd25urk">
+                  <i class="fa fa-location-arrow" style="color: white;"></i> Δεληγιάννη & Κασου 1, Βάρη 166 72
+                </a>
+                <!-- Working hours for the second location -->
+                <div class="working-hours">
+                  <i class="fas fa-clock"></i> Ραντεβού κατόπιν τηλεφωνική επικοινωνίας.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer__link--wrapper">
+            <div class="footer__link--items">
+              <a href="https://www.facebook.com/loyaltax" target="_blank">Facebook</a>
+              <a href="https://www.linkedin.com/in/panagiotispitsis/" target="_blank">Linkedin</a>
+              <a href="viber://chat?number=%2B[6957553954]" target="_blank">Viber</a>
+              <a href="https://wa.me/[6957553954]" target="_blank">WhatsApp</a>
+            </div>
+          </div>
+          <div class="footer__link--wrapper">
+            <div class="contact-form-section">
+              <h2>Contact Form</h2>
+              <form id="footer-contact-form" action="/submit" method="post">
+                <div class="input-group">
+                  <label for="name">Name:</label>
+                  <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="input-group">
+                  <label for="email">Email:</label>
+                  <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="input-group">
+                  <label for="message">Message:</label>
+                  <textarea id="message" name="message" rows="4" required></textarea>
+                </div>
+
+                <div class="input-group">
+                  <button type="submit">Submit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <section class="social__media">
+          <div class="social__media--wrap">
+            <div class="footer__logo">
+              <a href="/" id="footer__logo">LoyalTax</a>
+            </div>
+            <p class="website__rights"> LoyalTax 2023. All rights reserved</p>
+            <div class="social__icons">
+              <a href="https://www.facebook.com/chefxaris/" target="_blank" class="social__icon--link"><i
+                  class="fab fa-facebook"></i>
+              </a>
+              <a href="https://www.instagram.com/king_xaris/" target="_blank" class="social__icon--link"><i
+                  class="fab fa-instagram"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/harrys-zeugolatis-6ba328200/" target="_blank"
+                class="social__icon--link"><i class="fab fa-linkedin"></i>
+              </a>
+              <a href="https://twitter.com/i/flow/consent_flow/" target="_blank" class="social__icon--link"><i
+                  class="fab fa-twitter"></i>
+              </a>
+            </div>
+
+          </div>
+  </footer>
+  <script src="../js/company-dropdown.js"></script>
+
+  <script src="../js/vision.js"></script>
+</body>
+</html>

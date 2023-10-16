@@ -48,13 +48,29 @@
 
     <!-- >Home Region One Content Editor Section -->
     <h1>Home Region One Editor</h1>
-    <label for="titleInput">Title:</label>
-    <input type="text" id="titleInput" placeholder="Enter title">
+   <!-- Language Selector Buttons -->
+<button id="showEnglishInputs">English</button>
+<button id="showGreekInputs">Greek</button>
 
-    <label for="descriptionInput">Description:</label>
-    <textarea id="descriptionInput" rows="4" cols="50" placeholder="Enter description"></textarea>
+<!-- English Input Fields -->
+<div id="englishInputs">
+    <label for="titleInputEn">Title (English):</label>
+    <input type="text" id="titleInputEn" placeholder="Enter title in English">
 
-    <button id="saveSeoContentButton">Save</button>
+    <label for="descriptionInputEn">Description (English):</label>
+    <textarea id="descriptionInputEn" rows="4" cols="50" placeholder="Enter description in English"></textarea>
+</div>
+
+<!-- Greek Input Fields -->
+<div id="greekInputs" style="display: none;">
+    <label for="titleInputGr">Title (Greek):</label>
+    <input type="text" id="titleInputGr" placeholder="Εισαγάγετε τίτλο">
+
+    <label for="descriptionInputGr">Description (Greek):</label>
+    <textarea id="descriptionInputGr" rows="4" cols="50" placeholder="Εισαγάγετε περιγραφή"></textarea>
+</div>
+
+<button id="saveSeoContentButton">Save</button>
     <h2>Upload Region One Image</h2>
     <form id="regionOneImageForm" enctype="multipart/form-data">
       <input type="file" name="regionOneImage" id="regionOneImageInput" accept="image/*">
@@ -68,6 +84,21 @@
     <button id="delete-region-one-image-button">Delete Selected Region One Image</button>
     <h1>Home Region Two Editor</h1>
 
+<!-- Add/Edit Service Card Section -->
+<h2>Add/Edit Service Card</h2>
+<form id="service-card-form">
+  <label for="serviceTitleEn">Title (English):</label>
+  <input type="text" id="serviceTitleEn" placeholder="Enter title in English">
+  <label for="serviceDescriptionEn">Description (English):</label>
+  <textarea id="serviceDescriptionEn" rows="4" cols="50" placeholder="Enter description in English"></textarea>
+  
+  <label for="serviceTitleGr">Title (Greek):</label>
+  <input type="text" id="serviceTitleGr" placeholder="Εισαγάγετε τίτλο">
+  <label for="serviceDescriptionGr">Description (Greek):</label>
+  <textarea id="serviceDescriptionGr" rows="4" cols="50" placeholder="Εισαγάγετε περιγραφή"></textarea>
+
+  <button type="submit">Save Service Card</button>
+</form>
 
     <!-- Upload Region Two Image Section -->
     <form id="seo-image-upload-form">

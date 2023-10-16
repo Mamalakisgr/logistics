@@ -22,7 +22,7 @@ header {
   top: 0;
   background-color: black;
   color: black;
-  
+  height: 70px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -346,7 +346,12 @@ body {
   background-color: white;
   padding: 20px;
 }
-
+.WidgetTitle__Header-sc-ruy1gu-2{
+  display: none;
+}
+.WidgetTitle__Header-sc-ruy1gu-2 a[href*="elfsight.com/google-reviews-widget"] {
+  display: none !important;
+}
 /* Home Region */
 .home-region {
   padding: 40px 0;
@@ -406,7 +411,33 @@ body {
   transition: opacity 1.5s ease 0.5s, transform 1.5s ease 0.5s;  /* Added a delay of 0.5s */
   filter: brightness(1.2);  /* Increased brightness slightly */
 }
+.dropdown-header {
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
+}
 
+.company-dropdown {
+    display: none; /* Hidden by default */
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 110px;
+    z-index: 1;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.company-dropdown a {
+    padding: 8px 16px;
+    display: block;
+    text-decoration: none;
+    color: black;
+    border-radius: 5px;
+}
+
+.company-dropdown a:hover {
+    background-color: #f1f1f1;
+}
 @keyframes fadeInEffect {
   from {
       opacity: 0;

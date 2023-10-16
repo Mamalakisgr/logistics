@@ -63,8 +63,16 @@
         <a href="../html/index.html">Αρχική</a>
       </div>
       <div class="category-name-Company">
-        <a href="../html/company.html">Εταιρεία</a>
-      </div>
+        <!-- Removed href from the following line -->
+        <span class="dropdown-header">Εταιρεία</span>
+        <div class="company-selector">
+            <div class="company-dropdown">
+                <a href="/html/company-history.html">History</a>
+                <a href="/html/company-values.html">Values</a>
+                <a href="/html/company-vision.html">Vision</a>
+            </div>
+        </div>
+    </div>
       <div class="category-name-Services">
         <a href="../html/services.html">Υπηρεσίες</a>
       </div>
@@ -75,12 +83,13 @@
         <a href="../html/contactus.html">Επικοινωνία</a>
       </div>
       <div class="language-selector">
-        <a href="#" id="selected-lang">GR</a>
+        <a href="#" id="selected-lang" data-lang="gr">GR</a>
         <div class="language-dropdown">
-          <a href="#">GR</a>
-          <a href="#">ENG</a>
+            <a href="#" data-lang="gr">GR</a>
+            <a href="#" data-lang="en">ENG</a>
         </div>
-      </div>
+    </div>
+    
   </header>
 
 
@@ -185,9 +194,9 @@
               </div>
             </figure>
             <div class="seo-container">
-              <header class="title-container">
+              <!-- <header class="title-container"> -->
                 <!-- <h1 id="dynamicTitle" class="title"></h1> -->
-              </header>
+              <!-- </header> -->
               <div class="description-container">
                 <div id="dynamicDescription" class="description">
                   More than <span id="counter">0</span> companies trust us.
@@ -209,7 +218,7 @@
     </div>
   </section>
   <div class="elfsight-app-fab0abfa-8751-4246-a9f2-557ab71eb500"></div>
-
+  <div class="elfsight-app-bbf8941e-caec-4441-bb2b-61797c5888f9"></div>
   <!-- Footer -->
   <footer>
     <div class="footer-container">
@@ -219,7 +228,7 @@
         <div class="footer__link">
           <div class="footer__link--wrapper">
             <div class="footer__link--items">
-              <a href="https://tinyurl.com/2dd25urk">
+              <a href="https://tinyurl.com/y93wm9ka">
                 <i class="fas fa-map-marker-alt"></i>Αγίου Μελετίου 23, Αθήνα
               </a>
               <a href="https://tinyurl.com/2dd25urk">
@@ -239,7 +248,7 @@
             </div>
             <div class="footer__link--wrapper">
               <div class="footer__link--items">
-                <a href="https://tinyurl.com/2dd25urk">
+                <a href="https://tinyurl.com/y93wm9ka">
                   <i class="fa fa-location-arrow" style="color: white;"></i>
                   Αγίου Μελετίου 23, Αθήνα
                 </a>
@@ -307,12 +316,15 @@
             </div>
           </div>
   </footer>
+
   <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
   <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
   <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&libraries=places&v=weekly"
     defer></script>
   <script src="../js/main.js"></script>
+  <script src="../js/language-selector.js"></script>
+  <script src="../js/company-dropdown.js"></script>
   <script src="../js/googlemap.js"></script>
   <script src="../js/ToggleMenu.js"></script>
 </body>

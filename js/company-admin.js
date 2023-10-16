@@ -31,12 +31,15 @@ async function populateFields() {
   const data = await fetchAPI('/api/company-content');
   if (!data) return;
   Object.entries(data).forEach(([key, value]) => {
-    const element = document.getElementById(`${key}Input`);
-    if (element) {
-      element.value = value;
+    if (value && typeof value === 'object') {
+      const enElement = document.getElementById(`${key}InputEn`);
+      const grElement = document.getElementById(`${key}Input`);
+      if (enElement) enElement.value = value.En || "";
+      if (grElement) grElement.value = value.Gr || "";
     }
   });
 }
+
 // Handle image uploads for a specific section
 async function handleImageUpload(section, formId) {
   try {
@@ -88,12 +91,31 @@ async function updateCurrentImage(section) {
 // Function to Update All Section Content
 async function updateAllSections() {
   try {
-    const historyTitle = document.getElementById('historyTitleInput').value;
-    const historyDescription = document.getElementById('historyDescriptionInput').value;
-    const valuesTitle = document.getElementById('valuesTitleInput').value;
-    const valuesDescription = document.getElementById('valuesDescriptionInput').value;
-    const visionTitle = document.getElementById('visionTitleInput').value;
-    const visionDescription = document.getElementById('visionDescriptionInput').value;
+    const historyTitle = {
+      Gr: document.getElementById('historyTitleInput').value,
+      En: document.getElementById('historyTitleInputEn').value
+    };
+    const historyDescription = {
+      Gr: document.getElementById('historyDescriptionInput').value,
+      En: document.getElementById('historyDescriptionInputEn').value
+    };
+    const valuesTitle = {
+      Gr: document.getElementById('valuesTitleInput').value,
+       En: document.getElementById('valuesTitleInputEn').value
+    };
+    const valuesDescription = {
+      Gr: document.getElementById('valuesDescriptionInput').value,
+      En: document.getElementById('valuesDescriptionInputEn').value
+    };
+    const visionTitle = {
+      Gr: document.getElementById('visionTitleInput').value,
+       En: document.getElementById('visionTitleInputEn').value
+    };
+    const visionDescription = {
+      Gr: document.getElementById('visionDescriptionInput').value,
+      En: document.getElementById('visionDescriptionInputEn').value
+    };
+
 
     const response = await fetch('/api/company-content', {
       method: 'POST',
@@ -138,7 +160,41 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
-
+  document.getElementById("showEnglishHistoryInputs").addEventListener("click", function() {
+    document.getElementById("englishInputs").style.display = "block";
+    document.getElementById("greekInputs").style.display = "none";
+    updateAllSections();
+  });
+  
+  document.getElementById("showGreekHistoryInputs").addEventListener("click", function() {
+    document.getElementById("englishInputs").style.display = "none";
+    document.getElementById("greekInputs").style.display = "block";
+    updateAllSections();
+  });
+  
+  document.getElementById("showEnglishValuesInputs").addEventListener("click", function() {
+    document.getElementById("valuesEnglishInputs").style.display = "block";
+    document.getElementById("valuesGreekInputs").style.display = "none";
+    updateAllSections();
+  });
+  
+  document.getElementById("showGreekValuesInputs").addEventListener("click", function() {
+    document.getElementById("valuesEnglishInputs").style.display = "none";
+    document.getElementById("valuesGreekInputs").style.display = "block";
+    updateAllSections();
+  });
+  
+  document.getElementById("showEnglishVisionInputs").addEventListener("click", function() {
+    document.getElementById("visionEnglishInputs").style.display = "block";
+    document.getElementById("visionGreekInputs").style.display = "none";
+    updateAllSections();
+  });
+  
+  document.getElementById("showGreekVisionInputs").addEventListener("click", function() {
+    document.getElementById("visionEnglishInputs").style.display = "none";
+    document.getElementById("visionGreekInputs").style.display = "block";
+    updateAllSections();
+  });
   lazyLoadSections.forEach((section) => observer.observe(section));
 
   ['history', 'values', 'vision'].forEach((section) => {

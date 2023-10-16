@@ -6,14 +6,13 @@
   <link rel="stylesheet" type="text/css" href="/css/contactus.css">
   <link rel="stylesheet" type="text/css" href="/css/style.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
-  <link rel="stylesheet" type="text/css" href="../css/compstyle.css">
   <link rel="icon" href="/images/292435385_399551102196302_8171052786653938864_n.png" type="image/x-icon" />
 
 </head>
 
 <body>
-  <!-- Header -->
-  <header>
+   <!-- Header -->
+   <header>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Add this inside your <header> -->
     <div class="hamburger-menu" onclick="toggleSideMenu()">
@@ -23,12 +22,14 @@
     <div class="logo-container">
       <!-- Logo -->
       <div class="logo">
-        <img id="logo-image" src="" alt="Logo">
+        <a href="/">
+          <img id="logo-image" src="" alt="Logo">
+        </a>
       </div>
 
       <!-- Logo Text -->
       <div class="logo-text">
-        <a href="/">LOYALTAX</a>
+        <img id="logo-text-image" src="/images/logotext.jpg" alt="">
       </div>
     </div>
     <!-- Static categories -->
@@ -38,8 +39,16 @@
         <a href="../html/index.html">Αρχική</a>
       </div>
       <div class="category-name-Company">
-        <a href="../html/company.html">Εταιρεία</a>
-      </div>
+        <!-- Removed href from the following line -->
+        <span class="dropdown-header">Εταιρεία</span>
+        <div class="company-selector">
+            <div class="company-dropdown">
+                <a href="/html/company-history.html">History</a>
+                <a href="/html/company-values.html">Values</a>
+                <a href="/html/company-vision.html">Vision</a>
+            </div>
+        </div>
+    </div>
       <div class="category-name-Services">
         <a href="../html/services.html">Υπηρεσίες</a>
       </div>
@@ -50,20 +59,21 @@
         <a href="../html/contactus.html">Επικοινωνία</a>
       </div>
       <div class="language-selector">
-        <a href="#" id="selected-lang">GR</a>
+        <a href="#" id="selected-lang" data-lang="gr">GR</a>
         <div class="language-dropdown">
-          <a href="#">GR</a>
-          <a href="#">ENG</a>
+            <a href="#" data-lang="gr">GR</a>
+            <a href="#" data-lang="en">ENG</a>
         </div>
-      </div>
+    </div>
+    
   </header>
   <div class="contact-form-container">
 
     <main id="contact-main">
         <div class="contact-info-form">
             <section id="contact-form">
-                <h2>Get in Touch</h2>
-                <form action="/submit" method="POST">
+              <h2 data-translatable data-en="Get in Touch" data-el="Επικοινωνείστε μαζί μας">Επικοινωνείστε μαζί μας</h2>
+              <form action="/submit" method="POST">
                   <input type="text" name="name" placeholder="Name">
                   <input type="email" name="email" placeholder="Email">
                   <textarea name="message" placeholder="Message"></textarea>
@@ -73,7 +83,7 @@
               </section>
           
               <section id="contact-information">
-                <h2>Contact Information</h2>
+                <h2 data-translatable data-en="Contact Information" data-el="Πληροφορίες Επικοινωνίας">Πληροφορίες Επικοινωνίας</h2>
                 <ul>
                   <li>
                     <i class="fas fa-map-marker-alt"></i> Δεληγιάννη &, Κασου 1, Βάρη 166 72
@@ -89,7 +99,7 @@
             </div>
           
             <section id="google-map">
-              <h2>Find Us On Google Map</h2>
+              <h2 data-translatable data-en="Find us on Map" data-el="Βρείτε μας στον Χάρτη">Βρείτε μας στον Χάρτη</h2>
               <div id="map-placeholder">Google Map Here</div>
             </section>
         </main>
@@ -176,7 +186,7 @@
 
   </footer>
 
-
+  <script src="../js/language-selector.js"></script>
         <script src="../js/contact_us.js"></script>
 </body>
 

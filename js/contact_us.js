@@ -21,6 +21,36 @@ const fetchAndDisplayLogo = async (elementId) => {
       console.error("There was a problem", error);
     }
   };
+  
+  const translations = {
+    "en": {
+        "contact-information": "Contact Information",
+        "contact-form": "Get in Touch",
+        "google-map": "Find us here"
+    },
+    "gr": {
+        "contact-information": "Πληροφορίες Επικοινωνίας",
+        "contact-form": "Επικοινωνείστε μαζί μας",
+        "google-map": "Βρείτε μας στον χάρτη"
+    }
+    // You can add more languages and translations here as needed
+};
+  function translatePage(selectedLang) {
+    const contactInfoSection = document.getElementById("contact-information");
+    const contactFormSection = document.getElementById("contact-form");
+    const MapSection = document.getElementById("google-map");
+
+    if (contactInfoSection) {
+        contactInfoSection.querySelector("h2").textContent = translations[selectedLang]["contact-information"];
+    }
+    if (contactFormSection) {
+        contactFormSection.querySelector("h2").textContent = translations[selectedLang]["contact-form"];
+    }
+    if (MapSection) {
+      MapSection.querySelector("h2").textContent = translations[selectedLang]["google-map"];
+    }
+}
+
   document.addEventListener('DOMContentLoaded', function() {
     fetchAndDisplayLogo('logo-image'); // Fetch and display header logo
     const form = document.getElementById("contact-form");

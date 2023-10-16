@@ -167,20 +167,27 @@ const fetchAndSetRegionOneImage = async () => {
   }
 };
 
-
+// This function returns the current selected language.
+const getCurrentLanguage = () => {
+    return document.getElementById("selected-lang").getAttribute("data-lang");
+}
+// New function to handle fetching and displaying SEO content
 // New function to handle fetching and displaying SEO content
 const fetchAndDisplaySEOContent = async () => {
   try {
-    const response = await fetch("/api/seo-content");
+    const lang = getCurrentLanguage();
+    const response = await fetch(`/api/seo-content?lang=${lang}`);
     const data = await response.json();
 
     // Update the title and description based on the fetched data
     document.querySelector(".title").innerText = data.title;
     document.querySelector(".description p").innerText = data.description;
   } catch (error) {
-    console.error("There was a problem fetching the SEO data:", error);
+    console.error("There was a problem fetching and displaying SEO content:", error);
   }
-}; // Function to fetch and update dynamic content
+};
+
+// Function to fetch and update dynamic content
 // const fetchAndUpdateDynamicContent = async () => {
 //   try {
 //     const response = await fetch("/api/update-dynamic-content");

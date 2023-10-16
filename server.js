@@ -9,11 +9,11 @@ require('dotenv').config();
 
 // Model Imports
 const [
-    Logo, SEOContent, SEOImage, DynamicContent, CompanyContent,
+    Logo, SEOContent, SEOImage, ServiceCard, DynamicContent, CompanyContent,
     ValuesImage, HistoryImage, VisionImage, ServiceDetail, ServiceCategory,
     RegionOneImage, CompanyCount, Banner
 ] = [
-    './models/Logo', './models/SEOContent', './models/SEOImage', './models/DynamicContent',
+    './models/Logo', './models/SEOContent', './models/SEOImage', './models/ServiceCard', './models/DynamicContent',
     './models/CompanyContent', './models/ValuesImage', './models/HistoryImage',
     './models/VisionImage', './models/ServiceDetail', './models/ServiceCategory',
     './models/RegionOneImage', './models/CompanyCount', './models/Banner'
@@ -69,7 +69,15 @@ app.post('/api/update-company-count', async (req, res) => {
     }
 });
 
-
+// Fetch service cards
+app.get('/api/services-card', async (req, res) => {
+  try {
+    const services = await ServiceCard.find();
+    res.json(services);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch services' });
+  }
+});
 app.get('/api/get-description', async (req, res) => {
   try {
     const companyParagraph = await CompanyCount.findOne();
@@ -280,13 +288,21 @@ app.get('/api/active-logo', async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 });
-// Endpoint to get the SEO Content
+
+// Endpoint to get the SEO Content based on language preference
 app.get('/api/seo-content', async (req, res) => {
+  const lang = req.query.lang || 'gr'; // Default to Greek if not provided
+
   const content = await SEOContent.findOne(); // gets the first record
   if (!content) {
-    res.json({title: "", description: ""});
+    res.json({ title: "", description: "" });
   } else {
-    res.json(content);
+    res.json({
+      title: content.title[lang],
+      description: content.description[lang],
+      imagePath: content.imagePath,
+      contentType: content.contentType
+    });
   }
 });
 
@@ -325,12 +341,25 @@ app.post('/api/upload-banner', upload.single('banner'), async (req, res) => {
 
 // Endpoint to set/update the SEO Content
 app.post('/api/seo-content', async (req, res) => {
-  const { title, description } = req.body;
+  const updateData = {};
 
-  // Search for existing SEO content and update it
-  // or create a new one if not found
-  const content = await SEOContent.findOneAndUpdate({}, {title, description}, {new: true, upsert: true});
-
+  if (req.body.titleGr !== undefined) {
+    updateData['title.gr'] = req.body.titleGr;
+  }
+  
+  if (req.body.descriptionGr !== undefined) {
+    updateData['description.gr'] = req.body.descriptionGr;
+  }
+  
+  if (req.body.titleEn !== undefined) {
+    updateData['title.en'] = req.body.titleEn;
+  }
+  
+  if (req.body.descriptionEn !== undefined) {
+    updateData['description.en'] = req.body.descriptionEn;
+  }
+  
+  const content = await SEOContent.findOneAndUpdate({}, { $set: updateData }, { new: true, upsert: true });
   res.json(content);
 });
 // Delete a banner by ID
@@ -541,16 +570,17 @@ app.post('/api/company-content', async (req, res) => {
 
   // Update the content in the database
   const content = await CompanyContent.findOneAndUpdate({}, {
-    historyTitle,
-    historyDescription,
-    valuesTitle,
-    valuesDescription,
-    visionTitle,
-    visionDescription
+    historyTitle: { Gr: historyTitle.Gr, En: historyTitle.En || "" },
+    historyDescription: { Gr: historyDescription.Gr, En: historyDescription.En || "" },
+    valuesTitle: { Gr: valuesTitle.Gr, En: valuesTitle.En || "" },
+    valuesDescription: { Gr: valuesDescription.Gr, En: valuesDescription.En || "" },
+    visionTitle: { Gr: visionTitle.Gr, En: visionTitle.En || "" },
+    visionDescription: { Gr: visionDescription.Gr, En: visionDescription.En || "" }
   }, { new: true, upsert: true });
 
   res.json(content);
 });
+
 
 // Serve history image
 app.get('/api/history-image', async (req, res) => {
@@ -611,19 +641,21 @@ app.get('/api/vision-image', async (req, res) => {
 app.get('/api/company-content', async (req, res) => {
   const content = await CompanyContent.findOne(); // gets the first record
   console.log("Sending back content: ", content);
+  
   if (!content) {
     res.json({
-      historyTitle: "",
-      historyDescription: "",
-      valuesTitle: "",
-      valuesDescription: "",
-      visionTitle: "",
-      visionDescription: ""
+      historyTitle: { Gr: "", En: "" },
+      historyDescription: { Gr: "", En: "" },
+      valuesTitle: { Gr: "", En: "" },
+      valuesDescription: { Gr: "", En: "" },
+      visionTitle: { Gr: "", En: "" },
+      visionDescription: { Gr: "", En: "" }
     });
   } else {
     res.json(content);
   }
 });
+
 
 //History Image
 app.post('/api/upload-history-image', upload.single('historyImage'), async (req, res) => {

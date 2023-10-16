@@ -24,12 +24,14 @@
     <div class="logo-container">
       <!-- Logo -->
       <div class="logo">
-        <img id="logo-image" src="" alt="Logo">
+        <a href="/">
+          <img id="logo-image" src="" alt="Logo">
+        </a>
       </div>
 
       <!-- Logo Text -->
       <div class="logo-text">
-        <a href="/">LOYALTAX</a>
+        <img id="logo-text-image" src="/images/logotext.jpg" alt="">
       </div>
     </div>
     <!-- Static categories -->
@@ -39,8 +41,16 @@
         <a href="../html/index.html">Αρχική</a>
       </div>
       <div class="category-name-Company">
-        <a href="../html/company.html">Εταιρεία</a>
-      </div>
+        <!-- Removed href from the following line -->
+        <span class="dropdown-header">Εταιρεία</span>
+        <div class="company-selector">
+            <div class="company-dropdown">
+                <a href="/html/company-history.html">History</a>
+                <a href="/html/company-values.html">Values</a>
+                <a href="/html/company-vision.html">Vision</a>
+            </div>
+        </div>
+    </div>
       <div class="category-name-Services">
         <a href="../html/services.html">Υπηρεσίες</a>
       </div>
@@ -51,12 +61,13 @@
         <a href="../html/contactus.html">Επικοινωνία</a>
       </div>
       <div class="language-selector">
-        <a href="#" id="selected-lang">GR</a>
+        <a href="#" id="selected-lang" data-lang="gr">GR</a>
         <div class="language-dropdown">
-          <a href="#">GR</a>
-          <a href="#">ENG</a>
+            <a href="#" data-lang="gr">GR</a>
+            <a href="#" data-lang="en">ENG</a>
         </div>
-      </div>
+    </div>
+    
   </header>
 
   <!-- Main Header -->
@@ -165,6 +176,7 @@
       </section>
   </div>
     </footer>
+    <script src="../js/language-selector.js"></script>
     <script src="/js/services.js"></script>
 </body>
 </html>

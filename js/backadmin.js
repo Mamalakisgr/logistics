@@ -138,6 +138,52 @@ const handleSeoImageSelection = async () => {
     console.error("There was a problem with SEO image selection:", error);
   }
 };
+
+const handleServiceCardSubmit = async (event) => {
+  event.preventDefault();
+
+  const titleEn = document.getElementById("serviceTitleEn").value;
+  const descriptionEn = document.getElementById("serviceDescriptionEn").value;
+  const titleGr = document.getElementById("serviceTitleGr").value;
+  const descriptionGr = document.getElementById("serviceDescriptionGr").value;
+
+  const payload = {
+    title: {
+      en: titleEn,
+      gr: titleGr
+    },
+    description: {
+      en: descriptionEn,
+      gr: descriptionGr
+    }
+  };
+
+  try {
+    const response = await fetch("/api/services-card", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      console.log("Service card saved successfully:", data);
+    } else {
+      const errorData = await response.json();
+      console.error("Error saving service card:", errorData);
+    }
+  } catch (error) {
+    console.error("There was a problem saving the service card:", error);
+  }
+};
+
+document.getElementById("service-card-form").addEventListener("submit", handleServiceCardSubmit);
+
+
+
+
 // Function to update the Banner Dropdown
 const updateBannerDropdown = async () => {
   try {
@@ -180,35 +226,77 @@ const handleBannerDeletion = async () => {
     console.error("There was a problem with banner deletion:", error);
   }
 };
-
 // Function to fetch existing SEO content and populate the input fields
 const fetchSeoContent = async () => {
   try {
-    const response = await fetch("/api/seo-content");
+    const lang = getCurrentLanguage();
+    const response = await fetch(`/api/seo-content?lang=${lang}`);
     const data = await response.json();
 
-    document.getElementById("titleInput").value = data.title;
-    document.getElementById("descriptionInput").value = data.description;
+    const titleInputId = lang === 'en' ? 'titleInputEn' : 'titleInputGr';
+    const descriptionInputId = lang === 'en' ? 'descriptionInputEn' : 'descriptionInputGr';
+    console.log(`Fetching content for language: ${lang}`);
+
+    document.getElementById(titleInputId).value = data.title;
+    document.getElementById(descriptionInputId).value = data.description;
   } catch (error) {
     console.error("There was a problem fetching SEO content:", error);
   }
 };
 
-// Function to handle SEO content update
+
+const languageDropdownItems = document.querySelectorAll(".language-dropdown a");
+
+const getCurrentLanguage = () => {
+  if (document.getElementById("englishInputs").style.display !== "none") {
+      return 'en';
+  } else if (document.getElementById("greekInputs").style.display !== "none") {
+      return 'gr';
+  }
+  // Default to 'gr' or throw an error if neither is visible
+  return 'gr';
+}
+
+languageDropdownItems.forEach(item => {
+  item.addEventListener("click", (e) => {
+    e.preventDefault();  // Prevent default link behavior
+    const selectedLang = e.target.textContent.trim();
+    document.getElementById('selected-lang').textContent = selectedLang;
+    
+    // Refetch the SEO content based on the new language
+    fetchSeoContent();
+  });
+});
+
+
+
+
+
 const handleSeoContentUpdate = async () => {
   try {
-    const title = document.getElementById("titleInput").value;
-    const description = document.getElementById("descriptionInput").value;
+    const lang = getCurrentLanguage();
+    const titleInputId = lang === 'en' ? 'titleInputEn' : 'titleInputGr';
+    const descriptionInputId = lang === 'en' ? 'descriptionInputEn' : 'descriptionInputGr';
+
+    const title = document.getElementById(titleInputId).value;
+    const description = document.getElementById(descriptionInputId).value;
+
+    const payload = {};
+
+    if (lang === 'gr') {
+      payload.titleGr = title;
+      payload.descriptionGr = description;
+    } else {
+      payload.titleEn = title;
+      payload.descriptionEn = description;
+    }
 
     const response = await fetch("/api/seo-content", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        title,
-        description,
-      }),
+      body: JSON.stringify(payload),
     });
 
     if (response.ok) {
@@ -222,6 +310,7 @@ const handleSeoContentUpdate = async () => {
     console.error("There was a problem updating SEO content:", error);
   }
 };
+
 
 // Function to update the dynamic company count
 // const updateDynamicCompanyCount = async () => {
@@ -519,6 +608,18 @@ const handleRegionOneImage = () => {
 };
 // DOM Loaded Event
 document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("showEnglishInputs").addEventListener("click", function() {
+    document.getElementById("englishInputs").style.display = "block";
+    document.getElementById("greekInputs").style.display = "none";
+    fetchSeoContent();  // Fetch content after changing language
+});
+
+document.getElementById("showGreekInputs").addEventListener("click", function() {
+    document.getElementById("englishInputs").style.display = "none";
+    document.getElementById("greekInputs").style.display = "block";
+    fetchSeoContent();  // Fetch content after changing language
+});
+
   fetchSeoContent();
   document
     .getElementById("delete-seo-image-button")
@@ -618,3 +719,5 @@ document.addEventListener("DOMContentLoaded", function () {
   updateSeoImageDropdown();
   populateRegionOneImagesDropdown();
 });
+
+
