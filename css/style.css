@@ -397,9 +397,9 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  font-family: 'Arial', sans-serif;
-  font-size: 28px;  /* Slightly increased font size for prominence */
-  font-weight: bold;
+  font-family: 'Open Sans', sans-serif;  /* Changed to Open Sans */
+  font-size: 58px;  /* Slightly increased font size for prominence */
+  font-style: italic;
   letter-spacing: 1.5px;  /* Increased letter spacing */
   line-height: 1.4;  /* Adjusted line height */
   color: white;
@@ -410,6 +410,10 @@ body {
   transform: translate(100%, -50%);
   transition: opacity 1.5s ease 0.5s, transform 1.5s ease 0.5s;  /* Added a delay of 0.5s */
   filter: brightness(1.2);  /* Increased brightness slightly */
+  text-align: center;
+  padding: 10px 20px;
+  word-spacing: 6px;
+  letter-spacing: 5px;
 }
 .dropdown-header {
     cursor: pointer;

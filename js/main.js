@@ -81,7 +81,7 @@ const populateBanners = async () => {
         if (index === 0) {
           htmlString += `<div class="mySlides fade">
                         <img src="${imageUrl}" alt="${banners[index].name}">
-                        <div class="overlay-text fade-in">Παροχή εξειδικευμένων λογιστικών, φοροτεχνικών και συμβουλευτικών υπηρεσιών σε επιχειρήσεις, οργανισμούς και ιδρύματα. </div>
+                        <div class="overlay-text fade-in">ΛΟΓΙΣΤΙΚΕΣ &<br> ΧΡΗΜΑΤΟΟΙΚΟΝΟΜΙΚΕΣ ΥΠΗΡΕΣΙΕΣ </div>
                        </div>`;
         } else {
           htmlString += `<div class="mySlides fade">
