@@ -77,10 +77,11 @@ height: 100%; /* You can specify another height if you prefer */
 background-size: cover; /* Cover the entire header */
 background-position: center; /* Center the background image */
 background-repeat: no-repeat; /* Do not repeat the background image */
+background-color: #f4f4f4;
 
 }
 .header-text h1 {
-color: white;
+color: black;
 
 }
 

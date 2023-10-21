@@ -410,10 +410,10 @@ body {
   transform: translate(100%, -50%);
   transition: opacity 1.5s ease 0.5s, transform 1.5s ease 0.5s;  /* Added a delay of 0.5s */
   filter: brightness(1.2);  /* Increased brightness slightly */
-  text-align: center;
   padding: 10px 20px;
   word-spacing: 6px;
   letter-spacing: 5px;
+  text-align: center;
 }
 .dropdown-header {
     cursor: pointer;

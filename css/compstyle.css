@@ -39,8 +39,8 @@
 
 /* Text placement for history section */
 #history-section .text-content {
-  top: 50%;
-  left: 50%;
+  top: 60%;
+  right: 80%;
   transform: translate(-50%, -50%);
 }
 #history-section .section-content .text-content h1,
@@ -75,7 +75,7 @@
   
   #vision-section .text-content {
     position: absolute;
-    top: 10%;
+    top: 60%;
     left: 10%; /* Already aligns the text to the right */
     z-index: 2;
     text-align: center;
