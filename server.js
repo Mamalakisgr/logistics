@@ -11,12 +11,12 @@ require('dotenv').config();
 const [
     Logo, SEOContent, SEOImage, ServiceCard, DynamicContent, CompanyContent,
     ValuesImage, HistoryImage, VisionImage, ServiceDetail, ServiceCategory,
-    RegionOneImage, CompanyCount, Banner
+    RegionOneImage, CompanyCount, Banner, EmployeeSchema, TeamSchema
 ] = [
     './models/Logo', './models/SEOContent', './models/SEOImage', './models/ServiceCard', './models/DynamicContent',
     './models/CompanyContent', './models/ValuesImage', './models/HistoryImage',
     './models/VisionImage', './models/ServiceDetail', './models/ServiceCategory',
-    './models/RegionOneImage', './models/CompanyCount', './models/Banner'
+    './models/RegionOneImage', './models/CompanyCount', './models/Banner', './models/Employee', './models/Team'
 ].map(require);
 
 // App Configurations
@@ -104,6 +104,96 @@ app.post('/api/update-description', async (req, res) => {
     res.status(500).json({ message: 'Internal Server Error' });
   }
 });
+
+app.get('/api/employees', async (req, res) => {
+  try {
+        let employees = await EmployeeSchema.find();
+      res.json(employees);
+      
+  } catch (error) {
+      console.error('Error fetching employees:', error);
+      res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+app.get('/api/employee-image/:id', async (req, res) => {
+  try {
+      const employee = await EmployeeSchema.findById(req.params.id);
+      if (!employee || !employee.image) {
+          throw new Error('No image found');
+      }
+
+      res.setHeader('Content-Type', employee.contentType);
+      res.send(employee.image);
+  } catch (error) {
+      console.error('Error fetching employee image:', error);
+      res.status(404).json({ message: 'Image not found' });
+  }
+});
+app.get('/api/employees/store/:storeName', async (req, res) => {
+  try {
+      const employees = await EmployeeSchema.find({ store: req.params.storeName });
+      res.json(employees);
+  } catch (error) {
+      console.error('Error fetching employees for store:', error);
+      res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+app.post('/api/add-employee', upload.single('image'), async (req, res) => {
+  try {
+      const { name, title, store } = req.body;
+
+      let newEmployee = new EmployeeSchema({
+          name,
+          title,
+          store,
+          image: req.file.buffer,  // <-- Note the field name change
+          contentType: req.file.mimetype
+          
+      });
+
+      await newEmployee.save();
+      res.json({ message: 'EmployeeSchema added!' });
+  } catch (error) {
+      console.error('Error adding employee:', error);
+      res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
+
+app.put('/api/update-employee/:id', upload.single('image'), async (req, res) => {
+  try {
+      const employeeId = req.params.id;
+      let updatedData = req.body;
+
+      // Check if an image is uploaded and update it accordingly
+      if (req.file) {
+          updatedData.image = req.file.buffer;
+          updatedData.contentType = req.file.mimetype;
+      }
+
+      const updatedEmployee = await EmployeeSchema.findByIdAndUpdate(employeeId, updatedData, { new: true });
+
+      if (!updatedEmployee) {
+          return res.status(404).json({ message: 'Employee not found!' });
+      }
+
+      res.json(updatedEmployee);
+  } catch (error) {
+      console.error('Error updating employee:', error);
+      res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
+app.delete('/api/delete-employee/:id', async (req, res) => {
+  try {
+      await EmployeeSchema.findByIdAndRemove(req.params.id);
+      res.json({ message: 'EmployeeSchema deleted!' });
+  } catch (error) {
+      console.error('Error deleting employee:', error);
+      res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
 
 // Update the company count
 app.post('/api/update-company-count', async (req, res) => {
@@ -229,6 +319,8 @@ app.get('/api/logo', async (req, res) => {
   res.set('Content-Type', logo.contentType);
   res.send(logo.data);
 });
+
+
 
 
 app.post('/api/upload-logo', upload.single('logo'), async (req, res) => {

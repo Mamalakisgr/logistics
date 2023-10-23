@@ -193,3 +193,28 @@ h2 {
     box-sizing: border-box;
     margin-bottom: 10px;
 }
+#employee-list > div {
+  flex: 0 1 calc(20% - 10px);  /* Using 20% as an example. It means 5 employees per row. Adjust the percentage as needed. */
+  margin: 5px;
+  box-sizing: border-box;
+}
+
+#employee-list img {
+  max-width: 50px;
+  max-height: 50px;
+  margin-right: 10px;
+}
+
+#employee-list p {
+  margin-right: 10px;
+}
+
+#employee-list button {
+  margin-left: 5px;
+}#employee-list > h3 {
+  width: 100%;
+  flex-basis: 100%;  /* Makes sure the store heading takes the full width and appears on its own line */
+}#employee-list {
+  display: flex;
+  flex-wrap: wrap;
+}

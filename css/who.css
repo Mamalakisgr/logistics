@@ -1,0 +1,77 @@
+.store-section {
+    box-sizing: border-box;
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 70%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);  /* Define 4 columns */
+    gap: 5px; /* Reduced gap for closer employee-content divs */
+}
+
+h2 {
+    text-align: center;
+    grid-column: span 4;  /* Make the title span across all 4 columns */
+}
+p {
+    text-align: center;
+    grid-column: span 4;  /* Make the title span across all 4 columns */
+}
+.employee-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px; /* Optional padding for a bit of spacing within the employee content */
+}
+
+.employee-img {
+    width: 90px; /* Reduced a bit to bring them closer visually */
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #ccc;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.employeeTitle, .employeeDescription {
+    margin: 0;
+    text-align: center;
+}
+.team-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.team-content {
+    flex: 0.5;
+    padding: 20px;
+}
+
+.team-slider {
+    position: relative;
+    flex: 0.5;
+}
+
+.slide {
+    display: none; /* Hide by default, will be shown using JavaScript */
+}
+
+.slider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.prev {
+    left: 0;
+}
+
+.next {
+    right: 0;
+}

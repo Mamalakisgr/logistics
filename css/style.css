@@ -28,6 +28,10 @@ header {
   align-items: center;
   z-index: 1000;
 }
+.region-two {
+  position: relative;  /* Ensure that it's relative so children can be positioned absolutely relative to it */
+  /* Other styles for region-two, like height, width, etc. */
+}
 
 /* Dynamic categories */
 #categories-list {
@@ -119,12 +123,7 @@ body {
   font-size: 1.5rem;
   color: #ff4500; /* Or any other color you like */
 }
-.region-two .flex-container {
-  background-size: cover;
-  background-position: center;
-  height: 400px; /* Adjust height as needed */
-  position: relative;
-}
+
 /* Style for the category items */
 .category-name-Home,
 .category-name-Company,
@@ -297,50 +296,54 @@ body {
 }
 .region-two .flex-container {
   display: flex;
-  justify-content: flex-start; /* Align children to the left */
-  align-items: center;     /* Vertically center the children */
-  height: 30%;            /* Make it full height of its parent */
-  width: 100%;             /* Make it full width of its parent */
-  position: relative;      /* Relative positioning for background image */
-  background-image: url('/api/get-selected-seo-image');
-  background-size: cover;  /* Cover the entire container */
-  background-position: center; /* Center the background image */
+  justify-content: space-between; /* Space the children out, pushing them to the extremes */
+  align-items: center; /* Vertically center the children */
+  width: 100%; /* Full width of its parent */
+  height: 400px; /* Set the height */
+  position: relative; /* Relative positioning for background image */
+  background: url('/api/get-selected-seo-image') center/cover; /* shorthand for setting bg image */
 }
+
 .region-two .image-wrapper {
-  background-size: cover;      /* Make the image cover the entire div */
-  background-position: center; /* Center the background image */
-  width: 100%;                 /* Adjust width and height as required */
-  height: 100px;               /* Example height */
+  width: 100%; /* Full width */
+  height: 100px; /* Set height */
+  background: center/cover; /* shorthand for bg size and position */
 }
+
 .region-two .seo-container {
   position: absolute; /* Allow for precise positioning */
-  top: 50%;           /* Center it vertically */
-  transform: translateY(-50%); /* Ensure it remains vertically centered */
-  left: 40%;
-  display: inline-block; /* This makes it fit its content */
-  text-align: center;
+  bottom: 50px; /* Align to the bottom */
+  left: 0; /* Align to the LEFT instead of the right */
   padding: 20px;
   height: 50px;
   background-color: #e9e3e30e;
-  background-size: 50% auto; /* Adjust the width percentage as needed, auto will maintain the aspect ratio */
+}
+
+.description-container {
+  display: flex;
+  justify-content: space-between; /* Spread out the children */
+  align-items: center; /* Vertically center the children */
+  width: 100%; /* Full width */
 }
 
 .region-two .description {
+  flex: 1; /* Allows the description to grow */
   color: #131313;
-  font-size: 1.8rem; /* Increase font size */
-  font-weight: bold; /* Make it bolder */
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6); /* Text shadow for depth */
-  padding: 10px 0px; /* Some padding for spacing */
-  border-radius: 8px; /* Rounded corners for a modern look */
-  border: 2px solid rgba(255, 255, 255, 0.5); /* Subtle border */
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
+  padding: 10px 0px;
+  border-radius: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
 }
 
-/* For the counter specifically to make it stand out even more */
+/* Counter style for emphasis */
 .region-two #counter {
-  font-size: 2.2rem; /* Bigger font size */
-  color: #FFD700; /* Golden color for emphasis */
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8); /* More pronounced shadow */
+  font-size: 2.2rem;
+  color: #FFD700;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
 }
+
 /* Main content area */
 .main-content {
   background-color: white;
@@ -645,6 +648,12 @@ body {
             grid-template-columns: 1fr;
         }
     }
+
+.region-two    .seo-button.button.fifth {
+  margin-left: calc(auto - 20px); /* Reduce the auto margin by 20px to move it to the left */
+
+}
+
 /* Style for the SEO button */
 .seo-button.button.fifth {
   padding: 20px 40px;
@@ -658,6 +667,9 @@ body {
   border: none; /* Remove default button border */
   cursor: pointer;
   border: 2px solid #131313; /* Adding the border here */
+
+  margin-left: calc(auto - 20px); /* Reduce the auto margin by 20px to move it to the left */
+
 }
 .lazyload {
   opacity: 0;
