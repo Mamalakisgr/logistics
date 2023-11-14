@@ -39,8 +39,8 @@ mongoose.connect('mongodb+srv://admin:kolotripida12@cluster0.gsxb8us.mongodb.net
 });
 
 // Email Configurations
-process.env.EMAIL_USER = "nikosionianisia@gmail.com";
-process.env.EMAIL_PASS = "byep dnan ipbv dpfo";
+process.env.EMAIL_USER = "panagiotis.pitsis@gmail.com";
+process.env.EMAIL_PASS = "zocc xfix pdsg ebxh";
 
 // Middlewares
 const upload = multer();
@@ -68,6 +68,40 @@ app.post('/api/update-company-count', async (req, res) => {
         res.status(500).json({ message: 'Internal Server Error' });
     }
 });
+
+app.get('/api/get-team-data', async (req, res) => {
+  try {
+    const teamData = await TeamSchema.findOne();
+    res.json(teamData);
+  } catch (error) {
+    console.error('Error fetching team data:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
+app.post('/api/update-team-data', upload.single('image'), async (req, res) => {
+  try {
+    const { teamHeader, teamDescription } = req.body;
+    const imageData = req.file.buffer;
+    
+    // Update the team data, or create a new record if none exists
+    const updatedTeamData = await TeamSchema.findOneAndUpdate({}, {
+      teamHeader,
+      teamDescription,
+      image: imageData
+    }, { upsert: true, new: true });
+    
+    res.json({ success: true });
+  } catch (error) {
+    console.error('Error updating team data:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
+
+
+
+
 
 // Fetch service cards
 app.get('/api/services-card', async (req, res) => {
@@ -895,7 +929,7 @@ app.post('/submit', async (req, res) => {
   // Set up email data
   let mailOptions = {
     from: process.env.EMAIL_USER,
-    to: 'nikosionianisia@gmail.com',  // Or any email you want to send to
+    to: 'panagiotis.pitsis@gmail.com',  // Or any email you want to send to
     subject: 'New Contact Form Submission',
     text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`
   };

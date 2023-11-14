@@ -7,6 +7,8 @@ body, h1, h2, h3, p {
 /* Apply a modern font for a sleek look */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: white;
+  overflow-x: hidden;
 }
 
 /* Global styles for containers */
@@ -113,11 +115,18 @@ header {
 }
 
 /* Optional: Add a background color and some padding to the body to prevent the images from flickering on load */
-body {
-  background-color: white;
-  overflow-x: hidden;
-
+#dynamicDescription {
+  color: white;
+  padding: 10px; /* Add space inside the element */
+  margin: 10px; /* Add space outside the element */
 }
+
+#dynamicDescription p {
+  color: white;
+  margin-bottom: 15px; /* Add space below each <p> element */
+  line-height: 1.6; /* Adjust the line height for better readability */
+}
+
 #dynamicDescription span {
   font-weight: bold;
   font-size: 1.5rem;
@@ -196,7 +205,7 @@ body {
 }
 /* SEO Container styles */
 .seo-container {
-  background-color: white; /* Change the background color to your preference */
+
   padding: 20px;
   color: white; /* Set text color to white */
   border-radius: 8px;
@@ -223,14 +232,15 @@ body {
   display: flex;           
   flex-direction: column;  /* Stack child elements vertically */
   justify-content: center; 
-  align-items: center;     
+  align-items: center;
+       
 }
 
 .description-container p {
-  font-size: 16px;
+  margin-bottom: 1rem;  /* Adds space below each paragraph */
+  line-height: 1.6;    /* Increases the space between lines of text */
   color: black;
-  text-align: center;      /* Center text horizontally */
-  margin: 0;               /* Remove default margins */
+
 }
 
 .description{
@@ -312,30 +322,35 @@ body {
 
 .region-two .seo-container {
   position: absolute; /* Allow for precise positioning */
-  bottom: 50px; /* Align to the bottom */
-  left: 0; /* Align to the LEFT instead of the right */
+  top: 58px;  /* Reduced from 50px to 30px */
+  left:-752px; /* Align to the LEFT instead of the right */
   padding: 20px;
-  height: 50px;
-  background-color: #e9e3e30e;
+  /* height: 50px; */
+ 
 }
 
 .description-container {
   display: flex;
   justify-content: space-between; /* Spread out the children */
   align-items: center; /* Vertically center the children */
-  width: 100%; /* Full width */
 }
 
 .region-two .description {
-  flex: 1; /* Allows the description to grow */
-  color: #131313;
+  flex: 1;
+  color: white; /* Change text color to white for contrast */
   font-size: 1.8rem;
   font-weight: bold;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
-  padding: 10px 0px;
+  padding: 10px 20px; /* Add more padding */
   border-radius: 8px;
-  border: 2px solid rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.05em; /* Adjusts the space between letters */
+  word-spacing: 0.1em; /* Adjusts the space between words */
+  line-height: 1.8; /* Adjusts the height of each line of text */
+  max-width: none; /* Ensures no max-width is restricting the element */
+  background-color: rgba(0, 0, 0, 0.6); /* Add a dark semi-transparent background for the text */
+
 }
+
 
 /* Counter style for emphasis */
 .region-two #counter {
@@ -399,7 +414,7 @@ body {
 .overlay-text {
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 45%;
   font-family: 'Open Sans', sans-serif;  /* Changed to Open Sans */
   font-size: 58px;  /* Slightly increased font size for prominence */
   font-style: italic;
@@ -532,14 +547,13 @@ body {
 /* SEO container within Region One and Region Two */
 .seo-container {
   flex: 1;
-  width: 500px; /* Static width */
-  height: 500px; /* Static height */
-  background-color: white; /* Change the background color to your preference */
+  /* width: 500px; /* Static width */
+  /* height: 500px; Static height */ 
   padding: 20px;
   color: white; /* Set text color to white */
   border-radius: 8px;
   text-align: center;
-
+  right: 10px;
   
 }
 /*Services Section*/
@@ -649,11 +663,9 @@ body {
         }
     }
 
-.region-two    .seo-button.button.fifth {
-  margin-left: calc(auto - 20px); /* Reduce the auto margin by 20px to move it to the left */
 
-}
 
+/* Style for the SEO button */
 /* Style for the SEO button */
 .seo-button.button.fifth {
   padding: 20px 40px;
@@ -662,15 +674,15 @@ body {
   color: black;
   text-decoration: none;
   border-radius: 12px;
-  display: inline-block; /* Ensure it behaves as a block element */
+  display: inline-block;
   transition: background-color 0.3s;
-  border: none; /* Remove default button border */
+  border: 2px solid #131313;
   cursor: pointer;
-  border: 2px solid #131313; /* Adding the border here */
-
-  margin-left: calc(auto - 20px); /* Reduce the auto margin by 20px to move it to the left */
-
+  position: relative;
+  left: -100px; /* Shift the button a little to the left */
+  bottom: -41px;
 }
+
 .lazyload {
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
@@ -1028,6 +1040,7 @@ body {
   /* Adjust slideshow and banner list dimensions */
   .slideshow-container, .banner-list {
     max-width: 100%;
+    
   }
 
   /* Adjust the styles for slides */

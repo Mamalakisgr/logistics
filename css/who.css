@@ -4,8 +4,10 @@
     margin-bottom: 20px;
     width: 70%;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);  /* Define 4 columns */
-    gap: 5px; /* Reduced gap for closer employee-content divs */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    align-items: center; /* Add this line to vertically center the content */
+    justify-content: center; /* Add this line to horizontally center the entire section */
 }
 
 h2 {
@@ -54,7 +56,7 @@ p {
 }
 
 .slide {
-    display: none; /* Hide by default, will be shown using JavaScript */
+    display: block; /* Hide by default, will be shown using JavaScript */
 }
 
 .slider-button {

@@ -32,13 +32,14 @@ const displayImage = async (url, elementId) => {
         if (response.ok) {
             const imageBlob = await response.blob();
             const imageUrl = URL.createObjectURL(imageBlob);
-            const element = document.getElementById(elementId);
-            if (element) {
-                if (element.tagName === 'IMG') {
-                    element.src = imageUrl;
-                } else {
-                    element.style.backgroundImage = `url(${imageUrl})`;
-                }
+            const imgElement = document.getElementById(elementId);
+            if (imgElement && imgElement.tagName === 'IMG') {
+                imgElement.onload = () => {
+                    imgElement.style.display = 'block'; // Only display the image when it's loaded
+                };
+                imgElement.src = imageUrl; // Start loading the image
+            } else {
+                console.error(`Element with id ${elementId} is not an img tag or does not exist`);
             }
         } else {
             console.error(`Failed to fetch image from ${url}`);
@@ -47,6 +48,7 @@ const displayImage = async (url, elementId) => {
         console.error(`Error fetching image from ${url}:`, error);
     }
 };
+
 
 const fetchAndUpdateHistoryContent = async (lang = DEFAULT_LANG) => {
     try {
@@ -61,7 +63,7 @@ const fetchAndUpdateHistoryContent = async (lang = DEFAULT_LANG) => {
             document.getElementById('historyDescription').textContent = data.historyDescription[descLang];
 
             // Fetch and update images for history
-            await displayImage('/api/history-image', 'history-section');
+            await displayImage('/api/history-image', 'history-image');
         } else {
             console.error('Failed to fetch company content');
         }

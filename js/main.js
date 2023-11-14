@@ -77,17 +77,9 @@ const populateBanners = async () => {
     for (const [index, blob] of imageBlobs.entries()) {
       if (blob) {
         const imageUrl = URL.createObjectURL(blob);
-        // If it's the first image, add the overlay text
-        if (index === 0) {
-          htmlString += `<div class="mySlides fade">
-                        <img src="${imageUrl}" alt="${banners[index].name}">
-                        <div class="overlay-text fade-in">ΛΟΓΙΣΤΙΚΕΣ &<br> ΧΡΗΜΑΤΟΟΙΚΟΝΟΜΙΚΕΣ ΥΠΗΡΕΣΙΕΣ </div>
-                       </div>`;
-        } else {
           htmlString += `<div class="mySlides fade">
                         <img src="${imageUrl}" alt="${banners[index].name}">
                       </div>`;
-        }
       }
     }
 

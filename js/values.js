@@ -1,51 +1,57 @@
 // Constants for default languages
-const DEFAULT_LANG = 'En';
-const FALLBACK_LANG = 'Gr';
-const fetchAndDisplayLogo = async (elementId) => {
-    try {
-      const logoImage = document.getElementById(elementId);
+// const DEFAULT_LANG = 'En';
+// const FALLBACK_LANG = 'Gr';
+// const fetchAndDisplayLogo = async (elementId) => {
+//     try {
+//       const logoImage = document.getElementById(elementId);
   
-      if (!logoImage) {
-        console.error(`${elementId} element not found.`);
-        return;
-      }
+//       if (!logoImage) {
+//         console.error(`${elementId} element not found.`);
+//         return;
+//       }
   
-      const response = await fetch("/api/active-logo");
+//       const response = await fetch("/api/active-logo");
   
-      if (response.ok) {
-        const imageBlob = await response.blob();
-        const imageUrl = URL.createObjectURL(imageBlob);
-        logoImage.src = imageUrl;
-      } else {
-        console.error("Image not found");
-      }
-    } catch (error) {
-      console.error("There was a problem", error);
-    }
-  };
+//       if (response.ok) {
+//         const imageBlob = await response.blob();
+//         const imageUrl = URL.createObjectURL(imageBlob);
+//         logoImage.src = imageUrl;
+//       } else {
+//         console.error("Image not found");
+//       }
+//     } catch (error) {
+//       console.error("There was a problem", error);
+//     }
+//   };
   
 // Utility function to fetch and display image
-const displayImage = async (url, elementId) => {
-    try {
-        const response = await fetch(url);
-        if (response.ok) {
-            const imageBlob = await response.blob();
-            const imageUrl = URL.createObjectURL(imageBlob);
-            const element = document.getElementById(elementId);
-            if (element) {
-                if (element.tagName === 'IMG') {
-                    element.src = imageUrl;
-                } else {
-                    element.style.backgroundImage = `url(${imageUrl})`;
-                }
-            }
-        } else {
-            console.error(`Failed to fetch image from ${url}`);
-        }
-    } catch (error) {
-        console.error(`Error fetching image from ${url}:`, error);
-    }
-};
+// const displayImage = async (url, elementId) => {
+//     try {
+//         const response = await fetch(url);
+//         if (response.ok) {
+//             const imageBlob = await response.blob();
+//             const imageUrl = URL.createObjectURL(imageBlob);
+//             const imgElement = document.getElementById(elementId);
+//             if (imgElement && imgElement.tagName === 'IMG') {
+//                 // Hide img element by default
+//                 imgElement.style.display = 'none';
+//                 imgElement.onload = () => {
+//                     // Show img element when the image is loaded
+//                     imgElement.style.display = 'block';
+//                 };
+//                 // Set src attribute which will start loading the image
+//                 imgElement.src = imageUrl;
+//             }  else {
+//                 console.error(`Element with id ${elementId} is not an img tag or does not exist`);
+//             }
+//         } else {
+//             console.error(`Failed to fetch image from ${url}`);
+//         }
+//     } catch (error) {
+//         console.error(`Error fetching image from ${url}:`, error);
+//     }
+// };
+
 
 const fetchAndUpdateValuesContent = async (lang = DEFAULT_LANG) => {
     try {
@@ -60,7 +66,7 @@ const fetchAndUpdateValuesContent = async (lang = DEFAULT_LANG) => {
             document.getElementById('valuesDescription').textContent = data.valuesDescription[descLang];
 
             // Fetch and update images for history
-            await displayImage('/api/values-image', 'values-section');
+            await displayImage('/api/values-image', 'values-image');
         } else {
             console.error('Failed to fetch company content');
         }
