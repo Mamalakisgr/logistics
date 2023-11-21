@@ -163,3 +163,43 @@ justify-content: center;
 .idiotes-text {
   position: static;  /* Override any inherited sticky position */
 }
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  /* Adjust grid for service categories to 2 columns on tablet and smaller */
+  #service-categories {
+    grid-template-columns: 1fr;
+  }
+
+  /* Adjust font sizes */
+  h1, h2, h3, p {
+      font-size: revert; /* Adjust as needed */
+  }
+
+  /* Adjust service detail layout */
+  .service-detail {
+    flex-basis: 50%; /* Full width */
+  }
+}
+
+@media (max-width: 480px) {
+  /* Adjust grid for service categories to 1 column on mobile */
+  #service-categories {
+      grid-template-columns: 1fr;
+  }
+
+  /* Further adjust font sizes for mobile */
+  h1, h2, h3, p {
+      font-size: x-large; /* Adjust as needed */
+  }
+
+  /* Adjust service detail layout for mobile */
+  .service-detail {
+      flex-basis: 50%; /* Full width */
+  }
+
+  /* Collapsible menu for smaller screens */
+  nav {
+      /* Implement collapsible menu styles */
+  }
+}

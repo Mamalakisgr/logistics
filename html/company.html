@@ -2,19 +2,35 @@
 <html lang="en">
   <head>
     <title>Company</title>
-    <link rel="stylesheet" type="text/css" href="/css/contactus.css">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../css/compstyle.css"/>
     <link rel="icon" href="/images/292435385_399551102196302_8171052786653938864_n.png" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="/css/who.css">
   </head>
 <body>
      <!-- Header -->
      <header>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <!-- Add this inside your <header> -->
-      <div class="hamburger-menu" onclick="toggleSideMenu()">
-        <span id="menu-icon">&#9776;</span>
+         <!-- Add this inside your <header> -->
+          <div class="hamburger-menu" onclick="toggleSideMenu()">
+            <span id="menu-icon">&#9776;</span>
+          </div>
+       <!-- Side Menu -->
+       <div class="side-menu" id="sideMenu">
+        <div class="close-btn" onclick="closeSideMenu()">&times;</div>
+        <a href="/">Αρχική</a>
+        <a href="../html/company.html">Εταιρεία</a>
+        <a href="../html/services.html">Υπηρεσίες</a>
+        <a href="../html/news.html">Ενημέρωση</a>
+        <a href="../html/contactus.html">Επικοινωνία</a>
+        <div class="side-logo-container">
+        <div class="side-logo">
+          <a href="/">
+            <img id="side-logo-image" src="" alt="Logo">
+          </a>
+        </div>
+      </div>
       </div>
       <!-- Logo and Logo Text -->
       <div class="logo-container">
@@ -53,37 +69,66 @@
             <a href="#">ENG</a>
           </div>
         </div>
-    </header>
-  <section id="history-section" class="history-vision-values-section lazy-load">
-    <div class="section-content">
-      <div class="text-content">
-        <h1 id="historyTitle">Placeholder for History Title</h1>
-        <p id="historyDescription">Placeholder for History Description</p>
-        
+    </header>  <section id="history-section" class="history-vision-values-section lazy-load">
+      <div class="section-content">
+        <div class="text-content">
+          <h1 id="historyTitle">Placeholder for History Title</h1>
+          <p id="historyDescription">Placeholder for History Description</p>
+  
+        </div>
+        <img id="history-image" alt="History Image" style="display:none;"> <!-- Image hidden by default -->
       </div>
-    </div>
-  </section>
-
-
-  <!-- Values Section -->
-  <section id="values-section" class="history-vision-values-section lazy-load" data-bg-image="/api/values-image">
-    <div class="section-content">
+  
+    </section>
+<!-- Values Section -->
+<section id="values-section" class="history-vision-values-section lazy-load" data-bg-image="/api/values-image">
+  <div class="section-content">
     <div class="text-content">
       <h1 id="valuesTitle">Placeholder for Values Title</h1>
       <p id="valuesDescription">Placeholder for Values Description</p>
     </div>
+    <img id="values-image" alt="Values Section" class="values-image"> <!-- Moved inside section-content -->
   </div>
 </section>
-  <!-- Vision Section -->
-<section id="vision-section" class="history-vision-values-section lazy-load">
-  <div class="section-content">
-    <div class="text-content">
-      <h1 id="visionTitle">Placeholder for Vision Title</h1>
-      <p id="visionDescription">Placeholder for Vision Description</p>
+      
+      <!-- Vision Section -->
+  <section id="vision-section" class="history-vision-values-section lazy-load">
+    <div class="section-content">
+      <div class="text-content">
+        <h1 id="visionTitle">Placeholder for Vision Title</h1>
+        <p id="visionDescription">Placeholder for Vision Description</p>
+      </div>
+      <div class="image-container">
+        <!-- The img tag where the vision image will be displayed -->
+        <img id="vision-image" src="" alt="Vision Image" />
+      </div>
     </div>
+  </section>
+  <section class="store-section lazy-load">
+    <h2>Καταστημα Αγίου Μελετίου</h2>
+    <p>Στη LoyalTax πιστεύουμε στη δύναμη της Ομάδας. Προωθούμε και ευνοούμε καθημερινά τη συνεργασία μεταξύ των μελών της ομάδας, αναπτύσσοντας συνεχώς τις δεξιότητες των στελεχών μας προς αυτή τη κατεύθυνση.</p>
+
+
+  </section>
+<section class="store-section lazy-load">
+    <h2>Καταστημα Δεληγιάννη</h2>
+    <p>Στη LoyalTax πιστεύουμε στη δύναμη της Ομάδας. Προωθούμε και ευνοούμε καθημερινά τη συνεργασία μεταξύ των μελών της ομάδας, αναπτύσσοντας συνεχώς τις δεξιότητες των στελεχών μας προς αυτή τη κατεύθυνση.</p>
+
+
+</section>
+<!-- Team Section -->
+<section class="team-section">
+  <div class="team-content">
+      <h2>Meet Our Team</h2>
+      <p>Our team comprises of dedicated individuals who work tirelessly to provide the best service to our clients. Each member brings a unique set of skills and expertise, making us a well-rounded and cohesive team.</p>
+  </div>
+  <!-- Image Slider -->
+  <div class="team-slider">
+      <div class="slide">
+        <img src="/images/logistics2.jpg" alt="Team Member 1">
+      </div>
   </div>
 </section>
-
   <!-- Footer -->
   <footer>
     <div class="footer-container">
@@ -182,7 +227,13 @@
           </div>
   </footer>
 
-  
-  <script src="../js/company.js"></script>
+  <script src="../js/vision.js"></script>
+  <script src="../js/values.js"></script>
+  <script src="../js/about.js"></script>
+  <script src="../js/history.js"></script>
+  <script src="../js/language-selector.js"></script>
+  <script src="../js/ToggleMenu.js"></script>
+
+  <!-- <script src="../js/company.js"></script> -->
 </body>
 </html>

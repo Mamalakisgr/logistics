@@ -86,6 +86,7 @@ document.querySelector('.language-dropdown').addEventListener('click', (event) =
 
 document.addEventListener("DOMContentLoaded", () => {
     fetchAndDisplayLogo("logo-image"); // Fetch and display header logo
+    fetchAndDisplayLogo("side-logo-image");
 
     const savedLang = localStorage.getItem("selectedLanguage") || DEFAULT_LANG;
     const selectedLangElement = document.getElementById("selected-lang");

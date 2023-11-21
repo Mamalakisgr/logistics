@@ -28,7 +28,6 @@ let slideIndex = 1; // Start at first slide
 
 const fetchBannerBlob = async (bannerId) => {
   const url = `/api/banners/${bannerId}`;
-  console.log("Fetching banner blob from URL: ", url); // Debug line
 
   try {
     const response = await fetch(url);
@@ -67,28 +66,33 @@ const populateBanners = async () => {
     const response = await fetch("/api/banners");
     const banners = await response.json();
 
-    // Fetch all blobs in parallel
-    const blobPromises = banners.map((banner) => fetchBannerBlob(banner._id));
-    const imageBlobs = await Promise.all(blobPromises);
-
     const bannerList = document.getElementById("banner-list");
-    let htmlString = "";
 
-    for (const [index, blob] of imageBlobs.entries()) {
+    for (const banner of banners) {
+      const blob = await fetchBannerBlob(banner._id);
       if (blob) {
         const imageUrl = URL.createObjectURL(blob);
-          htmlString += `<div class="mySlides fade">
-                        <img src="${imageUrl}" alt="${banners[index].name}">
-                      </div>`;
+        const slideDiv = document.createElement("div");
+        slideDiv.className = "mySlides fade";
+        slideDiv.innerHTML = `<img src="${imageUrl}" alt="${banner.name}">`;
+        bannerList.appendChild(slideDiv);
+
+        // If it's the first image, display it immediately
+        if (bannerList.childElementCount === 1) {
+          showSlides(slideIndex);
+        }
       }
     }
 
-    bannerList.innerHTML = htmlString;
-    showSlides(slideIndex); // Initialize the slideshow
+    // If no images were added, show error
+    if (!bannerList.hasChildNodes()) {
+      console.error("No banners were added to the slideshow.");
+    }
   } catch (error) {
     console.error("There was a problem fetching banners:", error);
   }
 };
+
 
 const showSlides = (n) => {
   const slides = document.getElementsByClassName("mySlides");
@@ -139,7 +143,7 @@ const fetchAndSetRegionOneImage = async () => {
       
       if (imageBlob.size > 0) {  // Ensure the blob isn't empty
         const imageUrl = URL.createObjectURL(imageBlob);
-        const imageElement = document.querySelector(".lazyload");
+        const imageElement = document.querySelector(".region-one-image");
         
         if (imageElement) {
           imageElement.src = imageUrl;  // Set the src to immediately load the image
@@ -195,17 +199,16 @@ const fetchAndDisplaySEOContent = async () => {
 //     console.error("Error fetching dynamic content:", error);
 //   }
 // };
+let companyCount = 0; // Global variable to store the company count
+
 const fetchAndDisplayCompanyCount = async () => {
   try {
     const response = await fetch("/api/get-company-count");
     if (response.ok) {
       const data = await response.json();
-
-      // Update the counter directly with the count from the server
-      document.getElementById("counter").textContent = data.count;
-
-      // Optionally, if you want to trigger the animation with the actual count
-      animateValue("counter", 0, data.count, 2000);
+      companyCount = data.count; // Store the count in the global variable
+      // Optionally, start the animation immediately if needed
+      // animateValue("counter", 0, companyCount, 2000);
     } else {
       console.error("Failed to fetch company count");
     }
@@ -255,7 +258,7 @@ function animateValue(id, start, end, duration) {
 }
 
 // Trigger the animation
-animateValue("counter", 0, 45, 2000); // The last value is the duration of the animation in milliseconds
+animateValue("counter", 0, companyCount , 2000); // The last value is the duration of the animation in milliseconds
 let observerOptions = {
   root: null, // Use the viewport as the root
   rootMargin: "0px",
@@ -268,9 +271,8 @@ function onIntersection(entries) {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
       // Start the animation when the element is visible
-      animateValue("counter", 0, 45, 2000);
-      // Disconnect observer after animating to ensure it only happens once
-      observer.disconnect();
+      animateValue("counter", 0, companyCount, 2000); // Use companyCount here
+      observer.disconnect(); // Disconnect observer after animating
     }
   });
 }
@@ -281,10 +283,12 @@ observer.observe(target);
 
 // DOM Loaded Event
 document.addEventListener("DOMContentLoaded", function () {
+  populateBanners();
   fetchAndSetRegionOneImage();
+
   fetchAndDisplayLogo("logo-image"); // Fetch and display header logo
   fetchAndDisplayLogo("logo-image-footer"); // Fetch and display footer logo
-  populateBanners();
+  fetchAndDisplayLogo("side-logo-image");
   fetchAndDisplayCompanyCount();
   fetchAndDisplaySEOContent(); // Fetch and display SEO content
   // fetchAndUpdateDynamicContent();

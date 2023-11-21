@@ -1,178 +1,166 @@
-/* Common style for all three sections */
+/* Base styles */
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Flex container for all sections */
+/* Flex container for all sections */
 .history-vision-values-section {
-  position: relative; /* Add this line */
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 70vh; /* Or set to the height you prefer */
-
+  flex-direction: column; /* Start with vertical stacking */
+  align-items: center; /* Center items */
+  justify-content: center; /* Center vertically */
+  padding: 20px;
+  min-height: 70vh;
 }
 
-/* .lazy-load { */
-  /* background-image: url('/api/placeholder-image'); your placeholder image */
-/* }
-#history-section {
-  background-image: url('/api/history-image');
-} */
-
-
-#history-section .section-content {
-  position: relative;
+.section-content {
   display: flex;
-  flex-direction: row; /* Align children (text and image) in a row */
-  justify-content: space-between; /* This will put space between your text and image */
-  align-items: center; /* Align children vertically */
-}
-#history-section .image-container {
-width: 200px;
-}
-#history-section .section-content .image-container {
-  position: relative;
- 
-  max-width: fit-content;
+  width: 100%; /* Full width for mobile */
+  flex-direction: column; /* Stack children vertically for mobile */
+  margin-bottom: 20px;
 }
 
-/* Text placement for history section */
-#history-section .text-content {
-  position: relative; /* Ensure text content is above the image */
-  left: 430px;
-  z-index: 2; /* Ensure text is above image */
-  color: black;
-  background-color: rgba(255,255,255,0.5); /* Optional: for better text visibility */
-  padding: 10px;
-}
-#history-section .section-content .text-content h1,
-#history-section .section-content .text-content p {
-  color: black;
-  background-color: transparent; /* Optional: for better text visibility */
-  padding: 10px;
-}
-  /* Style for the values section */
-  /* #values-section {
-    background-image: url('/api/values-image');
-  } */
-  #values-section .section-content{   
-     display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    width: 50%;  
-    height: 100%;}
-     #vision-section .section-content {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between; /* This will create space between the text and image */
-      align-items: center; /* Aligns items vertically in the center */
-      width: 100%; /* Adjust if you need a specific width */
-    }
-
-  /* Style for the image container in values section */
-  #values-section .image-container {
-    flex: 1;
-    padding: 0; /* No padding for the image container */
-    text-align: center;
-  }
-  
-  #values-section .image-container img {
-    max-width: 50%;
-    height: auto;
-    border-radius: 10px; /* Add rounded corners to the image */
-  }
-  
-  #vision-section .text-content {
-    position: absolute;
-    top: 50%;
-    left: 10%;
-    transform: translateY(-50%); /* Centers the text-content vertically */
-    z-index: 2;
-    text-align: center;
-    width: 570px;
-  }
-  
-  #values-section .text-content {
-    position: absolute;
-    top: 300px;
-    left: 130px;  /* Aligns the text to the left */
-    z-index: 2;
-    text-align: center;
-    width: 570px;
-
-  }
-  #values-section h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  #values-section p {
-    font-size: 16px;
-    line-height: 1.5;
-  }
-  
-  #values-image{
-    right: 10px;
-    height:784px;
-    width: 1042px;
-    display: none; /* Hide the image initially */
-
-  }
-
-  #vision-section  .section-content {
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    width: 50%;  
-    height: 100%;
-}
-
-  /* Style for the image container in vision section */
-  #vision-section .image-container {
-    flex: 1; /* Takes the remaining space after text-content */
-    padding: 0; /* No padding for the image container */
-    text-align: center;
-    display: flex;
-    align-items: center; /* Center the image vertically */
-    height: 100%;
-    right: -475px;
-  }
-  
-  #vision-section .image-container img {
-    width: 100%; /* Will take as much width as allowed by its parent container */
-    height: 100%; /* Height will be adjusted automatically */
-  }
-  /* Common text style for all sections */
+/* Text content styles */
 .text-content {
-  position: absolute;
-  z-index: 2;
-  text-align: center;
-  color: rgb(0, 0, 0);
-  background-color: transparent; /* Optional: for better text visibility */
+  background-color: rgba(255,255,255,0.5);
   padding: 10px;
-  border: 2px solid #131313; /* Adding the border here */
+  text-align: center; /* Center text for mobile */
+  border-radius: 1px;
+  border:solid;
+  border-color: black;
 }
 
-
-  
-  #vision-section h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  #vision-section p {
-    font-size: 16px;
-    line-height: 1.5;
-  }
-  
-
-
-/* Refined style for the image in history section */
-#history-image {
-  width: 1042px; /* Adjust width as needed */
-  height: 784px; /* Maintain aspect ratio */
-  display: block; /* Image will always be displayed */
-  position: absolute; /* Absolute position relative to its parent */
-  right: 0; /* Align to the right edge of the parent element */
-  top: 50%; /* Align to the top, but let's move it to center with transform */
-  transform: translateY(-50%); /* Center it vertically */
-  z-index: -1; /* Keep the image behind the text content if necessary */
+/* Image container styles */
+.image-container {
+  text-align: center; /* Center images */
+  padding: 10px;
+  max-width: 100%; /* Full width of the container */
 }
 
+/* Remove absolute positioning and fixed sizes */
+.text-content,
+.image-container {
+  position: relative;
+  right: auto;
+  top: auto;
+  width: auto;
+  z-index: auto;
+}
 
+/* Responsive adjustments for tablets and desktop */
+@media (min-width: 768px) {
+  .history-vision-values-section {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .section-content {
+    /* Now using row, not row-reverse, with standard content justification */
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .text-content,
+  .image-container {
+    flex: 1; /* Both text and image take up equal space */
+    padding: 20px; /* More padding for larger screens */
+    flex-basis: 50%; /* Adjust this value as needed */
+  }
+
+  #values-section .section-content {
+    /* Ensure the values text and image are side by side */
+    flex-direction: row; /* Text will be first, then the image */
+    justify-content: flex-end; /* Align content to the end to keep the order intact */
+    flex: 1;
+    padding: 20px;
+    flex-basis: 50%;
+  }
+  /* Adjustments for the vision section image container */
+  #vision-section .section-content {
+    width: 100%; /* Full width on larger screens */
+  }
+  #values-section .text-content {
+    order: 1; /* Reset order to ensure text is on the left */
+  }
+
+  #values-section .image-container {
+    order: 2; /* Image on the right */
+    padding-left: 0; /* Adjust padding as necessary */
+  }
+  #values-image {
+    position: relative; /* Relative to the section-content */
+    width: auto; /* Width is auto to maintain aspect ratio */
+    max-width: 50%; /* Limits the image width to 50% of its container */
+    right: 0; /* No right offset */
+    max-height: 70vh; /* Optional: Limits the image height to 70% of the viewport height */
+
+    top: 0; /* No top offset */
+    transform: none; /* No transform */
+    z-index: auto; /* Normal stacking order */
+  }
+
+  /* Correcting the right offset for images */
+  #history-image {
+    position: relative; /* Relative to the section-content */
+    width: auto; /* Width is auto to maintain aspect ratio */
+    max-width: 50%; /* Limits the image width to 50% of its container */
+    right: 0; /* No right offset */
+    max-height: 70vh; /* Optional: Limits the image height to 70% of the viewport height */
+
+    top: 0; /* No top offset */
+    transform: none; /* No transform */
+    z-index: auto; /* Normal stacking order */
+  }
+}
+
+/* Adjustments for very small screens */
+@media (max-width: 767px) {
+  .section-content {
+    flex-direction: column; /* Keep the column direction */
+  }
+.logo-text{
+  display: none;
+}
+  .text-content {
+    order: 2; /* Text content should be below */
+  }
+
+  .image-container {
+    order: 1; /* Image should be top of the text content */
+    width: 100%; /* Full width for the image */
+  }
+  .values-section .section-content {
+    flex-direction: column; /* Keep the column direction */
+  }
+
+  .values-section .text-content {
+    order: 2; /* Text content should be below the image */
+  }
+
+  .values-section .values-image {
+    order: 1; /* Image should be above the text content */
+    width: 100%; /* Full width for the image */
+  }
+
+  /* Additional adjustments for smaller screens */
+  .history-vision-values-section,
+  .text-content,
+  .image-container {
+    width: 100%; /* Full width for mobile */
+  }
+
+  h1 {
+    font-size: 1.5rem; /* Adjust font size for headings */
+  }
+
+  p {
+    font-size: 1rem; /* Adjust font size for paragraphs */
+  }
+}

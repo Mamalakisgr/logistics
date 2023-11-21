@@ -147,25 +147,65 @@
 }
 
 /* Media Queries for Responsiveness */
-@media (max-width: 480px) {
-  nav {
+@media (max-width: 768px) {
+  .contact-info-form {
     flex-direction: column;
-    text-align: left;
+    align-items: center;
   }
 
-  nav a {
-    margin: 10px 20px;
-  }
-
-  #contact-form,
-  #contact-information,
-  #google-map {
-    padding: 15px;
+  #contact-form, #contact-information {
+    flex-basis: 80%; /* Adjust the width */
+    margin: 10px 0; /* Add some space between the form and contact info */
   }
 
   #contact-form input[type="text"],
   #contact-form input[type="email"],
   #contact-form textarea {
-    margin-bottom: 10px;
+    width: 100%; /* Full width */
+  }
+
+  #google-map {
+    margin-top: 20px;
   }
 }
+@media (max-width: 480px) {
+  #contact-form, #contact-information {
+    flex-basis: 100%; /* Full width for smaller devices */
+  }
+
+  nav a {
+    margin: 10px 0; /* Adjust spacing for nav items */
+  }
+
+  .hamburger-menu {
+    display: block; /* Show hamburger menu on smaller screens */
+  }
+
+  /* Adjust font sizes for smaller screens */
+  h1, h2, h3, p {
+    font-size: smaller;
+  }
+}
+/* Styles for Google Map on smaller screens */
+@media (max-width: 768px) {
+  #map-placeholder {
+    height: 200px; /* Adjust height for smaller screens */
+  }
+}
+/* Additional styles for very small screens */
+@media (max-width: 360px) {
+  .contact-info-form {
+    padding: 10px; /* Reduce padding */
+  }
+
+  #contact-form input[type="text"],
+  #contact-form input[type="email"],
+  #contact-form textarea,
+  #contact-button {
+    font-size: 14px; /* Reduce font size */
+  }
+}
+gmp-map {
+  height: 100%;
+}
+

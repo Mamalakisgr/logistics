@@ -131,7 +131,6 @@ app.post('/api/update-description', async (req, res) => {
     const updatedParagraph = await CompanyCount.findOneAndUpdate({}, { description }, { upsert: true, new: true });
     
     res.json({ success: true, description: updatedParagraph.description });
-    console.log(req.body.description);  // Log the received description
 
   } catch (error) {
     console.error('Error updating description:', error);
@@ -712,7 +711,6 @@ app.post('/api/company-content', async (req, res) => {
 app.get('/api/history-image', async (req, res) => {
   try {
     const historyImage = await HistoryImage.findOne();
-    console.log("Serving history image:", historyImage);  // Debugging line
     if (!historyImage) {
       return res.status(404).json({ message: 'History image not found' });
     }
@@ -766,7 +764,6 @@ app.get('/api/vision-image', async (req, res) => {
 // Example for the server-side
 app.get('/api/company-content', async (req, res) => {
   const content = await CompanyContent.findOne(); // gets the first record
-  console.log("Sending back content: ", content);
   
   if (!content) {
     res.json({

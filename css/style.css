@@ -5,15 +5,15 @@ body, h1, h2, h3, p {
 }
 
 /* Apply a modern font for a sleek look */
+/* Apply base styles */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: white;
-  overflow-x: hidden;
+  line-height: 1.6;
 }
-
 /* Global styles for containers */
 .container {
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
   padding: 20px;
 }
@@ -34,7 +34,20 @@ header {
   position: relative;  /* Ensure that it's relative so children can be positioned absolutely relative to it */
   /* Other styles for region-two, like height, width, etc. */
 }
+/* Styles for the image container within Region One */
+.region-one .image-container {
+  width: 100%; /* Full width */
+  height: auto; /* Height adjusts to maintain aspect ratio */
+  padding: 20px; /* Padding around the container */
+  text-align: center; /* Center align text in the image container */
+  overflow: hidden; /* Hide anything that goes outside the container */
+}
 
+.region-one-image img {
+  max-width: 100%; /* Ensure image is never wider than its container */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover; /* Cover the entire container while maintaining aspect ratio */
+}
 /* Dynamic categories */
 #categories-list {
   display: flex;
@@ -208,7 +221,6 @@ header {
 
   padding: 20px;
   color: white; /* Set text color to white */
-  border-radius: 8px;
   text-align: center;
   max-height: fit-content;
 }
@@ -267,8 +279,14 @@ header {
 .logo img {
   width: 50px;
   height: auto;
+ 
 }
 
+#side-logo-image{
+  width: 50px;
+  height: auto;
+
+}
 .language-selector {
   position: relative;
   display: inline-block;
@@ -322,8 +340,8 @@ header {
 
 .region-two .seo-container {
   position: absolute; /* Allow for precise positioning */
-  top: 58px;  /* Reduced from 50px to 30px */
-  left:-752px; /* Align to the LEFT instead of the right */
+  bottom: 0px;  /* Reduced from 50px to 30px */
+  left:65px; /* Align to the LEFT instead of the right */
   padding: 20px;
   /* height: 50px; */
  
@@ -411,28 +429,7 @@ header {
   align-items: center;
   margin-top: 10px;
 }
-.overlay-text {
-  position: absolute;
-  top: 50%;
-  left: 45%;
-  font-family: 'Open Sans', sans-serif;  /* Changed to Open Sans */
-  font-size: 58px;  /* Slightly increased font size for prominence */
-  font-style: italic;
-  letter-spacing: 1.5px;  /* Increased letter spacing */
-  line-height: 1.4;  /* Adjusted line height */
-  color: white;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
-  padding: 15px 25px;  /* Increased padding for more space */
-  border-radius: 7px;  /* Slightly more rounded edges */
-  opacity: 0;
-  transform: translate(100%, -50%);
-  transition: opacity 1.5s ease 0.5s, transform 1.5s ease 0.5s;  /* Added a delay of 0.5s */
-  filter: brightness(1.2);  /* Increased brightness slightly */
-  padding: 10px 20px;
-  word-spacing: 6px;
-  letter-spacing: 5px;
-  text-align: center;
-}
+
 .dropdown-header {
     cursor: pointer;
     display: block;
@@ -551,10 +548,16 @@ header {
   /* height: 500px; Static height */ 
   padding: 20px;
   color: white; /* Set text color to white */
-  border-radius: 8px;
+ 
   text-align: center;
   right: 10px;
-  
+ 
+
+
+}
+.region-one .seo-container{
+  border: solid black;
+  border-radius: 8px;
 }
 /*Services Section*/
 .services{
@@ -680,7 +683,6 @@ header {
   cursor: pointer;
   position: relative;
   left: -100px; /* Shift the button a little to the left */
-  bottom: -41px;
 }
 
 .lazyload {
@@ -701,26 +703,50 @@ header {
   
 }
 @media screen and (max-width: 768px) {
+  .logo {
+    display: none;
+}
+  #categories-list {
+      display: none;
+  }
+  .hamburger-menu {
+      display: block;
+      z-index: 100;
+      color: white;
+  }
   body {
     overflow-x: hidden;
 }
+  .main-content {
+    padding: 10px; /* Reduced padding for tablet screens */
+    height: auto; /* Example: change to auto or a specific value */
+
+  }
+  .mySlides {
+    height: 400px; /* Adjusted height for tablets */
+  }
   /* Adjust the styling for smaller screens */
   .container {
-    padding: 10px;
+    padding: 0px;
   }
-
+#logo-text-image{
+  display: none;
+}
   /* Responsive styles for header */
   header {
     flex-direction: column;
     align-items: flex-start;
-    padding: 10px;
+    padding: 0px;
   }
 /* Dynamic categories */
 #categories-list {
   flex-direction: column;
   align-items: flex-start;
 }
-
+.region-one-image{
+  width: 80%;  /* Adjust to be responsive */
+  margin: 0;
+}
   /* Adjust the styles for slides */
   .mySlides img {
     width: 80%;  /* Adjust to be responsive */
@@ -1021,32 +1047,60 @@ header {
       z-index: 100;
       color: white;
   }
+  .region-one .image-container{
+    margin: 0;
+    padding: 0;
+  }
+  .region-one-image{
+  margin: 0;
+  padding: 0;
+  } 
 }
 
 /* Media Query for Mobile screens */
 @media screen and (max-width: 425px) {
   body{
         overflow-x: hidden;
+        padding: 0;
 
+  }
+  .main-content{
+    padding: 0;
+    margin: 0;
   }
    /* Adjust header layout */
    header {
     flex-direction: column;
     align-items: flex-start;
-    padding: 10px;
+    padding: 0px;
     width: 100%;
   }
+  .mySlides {
+    height: 250px; /* Adjusted height for mobile screens */
+    width: 100%;
 
+  }
   /* Adjust slideshow and banner list dimensions */
   .slideshow-container, .banner-list {
     max-width: 100%;
     
   }
-
+  .top-bar{
+    display: none;
+  }
+  
+  .top-bar-inner{
+    padding: 0;
+    margin: 0;
+  }
   /* Adjust the styles for slides */
   .mySlides img {
     width: 100%;  /* Adjust to be responsive */
     height: auto;
+  }
+  #dynamicDescription{
+    margin: 0;
+    padding: 0;
   }
   .close-btn {
     top: 5px;        /* Adjusted position to be closer to the top */
@@ -1060,15 +1114,36 @@ header {
   .region-container {
     flex-direction: column;
   }
-
+  .region-one-image {
+    width: 100%; /* Make the image full width */
+    height: auto; /* Maintain aspect ratio */
+    margin-bottom: 15px; /* Add some space below the image */
+  }
   .region-container img {
     width: 100%;
     margin-bottom: 15px;
   }
-
+.region-one .image-container {
+  margin: 0;
+  padding: 0; 
+}
+.region-two .seo-container{
+  margin: 0;
+  padding: 0; 
+  left: 0;
+}
+.region-two .image-container{
+  margin: 0;
+  padding: 0; 
+}
+.top-bar-right .social__icons{
+  display: none;
+}
   /* Adjust the SEO and Image containers within Region One and Region Two */
   .image-container, .seo-container {
     width: 100%;
+    margin: 0;
+    padding: 0;
   }
 
   /* Adjust the category names layout */
@@ -1273,9 +1348,9 @@ header {
 .top-bar-inner {
   display: flex;
   justify-content: space-between; /* Distribute the left and right sections */
-  max-width: 1200px; /* You can adjust this based on your website's design */
-  margin: 0 auto; /* Center the inner content */
-  padding: 5px 15px; /* Add some padding for better appearance */
+  max-width:80%; /* You can adjust this based on your website's design */
+  margin: 0.01%; /* Center the inner content */
+  padding:0; /* Add some padding for better appearance */
 }
 
 .top-bar-left, .top-bar-right {

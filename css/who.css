@@ -77,3 +77,42 @@ p {
 .next {
     right: 0;
 }
+/* Responsive styles */
+@media (max-width: 768px) {
+    .store-section {
+        grid-template-columns: repeat(1, 1fr); /* 2 columns for mobile */
+    }
+
+    h2, p {
+        font-size: 1.5rem; /* Smaller font size */
+        grid-column: span 2
+    }
+
+    .employee-img {
+        width: 90px; /* Smaller images */
+        height: 90px;
+    }
+
+    .team-section {
+        flex-direction: column; /* Stack elements vertically */
+    }
+
+    .team-content, .team-slider {
+        flex: 1; /* Take full width */
+    }
+}
+
+@media (max-width: 480px) {
+    .store-section {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for mobile */
+    }
+
+    h2, p {
+        font-size: 1.2rem; /* Adjust font size for smaller screens */
+    }
+
+    .employee-img {
+        width: 50px; /* Even smaller images */
+        height: 50px;
+    }
+}

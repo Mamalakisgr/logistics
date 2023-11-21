@@ -8,7 +8,6 @@ async function deleteEmployee(employeeId) {
         const result = await response.json();
 
         if (response.ok) {
-            console.log(result);
             fetchAndDisplayEmployees();
         } else {
             console.error("Error deleting employee:", result.message);
@@ -72,7 +71,6 @@ async function addEmployee(e) {
         });
 
         const result = await response.json();
-        console.log(result);
         fetchAndDisplayEmployees();
     } catch (error) {
         console.error("Error adding employee:", error);

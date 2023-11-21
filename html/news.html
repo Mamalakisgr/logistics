@@ -11,10 +11,26 @@
        <!-- Header -->
   <header>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Add this inside your <header> -->
-    <div class="hamburger-menu" onclick="toggleSideMenu()">
-      <span id="menu-icon">&#9776;</span>
-    </div>
+         <!-- Add this inside your <header> -->
+          <div class="hamburger-menu" onclick="toggleSideMenu()">
+            <span id="menu-icon">&#9776;</span>
+          </div>
+       <!-- Side Menu -->
+       <div class="side-menu" id="sideMenu">
+        <div class="close-btn" onclick="closeSideMenu()">&times;</div>
+        <a href="/">Αρχική</a>
+        <a href="../html/company.html">Εταιρεία</a>
+        <a href="../html/services.html">Υπηρεσίες</a>
+        <a href="../html/news.html">Ενημέρωση</a>
+        <a href="../html/contactus.html">Επικοινωνία</a>
+        <div class="side-logo-container">
+        <div class="side-logo">
+          <a href="/">
+            <img id="side-logo-image" src="" alt="Logo">
+          </a>
+        </div>
+      </div>
+      </div>
     <!-- Logo and Logo Text -->
     <div class="logo-container">
       <!-- Logo -->
@@ -36,15 +52,7 @@
         <a href="../html/index.html">Αρχική</a>
       </div>
       <div class="category-name-Company">
-        <!-- Removed href from the following line -->
-        <span class="dropdown-header">Εταιρεία</span>
-        <div class="company-selector">
-            <div class="company-dropdown">
-                <a href="/html/company-history.html">History</a>
-                <a href="/html/company-values.html">Values</a>
-                <a href="/html/company-vision.html">Vision</a>
-            </div>
-        </div>
+        <a href="../html/company.html">Εταιρεία</a> 
     </div>
       <div class="category-name-Services">
         <a href="../html/services.html">Υπηρεσίες</a>
@@ -195,6 +203,7 @@
   </footer>
 
   <script src="../js/company-dropdown.js"></script>
+  <script src="../js/ToggleMenu.js"></script>
 
   <script src="../js/language-selector.js"></script>
   <script src="../js/news.js"></script>

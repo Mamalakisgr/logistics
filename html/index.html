@@ -68,16 +68,7 @@
         <a href="/">Αρχική</a>
       </div>
       <div class="category-name-Company">
-        <!-- Removed href from the following line -->
-        <span class="dropdown-header">Εταιρεία</span>
-        <div class="company-selector">
-            <div class="company-dropdown">
-                <a href="/html/company-history.html">History</a>
-                <a href="/html/company-values.html">Values</a>
-                <a href="/html/company-vision.html">Vision</a>
-                <a href="/html/whoarewe.html">About Us</a>
-            </div>
-        </div>
+        <a href="../html/company.html">Εταιρεία</a> 
     </div>
       <div class="category-name-Services">
         <a href="../html/services.html">Υπηρεσίες</a>
@@ -107,6 +98,13 @@
     <a href="../html/services.html">Υπηρεσίες</a>
     <a href="../html/news.html">Ενημέρωση</a>
     <a href="../html/contactus.html">Επικοινωνία</a>
+    <div class="side-logo-container">
+    <div class="side-logo">
+      <a href="/">
+        <img id="side-logo-image" src="" alt="Logo">
+      </a>
+    </div>
+  </div>
   </div>
 
   <!-- Main content -->
@@ -132,8 +130,7 @@
           <div class="flex-container">
             <figure class="image-container">
               <div class="image-wrapper">
-                <img  class="lazyload" src="" alt=""
-                  loading="lazy">
+                <img  class="region-one-image" src="" alt="">
             </figure>
             <div class="seo-container">
               <header class="title-container">
@@ -143,12 +140,13 @@
                 <div id="seoDescription" class="description"> <!-- Added an ID for easy JavaScript targeting -->
                   <p>Default Description</p>
                 </div>
+                <div class="button-container">
+                  <a class="seo-button button fifth" href="../html/company.html" title="Learn More">
+                    ΕΤΑΙΡΕΙΑ
+                  </a>
+                </div>
               </div>
-              <div class="button-container">
-                <a class="seo-button button fifth" href="../html/company.html" title="Learn More">
-                  ΕΤΑΙΡΕΙΑ
-                </a>
-              </div>
+
             </div>
           </div>
           <div class="arrow-img-container">
@@ -200,17 +198,12 @@
               </div>
             </figure>
             <div class="seo-container">
-              <!-- <header class="title-container"> -->
-                <!-- <h1 id="dynamicTitle" class="title"></h1> -->
-              <!-- </header> -->
               <div class="description-container">
                 <div id="dynamicDescription" class="description">
                   Περισσότερες από <span id="counter">0</span> μας εμπιστεύονται.
                   <p id="dynamicParagraph">Dynamic Paragraph placeholder</p>
                 </div>
-
               </div>
-
             </div>
             <div class="button-container">
               <a class="seo-button button fifth" href="/html/company.html" title="Learn More">

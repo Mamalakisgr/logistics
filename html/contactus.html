@@ -7,18 +7,39 @@
   <link rel="stylesheet" type="text/css" href="/css/style.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
   <link rel="icon" href="/images/292435385_399551102196302_8171052786653938864_n.png" type="image/x-icon" />
-
-
+  <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeSkk9Qx-_9R5PkHRO7pFpyFSq0_aMeDg&callback=console.debug&libraries=maps,marker&v=beta">
+  </script>
+  <script>
+    function initMap() {
+      console.log('Maps JavaScript API loaded.');
+    }
+  </script>
 </head>
 
 <body>
    <!-- Header -->
    <header>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Add this inside your <header> -->
-    <div class="hamburger-menu" onclick="toggleSideMenu()">
-      <span id="menu-icon">&#9776;</span>
-    </div>
+         <!-- Add this inside your <header> -->
+          <div class="hamburger-menu" onclick="toggleSideMenu()">
+            <span id="menu-icon">&#9776;</span>
+          </div>
+       <!-- Side Menu -->
+       <div class="side-menu" id="sideMenu">
+        <div class="close-btn" onclick="closeSideMenu()">&times;</div>
+        <a href="/">Αρχική</a>
+        <a href="../html/company.html">Εταιρεία</a>
+        <a href="../html/services.html">Υπηρεσίες</a>
+        <a href="../html/news.html">Ενημέρωση</a>
+        <a href="../html/contactus.html">Επικοινωνία</a>
+        <div class="side-logo-container">
+        <div class="side-logo">
+          <a href="/">
+            <img id="side-logo-image" src="" alt="Logo">
+          </a>
+        </div>
+      </div>
+      </div>
     <!-- Logo and Logo Text -->
     <div class="logo-container">
       <!-- Logo -->
@@ -40,15 +61,7 @@
         <a href="../html/index.html">Αρχική</a>
       </div>
       <div class="category-name-Company">
-        <!-- Removed href from the following line -->
-        <span class="dropdown-header">Εταιρεία</span>
-        <div class="company-selector">
-            <div class="company-dropdown">
-                <a href="/html/company-history.html">History</a>
-                <a href="/html/company-values.html">Values</a>
-                <a href="/html/company-vision.html">Vision</a>
-            </div>
-        </div>
+        <a href="../html/company.html">Εταιρεία</a> 
     </div>
       <div class="category-name-Services">
         <a href="../html/services.html">Υπηρεσίες</a>
@@ -104,10 +117,14 @@
                 </ul>
               </section>
             </div>
-          
+            <gmp-map center="40.12150192260742,-100.45039367675781" zoom="4" map-id="e49afa2efca13623">
+              <gmp-advanced-marker position="40.12150192260742,-100.45039367675781" title="My location">
+              </gmp-advanced-marker>
+            </gmp-map>
             <section id="google-map">
               <h2 data-translatable data-en="Find us on Map" data-el="Βρείτε μας στον Χάρτη">Βρείτε μας στον Χάρτη</h2>
               <div id="map-placeholder">Google Map Here</div>
+
             </section>
         </main>
 
@@ -193,6 +210,7 @@
 
   </footer>
   <script src="../js/company-dropdown.js"></script>
+  <script src="../js/ToggleMenu.js"></script>
 
   <script src="../js/language-selector.js"></script>
         <script src="../js/contact_us.js"></script>

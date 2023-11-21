@@ -44,6 +44,8 @@ const fetchAndDisplayLogo = async (elementId) => {
 
 document.addEventListener("DOMContentLoaded", function() {
     fetchAndDisplayLogo('logo-image'); 
+    fetchAndDisplayLogo('side-logo-image'); 
+
     const serviceCategoriesDiv = document.getElementById("service-categories");
     
     // Utility function to populate service categories

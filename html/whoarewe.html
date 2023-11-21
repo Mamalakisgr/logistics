@@ -11,9 +11,26 @@
   <header>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Add this inside your <header> -->
-    <div class="hamburger-menu" onclick="toggleSideMenu()">
-      <span id="menu-icon">&#9776;</span>
-    </div>
+         <!-- Add this inside your <header> -->
+          <div class="hamburger-menu" onclick="toggleSideMenu()">
+            <span id="menu-icon">&#9776;</span>
+          </div>
+       <!-- Side Menu -->
+       <div class="side-menu" id="sideMenu">
+        <div class="close-btn" onclick="closeSideMenu()">&times;</div>
+        <a href="/">Αρχική</a>
+        <a href="../html/company.html">Εταιρεία</a>
+        <a href="../html/services.html">Υπηρεσίες</a>
+        <a href="../html/news.html">Ενημέρωση</a>
+        <a href="../html/contactus.html">Επικοινωνία</a>
+        <div class="side-logo-container">
+        <div class="side-logo">
+          <a href="/">
+            <img id="side-logo-image" src="" alt="Logo">
+          </a>
+        </div>
+      </div>
+      </div>
     <!-- Logo and Logo Text -->
     <div class="logo-container">
       <!-- Logo -->
@@ -190,6 +207,7 @@
   <script src="../js/language-selector.js"></script>
   <script src="../js/about.js"></script>
   <script src="../js/slider.js"></script>
+  <script src="../js/ToggleMenu.js"></script>
 
 </body>
 </html>
