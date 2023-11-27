@@ -21,42 +21,44 @@
   </nav>
   <div id="home-section">
     <section id="employees-section">
-        <h2>Our Employees</h2>
-        <div id="employee-list"></div>
-    
-        <!-- Form to Add New Employee -->
-        <h3>Add Employee</h3>
-        <form id="add-employee-form"  enctype="multipart/form-data">
-            <input type="text" id="name-gr" placeholder="Name (GR)" required>
-            <input type="text" id="name-en" placeholder="Name (EN)" required>
-            <input type="text" id="title-gr" placeholder="Title (GR)" required>
-            <input type="text" id="title-en" placeholder="Title (EN)" required>
+      <h2>Our Employees</h2>
+      <div id="employee-list"></div>
 
-            <div>
-                <label><input type="radio" name="store" value="Καταστημα Αγίου Μελετίου" required> Καταστημα Αγίου Μελετίου</label>
-                <label><input type="radio" name="store" value="Καταστημα Δεληγιάννη" required> Καταστημα Δεληγιάννη</label>
-            </div>
-            <input type="file" id="image" onchange="previewImage(this)">
-            <!-- <input type="file" id="image" onchange="previewImage(this)"> -->
-<img id="image-preview" style="max-width: 400px;"> <!-- For previewing and cropping -->
-<button type="button" id="crop-upload">Crop & Upload</button>
-            <button type="submit">Add Employee</button>
-        </form>
+      <!-- Form to Add New Employee -->
+      <h3>Add Employee</h3>
+      <form id="add-employee-form" enctype="multipart/form-data">
+        <input type="text" id="name-gr" placeholder="Name (GR)" required>
+        <input type="text" id="name-en" placeholder="Name (EN)" required>
+        <input type="text" id="title-gr" placeholder="Title (GR)" required>
+        <input type="text" id="title-en" placeholder="Title (EN)" required>
+
+        <div>
+          <label><input type="radio" name="store" value="Καταστημα Αγίου Μελετίου" required> Καταστημα Αγίου
+            Μελετίου</label>
+          <label><input type="radio" name="store" value="Καταστημα Δεληγιάννη" required> Καταστημα Δεληγιάννη</label>
+        </div>
+        <input type="file" id="image" onchange="previewImage(this)">
+        <!-- <input type="file" id="image" onchange="previewImage(this)"> -->
+        <img id="image-preview" style="max-width: 400px;"> <!-- For previewing and cropping -->
+        <button type="button" id="crop-upload">Crop & Upload</button>
+        <button type="submit">Add Employee</button>
+      </form>
     </section>
     <!-- Form to Update Employee -->
-<h3>Update Employee</h3>
-<form id="update-employee-form" enctype="multipart/form-data">
-    <input type="hidden" id="update-id"> <!-- To store the ID of the employee being updated -->
-    <input type="text" id="update-name-gr" placeholder="Name (GR)" required>
-    <input type="text" id="update-name-en" placeholder="Name (EN)" required>
-    <input type="text" id="update-title-gr" placeholder="Title (GR)" required>
-    <input type="text" id="update-title-en" placeholder="Title (EN)" required>
-    <p id="update-image-prompt">Click if you want to update the image</p>
-    <input type="file" id="update-image" name="image"  onchange="previewImage(this)">
-    <button type="submit">Update Employee</button>
-</form>
+    <h3>Update Employee</h3>
+    <form id="update-employee-form" enctype="multipart/form-data">
+      <input type="hidden" id="update-id"> <!-- To store the ID of the employee being updated -->
+      <input type="text" id="update-name-gr" placeholder="Name (GR)" required>
+      <input type="text" id="update-name-en" placeholder="Name (EN)" required>
+      <input type="text" id="update-title-gr" placeholder="Title (GR)" required>
+      <input type="text" id="update-title-en" placeholder="Title (EN)" required>
+      <p id="update-image-prompt">Click if you want to update the image</p>
+      <input type="file" id="update-image" name="image" onchange="previewImage(this)">
+      <button type="submit">Update Employee</button>
+    </form>
     <script src="/js/about-us.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
 
 </body>
+
 </html>

@@ -1,5 +1,11 @@
 /* Reset some default browser styles */
-body, h1, h2, h3, p, ul, li {
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+li {
   margin: 0;
   padding: 0;
 }
@@ -33,33 +39,33 @@ nav a {
 }
 /* services.css */
 section {
-padding: 50px 0;  /* Adjust as needed */
+  padding: 50px 0; /* Adjust as needed */
 }
 
 /* Container for service categories */
 #service-list {
-display: flex;
-flex-wrap: wrap;
-gap: 20px;
-justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }
 /* Container for service categories */
 #service-categories {
-display: grid;
-grid-template-columns: repeat(3, 1fr);
-gap: 20px;
-justify-items: center;
-align-items: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  justify-items: center;
+  align-items: center;
 }
 
 /* Individual service category styling */
 .service-category {
-border: 2px solid black;
-border-radius: 10px;
-padding: 15px;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-text-align: center;
-width: 350px;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 350px;
 }
 
 /* Individual service category styling */
@@ -67,68 +73,65 @@ width: 350px;
   transform: scale(1.075);
   transition: 0.3s ease-in;
   cursor: pointer;
-  }
+}
 
-.header-text{
-display: flex;
-justify-content: center;
-align-items: center;
-height: 100%; /* You can specify another height if you prefer */
-background-size: cover; /* Cover the entire header */
-background-position: center; /* Center the background image */
-background-repeat: no-repeat; /* Do not repeat the background image */
-background-color: #f4f4f4;
-
+.header-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* You can specify another height if you prefer */
+  background-size: cover; /* Cover the entire header */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Do not repeat the background image */
+  background-color: #f4f4f4;
 }
 .header-text h1 {
-color: black;
-
+  color: black;
 }
 
-.idiotes-text{
-display: flex;
-justify-content: center;
-align-items: center;
-height: 100%; /* You can specify another height if you prefer */
-background-color: white;
+.idiotes-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* You can specify another height if you prefer */
+  background-color: white;
 }
 .idiotes-text h1 {
-color: rgb(8, 8, 8);
-
+  color: rgb(8, 8, 8);
 }
 
 /* Service category title */
 .service-category h2 {
-font-size: 1.5em;
-margin-bottom: 15px;
+  font-size: 1.5em;
+  margin-bottom: 15px;
 }
 
 /* Service detail */
 .service-detail {
-text-align: left;
+  text-align: left;
 }
 
 /* Service name */
 .service-detail h3 {
-font-size: 1.2em;
-margin-bottom: 10px;
+  font-size: 1.2em;
+  margin-bottom: 10px;
 }
 
 /* Service description */
 .service-detail p {
-margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 /* Centering the header text */
 #detailed-services h2 {
-text-align: center;
+  text-align: center;
 }
 
 /* Creating a container for service details */
 .service-details-container {
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 /* Styling individual service details */
@@ -149,7 +152,6 @@ justify-content: center;
   cursor: pointer;
 }
 
-
 /* Make only the logo and static categories sticky */
 .logo,
 #categories-list {
@@ -161,7 +163,7 @@ justify-content: center;
 /* Make sure other headers are not sticky */
 .header-text,
 .idiotes-text {
-  position: static;  /* Override any inherited sticky position */
+  position: static; /* Override any inherited sticky position */
 }
 
 /* Responsive styles */
@@ -172,8 +174,11 @@ justify-content: center;
   }
 
   /* Adjust font sizes */
-  h1, h2, h3, p {
-      font-size: revert; /* Adjust as needed */
+  h1,
+  h2,
+  h3,
+  p {
+    font-size: revert; /* Adjust as needed */
   }
 
   /* Adjust service detail layout */
@@ -185,21 +190,24 @@ justify-content: center;
 @media (max-width: 480px) {
   /* Adjust grid for service categories to 1 column on mobile */
   #service-categories {
-      grid-template-columns: 1fr;
+    grid-template-columns: 1fr;
   }
 
   /* Further adjust font sizes for mobile */
-  h1, h2, h3, p {
-      font-size: x-large; /* Adjust as needed */
+  h1,
+  h2,
+  h3,
+  p {
+    font-size: x-large; /* Adjust as needed */
   }
 
   /* Adjust service detail layout for mobile */
   .service-detail {
-      flex-basis: 50%; /* Full width */
+    flex-basis: 50%; /* Full width */
   }
 
   /* Collapsible menu for smaller screens */
   nav {
-      /* Implement collapsible menu styles */
+    /* Implement collapsible menu styles */
   }
 }

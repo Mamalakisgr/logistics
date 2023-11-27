@@ -1,0 +1,58 @@
+/* Reset some basic elements */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+/* Ensure full height for the body */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0; /* light grey background */
+}
+
+/* Style the login section */
+#login-section {
+  border: 1px solid #ddd; /* light grey border */
+  padding: 20px;
+  border-radius: 15px;
+  background-color: #ffffff; /* white background */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* subtle shadow */
+  max-width: 300px; /* maximum width */
+  width: 100%; /* responsive width */
+  text-align: center; /* center the text */
+}
+#error-message {
+  color: red;
+  margin-top: 10px;
+  /* Additional styles as needed */
+}
+/* Style the form elements */
+#login-form input[type="text"],
+#login-form input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box; /* ensures padding doesn't affect overall width */
+}
+
+#login-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #333; /* bootstrap primary color */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#login-form button:hover {
+  background-color: #121212; /* darker on hover */
+}

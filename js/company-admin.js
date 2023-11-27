@@ -1,8 +1,6 @@
 // Utility Functions
 async function fetchAPI(url, options = {}) {
   try {
-   
-
     const response = await fetch(url, options);
     if (response.ok) {
       return await response.json();
@@ -19,7 +17,7 @@ async function populateDropdown(apiEndpoint, dropdownId) {
   const items = await fetchAPI(apiEndpoint);
   if (!items) return;
   const dropdown = document.getElementById(dropdownId);
-  dropdown.innerHTML = '';
+  dropdown.innerHTML = "";
   items.forEach((item) => {
     const option = new Option(item._id, item._id);
     dropdown.add(option);
@@ -28,10 +26,10 @@ async function populateDropdown(apiEndpoint, dropdownId) {
 
 // Populate Input Fields with Existing Company Content
 async function populateFields() {
-  const data = await fetchAPI('/api/company-content');
+  const data = await fetchAPI("/api/company-content");
   if (!data) return;
   Object.entries(data).forEach(([key, value]) => {
-    if (value && typeof value === 'object') {
+    if (value && typeof value === "object") {
       const enElement = document.getElementById(`${key}InputEn`);
       const grElement = document.getElementById(`${key}Input`);
       if (enElement) enElement.value = value.En || "";
@@ -44,9 +42,9 @@ async function populateFields() {
 async function handleImageUpload(section, formId) {
   try {
     const formData = new FormData(document.getElementById(formId));
-     console.log(`Attempting to upload to /api/upload-${section}-image`);
+    console.log(`Attempting to upload to /api/upload-${section}-image`);
     const response = await fetch(`/api/upload-${section}-image`, {
-      method: 'POST',
+      method: "POST",
       body: formData,
     });
     if (response.ok) {
@@ -54,7 +52,9 @@ async function handleImageUpload(section, formId) {
       console.log(`Successfully uploaded ${section} image:`, data);
       // Optionally, refresh the dropdown or do other UI updates here
     } else {
-      console.log(`Failed to upload ${section} image. Status: ${response.status}`);
+      console.log(
+        `Failed to upload ${section} image. Status: ${response.status}`
+      );
     }
   } catch (error) {
     console.error(`Failed to upload ${section} image: ${error}`);
@@ -62,11 +62,16 @@ async function handleImageUpload(section, formId) {
 }
 // Add your missing functions for updating content here, like updateSectionContent
 async function deleteSelectedImage(section) {
-  const selectedImageId = document.getElementById(`${section}ImageDropdown`).value;
+  const selectedImageId = document.getElementById(
+    `${section}ImageDropdown`
+  ).value;
   const options = {
-    method: 'DELETE'
+    method: "DELETE",
   };
-  const response = await fetch(`/api/delete-image/${section}/${selectedImageId}`, options);
+  const response = await fetch(
+    `/api/delete-image/${section}/${selectedImageId}`,
+    options
+  );
   if (response.ok) {
     populateDropdown(`/api/get-${section}-images`, `${section}ImageDropdown`);
   } else {
@@ -74,15 +79,22 @@ async function deleteSelectedImage(section) {
   }
 }
 async function updateCurrentImage(section) {
-  const selectedImageId = document.getElementById(`${section}ImageDropdown`).value;
+  const selectedImageId = document.getElementById(
+    `${section}ImageDropdown`
+  ).value;
   const options = {
-    method: 'POST'
+    method: "POST",
   };
-  const response = await fetch(`/api/set-active-image/${section}/${selectedImageId}`, options);
+  const response = await fetch(
+    `/api/set-active-image/${section}/${selectedImageId}`,
+    options
+  );
   if (response.ok) {
     console.log(`Successfully set active ${section} image.`);
-    alert("Image updated. Please refresh the company.html page to see the changes.");
-   // fetchAndUpdateCompanyContent(); // Refresh the content immediately
+    alert(
+      "Image updated. Please refresh the company.html page to see the changes."
+    );
+    // fetchAndUpdateCompanyContent(); // Refresh the content immediately
   } else {
     console.error(`Failed to set active ${section} image.`);
   }
@@ -92,35 +104,34 @@ async function updateCurrentImage(section) {
 async function updateAllSections() {
   try {
     const historyTitle = {
-      Gr: document.getElementById('historyTitleInput').value,
-      En: document.getElementById('historyTitleInputEn').value
+      Gr: document.getElementById("historyTitleInput").value,
+      En: document.getElementById("historyTitleInputEn").value,
     };
     const historyDescription = {
-      Gr: document.getElementById('historyDescriptionInput').value,
-      En: document.getElementById('historyDescriptionInputEn').value
+      Gr: document.getElementById("historyDescriptionInput").value,
+      En: document.getElementById("historyDescriptionInputEn").value,
     };
     const valuesTitle = {
-      Gr: document.getElementById('valuesTitleInput').value,
-       En: document.getElementById('valuesTitleInputEn').value
+      Gr: document.getElementById("valuesTitleInput").value,
+      En: document.getElementById("valuesTitleInputEn").value,
     };
     const valuesDescription = {
-      Gr: document.getElementById('valuesDescriptionInput').value,
-      En: document.getElementById('valuesDescriptionInputEn').value
+      Gr: document.getElementById("valuesDescriptionInput").value,
+      En: document.getElementById("valuesDescriptionInputEn").value,
     };
     const visionTitle = {
-      Gr: document.getElementById('visionTitleInput').value,
-       En: document.getElementById('visionTitleInputEn').value
+      Gr: document.getElementById("visionTitleInput").value,
+      En: document.getElementById("visionTitleInputEn").value,
     };
     const visionDescription = {
-      Gr: document.getElementById('visionDescriptionInput').value,
-      En: document.getElementById('visionDescriptionInputEn').value
+      Gr: document.getElementById("visionDescriptionInput").value,
+      En: document.getElementById("visionDescriptionInputEn").value,
     };
 
-
-    const response = await fetch('/api/company-content', {
-      method: 'POST',
+    const response = await fetch("/api/company-content", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         historyTitle,
@@ -133,9 +144,9 @@ async function updateAllSections() {
     });
 
     if (response.ok) {
-      console.log('Successfully updated all sections.');
+      console.log("Successfully updated all sections.");
     } else {
-      console.log('Failed to update all sections.');
+      console.log("Failed to update all sections.");
     }
   } catch (error) {
     console.error(`Failed to update all sections: ${error}`);
@@ -143,84 +154,104 @@ async function updateAllSections() {
 }
 
 // DOM Loaded Event
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   populateFields();
   // Add lazy loading
-  const lazyLoadSections = document.querySelectorAll('.lazy-load');
+  const lazyLoadSections = document.querySelectorAll(".lazy-load");
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         const section = entry.target;
-        const bgImage = section.getAttribute('data-bg-image');
+        const bgImage = section.getAttribute("data-bg-image");
         if (bgImage) {
           section.style.backgroundImage = `url('${bgImage}')`;
-          section.classList.remove('lazy-load');
+          section.classList.remove("lazy-load");
           observer.unobserve(section);
         }
       }
     });
   });
-  document.getElementById("showEnglishHistoryInputs").addEventListener("click", function() {
-    document.getElementById("englishInputs").style.display = "block";
-    document.getElementById("greekInputs").style.display = "none";
-    updateAllSections();
-  });
-  
-  document.getElementById("showGreekHistoryInputs").addEventListener("click", function() {
-    document.getElementById("englishInputs").style.display = "none";
-    document.getElementById("greekInputs").style.display = "block";
-    updateAllSections();
-  });
-  
-  document.getElementById("showEnglishValuesInputs").addEventListener("click", function() {
-    document.getElementById("valuesEnglishInputs").style.display = "block";
-    document.getElementById("valuesGreekInputs").style.display = "none";
-    updateAllSections();
-  });
-  
-  document.getElementById("showGreekValuesInputs").addEventListener("click", function() {
-    document.getElementById("valuesEnglishInputs").style.display = "none";
-    document.getElementById("valuesGreekInputs").style.display = "block";
-    updateAllSections();
-  });
-  
-  document.getElementById("showEnglishVisionInputs").addEventListener("click", function() {
-    document.getElementById("visionEnglishInputs").style.display = "block";
-    document.getElementById("visionGreekInputs").style.display = "none";
-    updateAllSections();
-  });
-  
-  document.getElementById("showGreekVisionInputs").addEventListener("click", function() {
-    document.getElementById("visionEnglishInputs").style.display = "none";
-    document.getElementById("visionGreekInputs").style.display = "block";
-    updateAllSections();
-  });
+  document
+    .getElementById("showEnglishHistoryInputs")
+    .addEventListener("click", function () {
+      document.getElementById("englishInputs").style.display = "block";
+      document.getElementById("greekInputs").style.display = "none";
+      updateAllSections();
+    });
+
+  document
+    .getElementById("showGreekHistoryInputs")
+    .addEventListener("click", function () {
+      document.getElementById("englishInputs").style.display = "none";
+      document.getElementById("greekInputs").style.display = "block";
+      updateAllSections();
+    });
+
+  document
+    .getElementById("showEnglishValuesInputs")
+    .addEventListener("click", function () {
+      document.getElementById("valuesEnglishInputs").style.display = "block";
+      document.getElementById("valuesGreekInputs").style.display = "none";
+      updateAllSections();
+    });
+
+  document
+    .getElementById("showGreekValuesInputs")
+    .addEventListener("click", function () {
+      document.getElementById("valuesEnglishInputs").style.display = "none";
+      document.getElementById("valuesGreekInputs").style.display = "block";
+      updateAllSections();
+    });
+
+  document
+    .getElementById("showEnglishVisionInputs")
+    .addEventListener("click", function () {
+      document.getElementById("visionEnglishInputs").style.display = "block";
+      document.getElementById("visionGreekInputs").style.display = "none";
+      updateAllSections();
+    });
+
+  document
+    .getElementById("showGreekVisionInputs")
+    .addEventListener("click", function () {
+      document.getElementById("visionEnglishInputs").style.display = "none";
+      document.getElementById("visionGreekInputs").style.display = "block";
+      updateAllSections();
+    });
   lazyLoadSections.forEach((section) => observer.observe(section));
 
-  ['history', 'values', 'vision'].forEach((section) => {
-    const updateBtnId = `update${section.charAt(0).toUpperCase() + section.slice(1)}Image`;
-    const deleteBtnId = `delete${section.charAt(0).toUpperCase() + section.slice(1)}Image`;
+  ["history", "values", "vision"].forEach((section) => {
+    const updateBtnId = `update${
+      section.charAt(0).toUpperCase() + section.slice(1)
+    }Image`;
+    const deleteBtnId = `delete${
+      section.charAt(0).toUpperCase() + section.slice(1)
+    }Image`;
     const formId = `${section}ImageForm`;
     const updateBtn = document.getElementById(updateBtnId);
     const deleteBtn = document.getElementById(deleteBtnId);
     const form = document.getElementById(formId);
-    const saveBtn = document.getElementById(`save${section.charAt(0).toUpperCase() + section.slice(1)}Button`);
-// Add event listener for the Save button for each section
-['history', 'values', 'vision'].forEach((section) => {
-  const saveBtn = document.getElementById(`save${section.charAt(0).toUpperCase() + section.slice(1)}Button`);
-  if (saveBtn) {
-    saveBtn.addEventListener('click', updateAllSections);
-  }
-});
+    const saveBtn = document.getElementById(
+      `save${section.charAt(0).toUpperCase() + section.slice(1)}Button`
+    );
+    // Add event listener for the Save button for each section
+    ["history", "values", "vision"].forEach((section) => {
+      const saveBtn = document.getElementById(
+        `save${section.charAt(0).toUpperCase() + section.slice(1)}Button`
+      );
+      if (saveBtn) {
+        saveBtn.addEventListener("click", updateAllSections);
+      }
+    });
     if (updateBtn && deleteBtn && form && saveBtn) {
       // populate dropdowns, attach event listeners
       populateDropdown(`/api/get-${section}-images`, `${section}ImageDropdown`);
-      updateBtn.addEventListener('click', () => updateCurrentImage(section));
-      deleteBtn.addEventListener('click', () => deleteSelectedImage(section));
-      form.addEventListener('submit', function (e) {
+      updateBtn.addEventListener("click", () => updateCurrentImage(section));
+      deleteBtn.addEventListener("click", () => deleteSelectedImage(section));
+      form.addEventListener("submit", function (e) {
         e.preventDefault();
         handleImageUpload(section, formId);
       });
     }
-  })
+  });
 });

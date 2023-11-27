@@ -28,11 +28,11 @@ img {
 
 /* Text content styles */
 .text-content {
-  background-color: rgba(255,255,255,0.5);
+  background-color: rgba(255, 255, 255, 0.5);
   padding: 10px;
   text-align: center; /* Center text for mobile */
   border-radius: 1px;
-  border:solid;
+  border: solid;
   border-color: black;
 }
 
@@ -59,7 +59,7 @@ img {
     flex-direction: row;
     flex-wrap: wrap;
   }
-  .logo-text{
+  .logo-text {
     display: none;
   }
   .section-content {
@@ -69,10 +69,10 @@ img {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    width: 50%; 
+    width: 50%;
     margin-bottom: 20px;
   }
-   .text-content {
+  .text-content {
     order: 1; /* Reset order to ensure text is on the left */
   }
   .images-container {
@@ -147,9 +147,9 @@ img {
   .section-content {
     flex-direction: column; /* Keep the column direction */
   }
-.logo-text{
-  display: none;
-}
+  .logo-text {
+    display: none;
+  }
   .text-content {
     order: 1; /* Text content should be below */
   }

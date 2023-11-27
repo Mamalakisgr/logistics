@@ -1,32 +1,36 @@
-/* Reset some default styles */
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  nav {
-    background-color: #131313;
-    padding: 10px;
-    box-shadow: 0px 2px 10px rgba(29, 29, 29, 0.1);
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4; 
+  color: #333; 
+}
+nav {
+  background-color: #131313;
+  padding: 10px;
+  box-shadow: 0px 2px 10px rgba(29, 29, 29, 0.1);
+  font-size: 16px; 
 }
 
 nav a {
-    padding: 10px 15px;
-    text-decoration: none;
-    color: white;
-    margin-right: 10px;
-    border: 1px solid #dcdcdc;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: white;
+  margin-right: 10px;
+  border: 1px solid #dcdcdc;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  background-color: #333; 
+  color: #fff; 
 }
 
 nav a:hover {
-    background-color: #eaeaea;
-    color: #131313;
-
+  background-color: #333;
+  color: #fff;
 }
 
-/* Style for title inputs */
+
 input[type="text"] {
   width: 50%;
   padding: 10px;
@@ -36,90 +40,89 @@ input[type="text"] {
   border-radius: 4px;
 }
 
-  textarea {
-    width: 50%; /* You can set the width as you like */
-    height: 150px; /* You can set the height as you like */
-    padding: 10px;
-    margin-top: 10px;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    resize: vertical; /* Allows the user to resize the textarea vertically */
-  }
-  /* Style the headers */
-  h1 {
-    background-color: #333;
-    color: white;
-    padding: 10px;
-  }
-  
-  h3 {
-    margin-top: 20px;
-  }
-  
-  /* Style the form elements */
-  form {
-    margin-top: 10px;
-  }
-  
-  input[type="file"] {
-    margin-right: 10px;
-  }
-  
-  button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Style the select dropdowns */
-  select {
-    padding: 5px;
-    width: 200px;
-    margin-right: 10px;
-  }
-  
-  /* Style the SEO image upload form */
-  #seo-image-upload-form {
-    margin-top: 20px;
-  }
-  
-  /* Style the SEO image dropdown */
-  #seo-image-dropdown {
-    width: 100%;
-    max-width: 400px;
-  }
-  
-  /* Style the save button */
-  #saveSeoContentButton {
-    margin-top: 20px;
-  }
-  
-  /* Style the SEO image upload button */
-  #seoImage,
-  #seo-image-upload-form label {
-    display: block;
-    margin-top: 10px;
-  }
+textarea {
+  width: 50%; 
+  height: 150px; 
+  padding: 10px;
+  margin-top: 10px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  resize: vertical; 
+}
 
- 
+h1 {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+}
+
+h3 {
+  margin-top: 20px;
+}
+
+
+form {
+  margin-top: 10px;
+}
+
+input[type="file"] {
+  margin-right: 10px;
+}
+
+button {
+  background-color: #333;
+  color: white;
+  border-radius: 4px; 
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold; 
+}
+
+button:hover {
+  background-color: #333;
+}
+
+select {
+  padding: 5px;
+  width: 200px;
+  margin-right: 10px;
+}
+
+
+#seo-image-upload-form {
+  margin-top: 20px;
+}
+
+
+#seo-image-dropdown {
+  width: 100%;
+  max-width: 400px;
+}
+
+
+#saveSeoContentButton {
+  margin-top: 20px;
+}
+
+/* Style the SEO image upload button */
+#seoImage,
+#seo-image-upload-form label {
+  display: block;
+  margin-top: 10px;
+}
+
 /* Styling for the service-list container */
 #service-list {
   border: 1px solid #e0e0e0;
   padding: 15px;
   border-radius: 5px;
   clear: left;
-width: 800px;
+  width: 800px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   display: grid;
-grid-template-columns: repeat(3, 1fr);
-gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
 #detail-list {
@@ -131,8 +134,8 @@ gap: 20px;
 
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   display: grid;
-grid-template-columns: repeat(3, 1fr);
-gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
 /* Styling for each service category inside the service-list */
@@ -140,14 +143,13 @@ gap: 20px;
   border-bottom: 1px dashed #ccc;
   margin-bottom: 10px;
   padding-bottom: 10px;
-  
 }
 
 /* Styling for the "Edit" button */
 .service-category button {
   margin-top: 5px;
   padding: 5px 10px;
-  background-color: #007BFF;
+  background-color: #007bff;
   color: #fff;
   border: none;
   border-radius: 3px;
@@ -159,10 +161,9 @@ gap: 20px;
   background-color: #0056b3;
 }
 
-
 #service-form {
   width: 300px; /* Adjust this value to your desired width */
- 
+
   float: left;
 }
 
@@ -172,14 +173,14 @@ h2 {
 }
 #service-form input,
 #service-form button {
-    width: 100%;
-    box-sizing: border-box;
-    margin-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 10px;
 }
 
-#detail-form{
+#detail-form {
   width: 300px; /* Adjust this value to your desired width */
- 
+
   float: left;
 }
 /* New style to clear the float after the service-form */
@@ -189,12 +190,12 @@ h2 {
 
 #detail-form input,
 #detail-form button {
-    width: 100%;
-    box-sizing: border-box;
-    margin-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 10px;
 }
 #employee-list > div {
-  flex: 0 1 calc(20% - 10px);  /* Using 20% as an example. It means 5 employees per row. Adjust the percentage as needed. */
+  flex: 0 1 calc(20% - 10px); /* Using 20% as an example. It means 5 employees per row. Adjust the percentage as needed. */
   margin: 5px;
   box-sizing: border-box;
 }
@@ -211,10 +212,12 @@ h2 {
 
 #employee-list button {
   margin-left: 5px;
-}#employee-list > h3 {
+}
+#employee-list > h3 {
   width: 100%;
-  flex-basis: 100%;  /* Makes sure the store heading takes the full width and appears on its own line */
-}#employee-list {
+  flex-basis: 100%; /* Makes sure the store heading takes the full width and appears on its own line */
+}
+#employee-list {
   display: flex;
   flex-wrap: wrap;
 }

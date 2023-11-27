@@ -8,7 +8,7 @@ function initMap() {
   const autocomplete = new google.maps.places.Autocomplete(input, {
     fields: ["place_id", "geometry", "formatted_address", "name"],
   });
-place_id ="ChIJg6lYgQGVoRQRFF2mrKSe8E0"
+  place_id = "ChIJg6lYgQGVoRQRFF2mrKSe8E0";
   autocomplete.bindTo("bounds", map);
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 

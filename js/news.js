@@ -24,5 +24,4 @@ const fetchAndDisplayLogo = async (elementId) => {
 document.addEventListener("DOMContentLoaded", () => {
   fetchAndDisplayLogo("logo-image");
   fetchAndDisplayLogo("side-logo-image");
-
 });

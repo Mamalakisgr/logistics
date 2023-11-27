@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Company Admin</title>
@@ -8,116 +9,117 @@
   <link rel="stylesheet" type="text/css" href="../css/back.css">
 
 </head>
+
 <body>
- <!-- Navbar -->
- <nav>
-  <a href="/backoffice" id="nav-home">Home</a>
-  <a href="/company-admin">Company</a>
-  <a href="/services-admin">Services</a>
-  <a href="aboutus-admin">About Us</a>
-</nav>
+  <!-- Navbar -->
+  <nav>
+    <a href="/backoffice" id="nav-home">Home</a>
+    <a href="/company-admin">Company</a>
+    <a href="/services-admin">Services</a>
+    <a href="aboutus-admin">About Us</a>
+  </nav>
   <h1>Update Company Info</h1>
-<!-- History Section -->
-<div id="historySection">
+  <!-- History Section -->
+  <div id="historySection">
     <h2>History</h2>
-   <!-- Language Selector Buttons -->
-   <button id="showEnglishHistoryInputs">English</button>
-   <button id="showGreekHistoryInputs">Greek</button>
-   
-   <!-- English Input Fields -->
-   <div id="englishInputs">
-    <input type="text" id="historyTitleInputEn" placeholder="Title">
-    <textarea id="historyDescriptionInputEn" placeholder="Description"></textarea>
-  </div>
+    <!-- Language Selector Buttons -->
+    <button id="showEnglishHistoryInputs">English</button>
+    <button id="showGreekHistoryInputs">Greek</button>
+
+    <!-- English Input Fields -->
+    <div id="englishInputs">
+      <input type="text" id="historyTitleInputEn" placeholder="Title">
+      <textarea id="historyDescriptionInputEn" placeholder="Description"></textarea>
+    </div>
     <!-- Greek Input Fields -->
-<div id="greekInputs" style="display: none;">
-    <input type="text" id="historyTitleInput" placeholder="Title">
-    <textarea id="historyDescriptionInput" placeholder="Description"></textarea>
-  </div>
+    <div id="greekInputs" style="display: none;">
+      <input type="text" id="historyTitleInput" placeholder="Title">
+      <textarea id="historyDescriptionInput" placeholder="Description"></textarea>
+    </div>
     <button id="saveHistoryButton">Save History</button>
-     <!-- Dropdown for selecting a history image -->
- <select id="historyImageDropdown">
-  <!-- Options will be populated dynamically -->
-</select>
+    <!-- Dropdown for selecting a history image -->
+    <select id="historyImageDropdown">
+      <!-- Options will be populated dynamically -->
+    </select>
 
-<!-- Button to update the current history image -->
-<button id="updateHistoryImage">Update History Image</button>
+    <!-- Button to update the current history image -->
+    <button id="updateHistoryImage">Update History Image</button>
 
-<!-- Button to delete the selected history image -->
-<button id="deleteHistoryImage">Delete Selected History Image</button>
-
-  </div>
-  
-
-<!-- Values Section -->
-<div id="valuesSection">
-  <h2>Values</h2>
-  
-  <!-- Language Selector Buttons -->
-  <button id="showEnglishValuesInputs">English</button>
-  <button id="showGreekValuesInputs">Greek</button>
-  
-  <!-- English Input Fields -->
-<!-- Values Section English Inputs -->
-<div id="valuesEnglishInputs">
-  <input type="text" id="valuesTitleInputEn" placeholder="Title">
-  <textarea id="valuesDescriptionInputEn" placeholder="Description"></textarea>
-</div>
-<!-- Values Section Greek Inputs -->
-<div id="valuesGreekInputs" style="display: none;">
-  <input type="text" id="valuesTitleInput" placeholder="Title">
-  <textarea id="valuesDescriptionInput" placeholder="Description"></textarea>
-</div>
-
-  <button id="saveValuesButton">Save Values</button>
-     <!-- Dropdown for selecting a history image -->
- <select id="valuesImageDropdown">
-  <!-- Options will be populated dynamically -->
-</select>
-
-<!-- Button to update the current history image -->
-<button id="updateValuesImage">Update Values Image</button>
-
-<!-- Button to delete the selected history image -->
-<button id="deleteValuesImage">Delete Selected Values Image</button>
-
+    <!-- Button to delete the selected history image -->
+    <button id="deleteHistoryImage">Delete Selected History Image</button>
 
   </div>
-  
- <!-- Vision Section -->
-<div id="visionSection">
-  <h2>Vision</h2>
-  
-  <!-- Language Selector Buttons -->
-  <button id="showEnglishVisionInputs">English</button>
-  <button id="showGreekVisionInputs">Greek</button>
-  
- <!-- Vision Section English Inputs -->
-<div id="visionEnglishInputs">
-  <input type="text" id="visionTitleInputEn" placeholder="Title">
-  <textarea id="visionDescriptionInputEn" placeholder="Description">EEE</textarea>
-</div>
-<!-- Vision Section Greek Inputs -->
-<div id="visionGreekInputs" style="display: none;">
-  <input type="text" id="visionTitleInput" placeholder="Title">
-  <textarea id="visionDescriptionInput" placeholder="Description"></textarea>
-</div>
 
-  <button id="saveVisionButton">Save Vision</button>
-     <!-- Dropdown for selecting a history image -->
- <select id="visionImageDropdown">
-  <!-- Options will be populated dynamically -->
-</select>
 
-<!-- Button to update the current history image -->
-<button id="updateVisionImage">Update Vision Image</button>
+  <!-- Values Section -->
+  <div id="valuesSection">
+    <h2>Values</h2>
 
-<!-- Button to delete the selected history image -->
-<button id="deleteVisionImage">Delete Selected Vision Image</button>
+    <!-- Language Selector Buttons -->
+    <button id="showEnglishValuesInputs">English</button>
+    <button id="showGreekValuesInputs">Greek</button>
+
+    <!-- English Input Fields -->
+    <!-- Values Section English Inputs -->
+    <div id="valuesEnglishInputs">
+      <input type="text" id="valuesTitleInputEn" placeholder="Title">
+      <textarea id="valuesDescriptionInputEn" placeholder="Description"></textarea>
+    </div>
+    <!-- Values Section Greek Inputs -->
+    <div id="valuesGreekInputs" style="display: none;">
+      <input type="text" id="valuesTitleInput" placeholder="Title">
+      <textarea id="valuesDescriptionInput" placeholder="Description"></textarea>
+    </div>
+
+    <button id="saveValuesButton">Save Values</button>
+    <!-- Dropdown for selecting a history image -->
+    <select id="valuesImageDropdown">
+      <!-- Options will be populated dynamically -->
+    </select>
+
+    <!-- Button to update the current history image -->
+    <button id="updateValuesImage">Update Values Image</button>
+
+    <!-- Button to delete the selected history image -->
+    <button id="deleteValuesImage">Delete Selected Values Image</button>
+
 
   </div>
-  
-    <form id="historyImageForm" action="/api/upload-history-image" method="POST" enctype="multipart/form-data">
+
+  <!-- Vision Section -->
+  <div id="visionSection">
+    <h2>Vision</h2>
+
+    <!-- Language Selector Buttons -->
+    <button id="showEnglishVisionInputs">English</button>
+    <button id="showGreekVisionInputs">Greek</button>
+
+    <!-- Vision Section English Inputs -->
+    <div id="visionEnglishInputs">
+      <input type="text" id="visionTitleInputEn" placeholder="Title">
+      <textarea id="visionDescriptionInputEn" placeholder="Description">EEE</textarea>
+    </div>
+    <!-- Vision Section Greek Inputs -->
+    <div id="visionGreekInputs" style="display: none;">
+      <input type="text" id="visionTitleInput" placeholder="Title">
+      <textarea id="visionDescriptionInput" placeholder="Description"></textarea>
+    </div>
+
+    <button id="saveVisionButton">Save Vision</button>
+    <!-- Dropdown for selecting a history image -->
+    <select id="visionImageDropdown">
+      <!-- Options will be populated dynamically -->
+    </select>
+
+    <!-- Button to update the current history image -->
+    <button id="updateVisionImage">Update Vision Image</button>
+
+    <!-- Button to delete the selected history image -->
+    <button id="deleteVisionImage">Delete Selected Vision Image</button>
+
+  </div>
+
+  <form id="historyImageForm" action="/api/upload-history-image" method="POST" enctype="multipart/form-data">
     <input type="file" name="historyImage" accept="image/*">
     <button type="submit">Upload History Image</button>
   </form>
@@ -136,5 +138,6 @@
 
 
 </body>
-<script src="../js/company-admin.js" ></script>
+<script src="../js/company-admin.js"></script>
+
 </html>

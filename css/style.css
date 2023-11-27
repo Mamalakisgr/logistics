@@ -1,5 +1,9 @@
 /* Reset some default styles for better consistency */
-body, h1, h2, h3, p {
+body,
+h1,
+h2,
+h3,
+p {
   margin: 0;
   padding: 0;
 }
@@ -7,7 +11,7 @@ body, h1, h2, h3, p {
 /* Apply a modern font for a sleek look */
 /* Apply base styles */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: white;
   line-height: 1.6;
 }
@@ -31,7 +35,7 @@ header {
   z-index: 1000;
 }
 .region-two {
-  position: relative;  /* Ensure that it's relative so children can be positioned absolutely relative to it */
+  position: relative; /* Ensure that it's relative so children can be positioned absolutely relative to it */
   /* Other styles for region-two, like height, width, etc. */
 }
 /* Styles for the image container within Region One */
@@ -53,20 +57,18 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: nowrap;  /* Disable wrapping */
+  flex-wrap: nowrap; /* Disable wrapping */
   padding: 10px;
 }
 /* Slideshow container */
 .slideshow-container {
-
   position: relative;
   margin: auto;
-  overflow: hidden;  /* Hide anything that goes out of the container */
+  overflow: hidden; /* Hide anything that goes out of the container */
 }
 
 /* Banner list to match the slideshow container */
 .banner-list {
-
   position: relative;
   margin: auto;
   overflow: hidden; /* Hide anything that goes out of the container */
@@ -78,17 +80,17 @@ header {
   height: 650px;
   position: relative;
   transition: opacity 1s ease-in-out; /* Transition effect */
-  
 }
 
-.mySlides img{
-  width: 100%;       /* This will make the image span the full width of its container */
-  height: 100%;      /* This will make the image span the full height of its container */
-  object-fit:cover;  /* This will ensure the image's aspect ratio is maintained */
+.mySlides img {
+  width: 100%; /* This will make the image span the full width of its container */
+  height: 100%; /* This will make the image span the full height of its container */
+  object-fit: cover; /* This will ensure the image's aspect ratio is maintained */
 }
 
 /* Navigational buttons */
-.prev, .next {
+.prev,
+.next {
   cursor: pointer;
   position: absolute;
   top: 50%;
@@ -101,7 +103,7 @@ header {
   transition: 0.6s ease;
   border-radius: 0 3px 3px 0;
   user-select: none;
-  z-index: 125;  /* Show on top */
+  z-index: 125; /* Show on top */
 }
 
 .prev {
@@ -114,7 +116,8 @@ header {
   border-radius: 3px 0 0 3px;
 }
 
-.prev:hover, .next:hover {
+.prev:hover,
+.next:hover {
   border: 1px solid #131313; /* Adding the border here */
 }
 
@@ -158,7 +161,6 @@ header {
   cursor: pointer; /* Add cursor pointer for hover effect */
   transition: background-color 0.3s; /* Add transition for hover effect */
   color: white; /* Make the text white */
-
 }
 
 .category-name-Home a,
@@ -168,34 +170,27 @@ header {
 .category-name-Contact a {
   color: white; /* Make the text white */
   text-decoration: none; /* Remove the underline */
-
 }
 .category-name-Home a:hover {
   color: black; /* Make the text white */
   text-decoration: none; /* Remove the underline */
-
 }
 .category-name-Company a:hover {
   color: black; /* Make the text white */
   text-decoration: none; /* Remove the underline */
-
 }
 .category-name-Services a:hover {
   color: black; /* Make the text white */
   text-decoration: none; /* Remove the underline */
-
 }
 .category-name-News a:hover {
   color: black; /* Make the text white */
   text-decoration: none; /* Remove the underline */
-
 }
 .category-name-Contact a:hover {
   color: black; /* Make the text white */
   text-decoration: none; /* Remove the underline */
-
 }
-
 
 .category-name-Home:hover {
   background-color: #ccc; /* Change background color on hover */
@@ -218,7 +213,6 @@ header {
 }
 /* SEO Container styles */
 .seo-container {
-
   padding: 20px;
   color: white; /* Set text color to white */
   text-align: center;
@@ -227,41 +221,39 @@ header {
 .title-container {
   margin-bottom: 10px;
   background-color: white;
-  display: flex;          /* Enable flexbox */
+  display: flex; /* Enable flexbox */
   justify-content: center; /* Center horizontally */
-  align-items: center;     /* Center vertically */
+  align-items: center; /* Center vertically */
   z-index: 1;
 }
 
 .title-container h1 {
   font-size: 24px;
   color: rgb(0, 0, 0);
-  text-align: center;      /* Center text horizontally */
-  margin: 0;               /* Remove default margins */
+  text-align: center; /* Center text horizontally */
+  margin: 0; /* Remove default margins */
 }
 
 .description-container {
-  display: flex;           
-  flex-direction: column;  /* Stack child elements vertically */
-  justify-content: center; 
+  display: flex;
+  flex-direction: column; /* Stack child elements vertically */
+  justify-content: center;
   align-items: center;
-       
 }
 
 .description-container p {
-  margin-bottom: 1rem;  /* Adds space below each paragraph */
-  line-height: 1.6;    /* Increases the space between lines of text */
+  margin-bottom: 1rem; /* Adds space below each paragraph */
+  line-height: 1.6; /* Increases the space between lines of text */
   color: black;
-
 }
 
-.description{
+.description {
   color: black;
 }
 
 /* Logo */
 .logo {
-  margin-right: 10px;  /* Space between the logo and the text */
+  margin-right: 10px; /* Space between the logo and the text */
 
   padding: 10px;
 }
@@ -279,19 +271,16 @@ header {
 .logo img {
   width: 50px;
   height: auto;
- 
 }
 
-#side-logo-image{
+#side-logo-image {
   width: 50px;
   height: auto;
-
 }
 .language-selector {
   position: relative;
   display: inline-block;
-  padding-left: 20px;  /* Spacing from previous element */
-
+  padding-left: 20px; /* Spacing from previous element */
 }
 
 .language-selector a {
@@ -303,15 +292,15 @@ header {
 }
 
 .language-selector #selected-lang:hover {
-  background-color: #333;  /* Change color on hover */
+  background-color: #333; /* Change color on hover */
 }
 
 .language-dropdown {
   display: none;
   position: absolute;
   background-color: #2d2d2d;
-  min-width: 60px;  /* Set width of the dropdown */
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  min-width: 60px; /* Set width of the dropdown */
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
@@ -329,7 +318,7 @@ header {
   width: 100%; /* Full width of its parent */
   height: 400px; /* Set the height */
   position: relative; /* Relative positioning for background image */
-  background: url('/api/get-selected-seo-image') center/cover; /* shorthand for setting bg image */
+  background: url("/api/get-selected-seo-image") center/cover; /* shorthand for setting bg image */
 }
 
 .region-two .image-wrapper {
@@ -340,11 +329,10 @@ header {
 
 .region-two .seo-container {
   position: absolute; /* Allow for precise positioning */
-  bottom: 0px;  /* Reduced from 50px to 30px */
-  left:65px; /* Align to the LEFT instead of the right */
+  bottom: 0px; /* Reduced from 50px to 30px */
+  left: 65px; /* Align to the LEFT instead of the right */
   padding: 20px;
   /* height: 50px; */
- 
 }
 
 .description-container {
@@ -365,15 +353,18 @@ header {
   word-spacing: 0.1em; /* Adjusts the space between words */
   line-height: 1.8; /* Adjusts the height of each line of text */
   max-width: none; /* Ensures no max-width is restricting the element */
-  background-color: rgba(0, 0, 0, 0.6); /* Add a dark semi-transparent background for the text */
-
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.6
+  ); /* Add a dark semi-transparent background for the text */
 }
-
 
 /* Counter style for emphasis */
 .region-two #counter {
   font-size: 2.2rem;
-  color: #FFD700;
+  color: #ffd700;
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
 }
 
@@ -382,7 +373,7 @@ header {
   background-color: white;
   padding: 20px;
 }
-.WidgetTitle__Header-sc-ruy1gu-2{
+.WidgetTitle__Header-sc-ruy1gu-2 {
   display: none;
 }
 .WidgetTitle__Header-sc-ruy1gu-2 a[href*="elfsight.com/google-reviews-widget"] {
@@ -431,38 +422,38 @@ header {
 }
 
 .dropdown-header {
-    cursor: pointer;
-    display: block;
-    text-decoration: none;
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
 }
 
 .company-dropdown {
-    display: none; /* Hidden by default */
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 110px;
-    z-index: 1;
-    border-radius: 5px;
-    text-align: center;
+  display: none; /* Hidden by default */
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 110px;
+  z-index: 1;
+  border-radius: 5px;
+  text-align: center;
 }
 
 .company-dropdown a {
-    padding: 8px 16px;
-    display: block;
-    text-decoration: none;
-    color: black;
-    border-radius: 5px;
+  padding: 8px 16px;
+  display: block;
+  text-decoration: none;
+  color: black;
+  border-radius: 5px;
 }
 
 .company-dropdown a:hover {
-    background-color: #f1f1f1;
+  background-color: #f1f1f1;
 }
 @keyframes fadeInEffect {
   from {
-      opacity: 0;
+    opacity: 0;
   }
   to {
-      opacity: 1;
+    opacity: 1;
   }
 }
 /* When the slide becomes active, change the properties to make it visible and move it to center */
@@ -487,8 +478,6 @@ header {
   display: flex;
   align-items: center;
 }
-
-
 
 /* Style for phone number */
 .phone-number {
@@ -536,31 +525,28 @@ header {
   width: 100%;
   height: 100%;
 }
-.image-container img:hover{
+.image-container img:hover {
   transform: scale(1.075);
-        transition: 0.3s ease-in;
-        cursor: pointer;
+  transition: 0.3s ease-in;
+  cursor: pointer;
 }
 /* SEO container within Region One and Region Two */
 .seo-container {
   flex: 1;
   /* width: 500px; /* Static width */
-  /* height: 500px; Static height */ 
+  /* height: 500px; Static height */
   padding: 20px;
   color: white; /* Set text color to white */
- 
+
   text-align: center;
   right: 10px;
- 
-
-
 }
-.region-one .seo-container{
+.region-one .seo-container {
   border: solid black;
   border-radius: 8px;
 }
 /*Services Section*/
-.services{
+.services {
   background: white;
   display: flex;
   flex-direction: column;
@@ -573,7 +559,7 @@ header {
   background-repeat: no-repeat; /* Do not repeat the background image */
 }
 
-.services h1{
+.services h1 {
   background-color: black;
   background-size: 100%;
   -webkit-background-clip: text;
@@ -584,13 +570,13 @@ header {
   font-size: 2.5rem;
 }
 
-.services__wrapper{
+.services__wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr;
 }
 
-.services__card{
+.services__card {
   margin: 10px;
   height: 425px;
   width: 300px;
@@ -599,74 +585,68 @@ header {
   flex-direction: column;
   justify-content: center;
   color: #000000;
-  background: white ;
+  background: white;
   transition: 0.3s ease-in;
   border: 6px solid #131313; /* Adding the border here */
 }
 
 .services__card:nth-child(2) {
-  background: white ;
+  background: white;
   border: 6px solid #131313; /* Adding the border here */
-
 }
 
-.services__card:nth-child(3){
-  background: white ;
+.services__card:nth-child(3) {
+  background: white;
   border: 6px solid #131313; /* Adding the border here */
+}
+.services__card:nth-child(4) {
+  background: white;
+  border: 6px solid #131313; /* Adding the border here */
+}
+.services__card h2 {
+  text-align: center;
+}
+.services__card p {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 20px;
+}
 
-    }
-    .services__card:nth-child(4){
-      background: white ;
-      border: 6px solid #131313; /* Adding the border here */
+.services__btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
 
+.services__card button {
+  color: black;
+  padding: 14px 24px;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  background: white;
+  font-size: 1rem;
 
-    }
-    .services__card h2{
-        text-align: center;
-    }
-    .services__card p{
-        text-align: center;
-        margin-top: 24px;
-        font-size: 20px;
-    }
+  border: 2px solid #131313; /* Adding the border here */
+}
 
-    .services__btn{
-        display: flex;
-        justify-content: center;
-        margin-top: 16px;
-    }
+.services__card button:hover {
+  cursor: pointer;
+  border: 6px solid #131313; /* Adding the border here */
+  transition: 0.1s ease-in;
+}
 
-    .services__card button{
-        color: black;
-        padding: 14px 24px;
-        border: none;
-        outline: none;
-        border-radius: 4px;
-        background: white;
-        font-size: 1rem;
-        
-        border: 2px solid #131313; /* Adding the border here */
-    }
+.services__card:hover {
+  transform: scale(1.075);
+  transition: 0.3s ease-in;
+  cursor: pointer;
+}
 
-    .services__card button:hover {
-        cursor: pointer;
-        border: 6px solid #131313; /* Adding the border here */
-        transition: 0.1s ease-in;
-    }
-
-    .services__card:hover {
-        transform: scale(1.075);
-        transition: 0.3s ease-in;
-        cursor: pointer;
-    }
-
-    @media screen and (max-width: 1300px){
-        .services__wrapper{
-            grid-template-columns: 1fr;
-        }
-    }
-
-
+@media screen and (max-width: 1300px) {
+  .services__wrapper {
+    grid-template-columns: 1fr;
+  }
+}
 
 /* Style for the SEO button */
 /* Style for the SEO button */
@@ -700,27 +680,25 @@ header {
   text-decoration: none;
   border: 6px solid #131313; /* Adding the border here */
   transition: 0.1s ease-in;
-  
 }
 @media screen and (max-width: 768px) {
   .logo {
     display: none;
-}
+  }
   #categories-list {
-      display: none;
+    display: none;
   }
   .hamburger-menu {
-      display: block;
-      z-index: 100;
-      color: white;
+    display: block;
+    z-index: 100;
+    color: white;
   }
   body {
     overflow-x: hidden;
-}
+  }
   .main-content {
     padding: 10px; /* Reduced padding for tablet screens */
     height: auto; /* Example: change to auto or a specific value */
-
   }
   .mySlides {
     height: 400px; /* Adjusted height for tablets */
@@ -729,27 +707,27 @@ header {
   .container {
     padding: 0px;
   }
-#logo-text-image{
-  display: none;
-}
+  #logo-text-image {
+    display: none;
+  }
   /* Responsive styles for header */
   header {
     flex-direction: column;
     align-items: flex-start;
     padding: 0px;
   }
-/* Dynamic categories */
-#categories-list {
-  flex-direction: column;
-  align-items: flex-start;
-}
-.region-one-image{
-  width: 80%;  /* Adjust to be responsive */
-  margin: 0;
-}
+  /* Dynamic categories */
+  #categories-list {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .region-one-image {
+    width: 80%; /* Adjust to be responsive */
+    margin: 0;
+  }
   /* Adjust the styles for slides */
   .mySlides img {
-    width: 80%;  /* Adjust to be responsive */
+    width: 80%; /* Adjust to be responsive */
     height: auto;
   }
   /* Responsive styles for Region One and Region Two */
@@ -761,237 +739,229 @@ header {
   .seo-container {
     max-width: 100%;
   }
- /* Category names */
- .category-name-Home{
-  width: 80%; /* full width */
-  text-align: center; /* center the text */
-}
- .category-name-Company{
-  width: 80%; /* full width */
-  text-align: center; /* center the text */
-}
- .category-name-Services{
-  width: 80%; /* full width */
-  text-align: center; /* center the text */
-}
- .category-name-News{
-  width: 80%; /* full width */
-  text-align: center; /* center the text */
-}
- .category-name-Contact {
-   width: 80%; /* full width */
-   text-align: center; /* center the text */
- }
+  /* Category names */
+  .category-name-Home {
+    width: 80%; /* full width */
+    text-align: center; /* center the text */
+  }
+  .category-name-Company {
+    width: 80%; /* full width */
+    text-align: center; /* center the text */
+  }
+  .category-name-Services {
+    width: 80%; /* full width */
+    text-align: center; /* center the text */
+  }
+  .category-name-News {
+    width: 80%; /* full width */
+    text-align: center; /* center the text */
+  }
+  .category-name-Contact {
+    width: 80%; /* full width */
+    text-align: center; /* center the text */
+  }
 
- .region-container {
-  flex-direction: column;
-}
+  .region-container {
+    flex-direction: column;
+  }
 
-.region-container img {
-  width: 80%;
-  margin-bottom: 15px;
-} /* Adjust the SEO and Image containers within Region One and Region Two */
-.flex-container {
-  flex-direction: column;
-}
+  .region-container img {
+    width: 80%;
+    margin-bottom: 15px;
+  } /* Adjust the SEO and Image containers within Region One and Region Two */
+  .flex-container {
+    flex-direction: column;
+  }
 
-
-.description-container {
-  padding: 10px; /* Add some padding for better spacing on smaller screens */
-  font-size: 14px; /* Reduce font size if necessary */
-}
-
+  .description-container {
+    padding: 10px; /* Add some padding for better spacing on smaller screens */
+    font-size: 14px; /* Reduce font size if necessary */
+  }
 } /*END OPF MEDIA SCREEN*
 
       /*Footer*/
-      .footer__container{
-        background-color: #131313;
-        padding: 5rem 0;
-        display:  flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        }
-       #footer__logo{
-       color: #fff;
-       display: flex;
-       align-items: center;
-       cursor: pointer;
-       text-decoration: none;
-       font-size: 2rem;
-       }
+.footer__container {
+  background-color: #131313;
+  padding: 5rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#footer__logo {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 2rem;
+}
 
-       .footer__link{
-           width: 100%;
-           max-width: 1000px;
-           display: flex;
-           justify-content: center;
-       }
+.footer__link {
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  justify-content: center;
+}
 
-       .footer__link--wrapper{
-           display: flex;
-       }
+.footer__link--wrapper {
+  display: flex;
+}
 
-       .footer__link--items{
-           display: flex;
-           flex-direction: column;
-           align-items: flex-start;
-           margin:  16px;
-           text-align: left;
-           width: 160px;
-           box-sizing: border-box;
-       }
+.footer__link--items {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 16px;
+  text-align: left;
+  width: 160px;
+  box-sizing: border-box;
+}
 
-       .footer__link--items h2{
-           margin-bottom: 16px;
-           color: #fff;
-       }
+.footer__link--items h2 {
+  margin-bottom: 16px;
+  color: #fff;
+}
 
-       .footer__link--items a{
-           color: #fff;
-           text-decoration: none;
-           margin-bottom: 0.5rem;
-       }
+.footer__link--items a {
+  color: #fff;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+}
 
-       .footer__link--items a:hover {
-           color: #e9e9e9;
-           transition: 0.3 ease-out;
-       }
+.footer__link--items a:hover {
+  color: #e9e9e9;
+  transition: 0.3 ease-out;
+}
 
-       .footer__image-container {
-        position: absolute;
-        right: 0;
-        top: 0;
-        bottom: 0;
-      }
-    
-      .footer__image {
-        max-height: 100%;
-      }
-    
-       .social__icon--link {
-           color: #fff;
-           font-size: 24px;
-       }
+.footer__image-container {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
 
-       .social__media {
-           max-width: 1000px;
-           width: 100%;
-       }
+.footer__image {
+  max-height: 100%;
+}
 
-       .social__media--wrap{
-           display: flex;
-           justify-content: space-between;
-           align-items: center;
-           width: 90%;
-           max-width: 1000px;
-           margin: 40px auto 0 auto;
-       }
+.social__icon--link {
+  color: #fff;
+  font-size: 24px;
+}
 
-       .social__icons {
-           display: flex;
-           justify-content: space-between;
-           align-items: center;
-           width: 100px;
-       }
+.social__media {
+  max-width: 1000px;
+  width: 100%;
+}
 
-       .website__rights {
-           color: #fff
-       }
+.social__media--wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  max-width: 1000px;
+  margin: 40px auto 0 auto;
+}
 
-       @media screen and (max-width: 820px){
-           .footer__link{
-               padding-top: 2rem;
-           }
+.social__icons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100px;
+}
 
-           #footer__logo {
-               margin-bottom: 2rem;
-           }
+.website__rights {
+  color: #fff;
+}
 
-           .website__rights{
-               margin-bottom: 2rem;
-           }
-           .footer__link--wrapper{
-               flex-direction: column;
-           }
-           .social__media--wrap{
-               flex-direction: column;
-           }
-          
-          }
+@media screen and (max-width: 820px) {
+  .footer__link {
+    padding-top: 2rem;
+  }
 
-          @media screen and (max-width: 480px) {
-              .footer__link--items{
-                  margin: 0;
-                  padding: 10px;
-                  width: 100%;
-              }
-              .description-container {
-                padding: 5px; /* Reduce padding for mobile screens */
-                font-size: 12px; /* Further reduce font size for mobile devices */
-              }
-          }
-          
+  #footer__logo {
+    margin-bottom: 2rem;
+  }
 
+  .website__rights {
+    margin-bottom: 2rem;
+  }
+  .footer__link--wrapper {
+    flex-direction: column;
+  }
+  .social__media--wrap {
+    flex-direction: column;
+  }
+}
 
-          
-        .contact-form-section h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: white;
-        }
-        
-        .input-group {
-            margin-bottom: 20px;
-        }
-        
-        .input-group label {
-          color: white;
+@media screen and (max-width: 480px) {
+  .footer__link--items {
+    margin: 0;
+    padding: 10px;
+    width: 100%;
+  }
+  .description-container {
+    padding: 5px; /* Reduce padding for mobile screens */
+    font-size: 12px; /* Further reduce font size for mobile devices */
+  }
+}
 
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
-        
-        .input-group input,
-        .input-group textarea {
-            width: 80%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 16px;
-            transition: border-color 0.3s; /* smooth transition */
-        }
-        
-        .input-group input:focus,
-        .input-group textarea:focus {
-            border-color: #007BFF; /* change this to your theme color if required */
-            outline: none;
-        }
-        
-        .input-group textarea {
-            resize: vertical; /* allow vertical resizing only */
-        }
-        
-        .input-group button {
-            padding: 10px 20px;
-            background-color: white; /* change this to your theme color */
-            color: black;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s; /* smooth transition */
-            border: 2px solid black; /* Adding the border here */
-        }
-        
-        .input-group button:hover {
-            transition: background-color 0.3s; /* smooth transition */
-            border: 4px solid black; /* Adding the border here */
-        }
+.contact-form-section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: white;
+}
 
+.input-group {
+  margin-bottom: 20px;
+}
 
+.input-group label {
+  color: white;
 
-        /* Hamburger Menu Styling */
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.input-group input,
+.input-group textarea {
+  width: 80%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.3s; /* smooth transition */
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+  border-color: #007bff; /* change this to your theme color if required */
+  outline: none;
+}
+
+.input-group textarea {
+  resize: vertical; /* allow vertical resizing only */
+}
+
+.input-group button {
+  padding: 10px 20px;
+  background-color: white; /* change this to your theme color */
+  color: black;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s; /* smooth transition */
+  border: 2px solid black; /* Adding the border here */
+}
+
+.input-group button:hover {
+  transition: background-color 0.3s; /* smooth transition */
+  border: 4px solid black; /* Adding the border here */
+}
+
+/* Hamburger Menu Styling */
 .hamburger-menu {
   display: none;
   cursor: pointer;
@@ -1038,43 +1008,43 @@ header {
 @media screen and (max-width: 768px) {
   .logo {
     display: none;
-}
+  }
   #categories-list {
-      display: none;
+    display: none;
   }
   .hamburger-menu {
-      display: block;
-      z-index: 100;
-      color: white;
+    display: block;
+    z-index: 100;
+    color: white;
   }
-  .region-one .image-container{
+  .region-one .image-container {
     margin: 0;
     padding: 0;
   }
-  .image-container, .seo-container{
+  .image-container,
+  .seo-container {
     margin: 0;
     padding: 0;
   }
-  .region-one-image{
-  margin: 0;
-  padding: 0;
-  } 
+  .region-one-image {
+    margin: 0;
+    padding: 0;
+  }
 }
 
 /* Media Query for Mobile screens */
 @media screen and (max-width: 425px) {
-  body{
-        overflow-x: hidden;
-        padding: 0 0;
-        max-width: 100%;
-
+  body {
+    overflow-x: hidden;
+    padding: 0 0;
+    max-width: 100%;
   }
-  .main-content{
+  .main-content {
     padding: 0;
     margin: 0;
   }
-   /* Adjust header layout */
-   header {
+  /* Adjust header layout */
+  header {
     flex-direction: column;
     align-items: flex-start;
     padding: 0px;
@@ -1083,35 +1053,34 @@ header {
   .mySlides {
     height: 250px; /* Adjusted height for mobile screens */
     width: 100%;
-
   }
   /* Adjust slideshow and banner list dimensions */
-  .slideshow-container, .banner-list {
+  .slideshow-container,
+  .banner-list {
     max-width: 100%;
-    
   }
-  .top-bar{
+  .top-bar {
     display: none;
   }
-  
-  .top-bar-inner{
+
+  .top-bar-inner {
     padding: 0;
     margin: 0;
   }
   /* Adjust the styles for slides */
   .mySlides img {
-    width: 100%;  /* Adjust to be responsive */
+    width: 100%; /* Adjust to be responsive */
     height: auto;
   }
-  #dynamicDescription{
+  #dynamicDescription {
     margin: 0;
     padding: 0;
   }
   .close-btn {
-    top: 5px;        /* Adjusted position to be closer to the top */
-    right: 5px;      /* Adjusted position to be closer to the side */
+    top: 5px; /* Adjusted position to be closer to the top */
+    right: 5px; /* Adjusted position to be closer to the side */
     font-size: 24px; /* Slightly reduced size */
-    padding: 10px;   /* Added padding to increase touch target */
+    padding: 10px; /* Added padding to increase touch target */
     z-index: 10;
     color: white;
   }
@@ -1119,11 +1088,11 @@ header {
   .region-container {
     flex-direction: column;
   }
-  .contact-form-section{
+  .contact-form-section {
     margin: 0;
     padding: 0;
   }
-  .region-one   .seo-container h1 {
+  .region-one .seo-container h1 {
     font-size: 20px; /* Adjust font size for smaller screens */
     line-height: 1.2; /* Adjust line height for better readability */
     word-wrap: break-word; /* Ensure long words don't overflow */
@@ -1140,31 +1109,32 @@ header {
     width: 100%;
     margin-bottom: 15px;
   }
-  .image-container, .seo-container{
+  .image-container,
+  .seo-container {
     margin: 0;
     padding: 0;
   }
-.region-two .seo-container{
-  margin: 0;
-  padding: 0; 
-  left: 0;
-  top: 0;
-}
-.region-two .image-container{
-  margin: 0;
-  padding: 0; 
-}
-.top-bar-right .social__icons{
-  display: none;
-}
-.seo-button.button.fifth{
-  align-items: center;
-}
-.region-two{
-
-}
+  .region-two .seo-container {
+    margin: 0;
+    padding: 0;
+    left: 0;
+    top: 0;
+  }
+  .region-two .image-container {
+    margin: 0;
+    padding: 0;
+  }
+  .top-bar-right .social__icons {
+    display: none;
+  }
+  .seo-button.button.fifth {
+    align-items: center;
+  }
+  .region-two {
+  }
   /* Adjust the SEO and Image containers within Region One and Region Two */
-  .image-container, .seo-container {
+  .image-container,
+  .seo-container {
     width: 90%;
     margin: 0;
     padding: 0;
@@ -1177,7 +1147,6 @@ header {
   }
 
   /* Adjust the contact form styling */
-  
 
   /* Adjust footer links layout */
   .footer__link--items {
@@ -1186,7 +1155,7 @@ header {
 
   /* Adjust the service cards layout for mobile */
   .services__wrapper {
-    grid-template-columns: 1fr;  /* Single column for mobile */
+    grid-template-columns: 1fr; /* Single column for mobile */
   }
 
   /* Adjust the side menu width */
@@ -1199,7 +1168,7 @@ header {
     font-size: 14px;
   }
 
-  #footer-contact-form{
+  #footer-contact-form {
     margin: 0;
     padding: 0;
   }
@@ -1207,165 +1176,159 @@ header {
 
 /* Footer Styling */
 .footer__container {
-    background-color: #333;
-    color: #fff;
-    padding: 20px 0;
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
 }
 
 .footer__link {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .footer__link--wrapper {
-    flex: 1;
+  flex: 1;
 }
 
 .footer__link--items {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .footer__link--items h2 {
-    margin-bottom: 10px;
-    font-weight: bold;
+  margin-bottom: 10px;
+  font-weight: bold;
 }
 
 .footer__link--items a {
-    display: block;
-    margin: 5px 0;
-    color: #fff;
-    text-decoration: none;
+  display: block;
+  margin: 5px 0;
+  color: #fff;
+  text-decoration: none;
 }
 
 .footer__link--items a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .social__media {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .social__media--wrap {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .website__rights {
-    margin-right: 20px;
+  margin-right: 20px;
 }
 
 .social__icons a {
-    margin-left: 10px;
-    color: #fff;
-    text-decoration: none;
+  margin-left: 10px;
+  color: #fff;
+  text-decoration: none;
 }
 
 .social__icons a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .footer__link {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);  /* Light border with some transparency */
-    margin-bottom: 20px;
-    padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Light border with some transparency */
+  margin-bottom: 20px;
+  padding-bottom: 20px;
 }
 
 /* Styling for <hr> elements in the footer */
 .footer__container hr {
-    border: none;  /* Remove default border */
-    border-top: 1px solid rgba(255, 255, 255, 0.5);  /* Add top border with some transparency */
-    margin: 10px 0;  /* Add some spacing around the <hr> */
-    clear: both;  /* Ensure it doesn't float next to any element */
+  border: none; /* Remove default border */
+  border-top: 1px solid rgba(255, 255, 255, 0.5); /* Add top border with some transparency */
+  margin: 10px 0; /* Add some spacing around the <hr> */
+  clear: both; /* Ensure it doesn't float next to any element */
 }
 
 /* Vertical dividers for sections in the footer */
 .footer__link--wrapper:not(:last-child) {
-    border-right: 2px solid rgba(255, 255, 255, 0.5);  /* Add a vertical border to the right */
-    padding-right: 20px;  /* Add some spacing to the right of the content */
-    margin-right: 20px;  /* Add some spacing to the right of the border */
+  border-right: 2px solid rgba(255, 255, 255, 0.5); /* Add a vertical border to the right */
+  padding-right: 20px; /* Add some spacing to the right of the content */
+  margin-right: 20px; /* Add some spacing to the right of the border */
 }
 
 /* Vertical divider for .footer__link--items */
 .footer__link--wrapper .footer__link--items:not(:last-child) {
-    border-right: 2px solid rgba(255, 255, 255, 0.5);  /* Add a vertical border to the right */
-    padding-right: 20px;  /* Add some spacing to the right of the content */
-    margin-right: 20px;  /* Add some spacing to the right of the border */
+  border-right: 2px solid rgba(255, 255, 255, 0.5); /* Add a vertical border to the right */
+  padding-right: 20px; /* Add some spacing to the right of the content */
+  margin-right: 20px; /* Add some spacing to the right of the border */
 }
 
 /* Styling for the contact form in the footer */
 
-
 /* Style the input fields and text areas */
 .contact-form-section input,
 .contact-form-section textarea {
-    width: 90%;  /* Increase the width to almost full width of the container */
-    padding: 10px;  /* Add more padding for a bigger appearance */
-    font-size: 1rem;  /* Increase font size for readability */
+  width: 90%; /* Increase the width to almost full width of the container */
+  padding: 10px; /* Add more padding for a bigger appearance */
+  font-size: 1rem; /* Increase font size for readability */
 }
 
 /* Style the textarea specifically */
 .contact-form-section textarea {
-    height: 100px;  /* Set a fixed height for the textarea */
+  height: 100px; /* Set a fixed height for the textarea */
 }
 
 /* Further increase the width of the contact form */
 
-
 /* Adjust the vertical line for social media links */
 
-
 .contact-form-section {
-    padding: 15px;
-    background-color: #131313; /* Light grey background for contrast */
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* subtle shadow */
-    max-width: 360px; /* Set a larger maximum width to span the space indicated by the red border */
-    margin: 0 auto; /* center the form if it's not in a flex/grid container */
-    border: 2px solid white; /* Adding the border here */
-    width: 100%;  /* Utilize the full width */
-    flex: 2.5;  /* Increase the space allocated to the contact form */
-    margin-right: 20px;  /* Add some margin to separate it from the vertical divider */
+  padding: 15px;
+  background-color: #131313; /* Light grey background for contrast */
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* subtle shadow */
+  max-width: 360px; /* Set a larger maximum width to span the space indicated by the red border */
+  margin: 0 auto; /* center the form if it's not in a flex/grid container */
+  border: 2px solid white; /* Adding the border here */
+  width: 100%; /* Utilize the full width */
+  flex: 2.5; /* Increase the space allocated to the contact form */
+  margin-right: 20px; /* Add some margin to separate it from the vertical divider */
 }
 
 .footer__link--wrapper:last-child {
-    padding-left: 5px;  /* Further reduce the padding to move the vertical line even closer to the items */
-    margin-left: -10px;  /* Slight negative margin to move the vertical line closer */
+  padding-left: 5px; /* Further reduce the padding to move the vertical line even closer to the items */
+  margin-left: -10px; /* Slight negative margin to move the vertical line closer */
 }
 /* Further increase the width of the .footer__link--wrapper for the contact form */
 .footer__link--wrapper:nth-child(3) {
-  flex: 4;  /* Increase the space allocated to the contact form */
+  flex: 4; /* Increase the space allocated to the contact form */
 }
 
 /* Adjustments for the vertical line between the contact form and the social media links */
 .footer__link--wrapper:nth-child(2) {
-  padding-right: 10px;  /* Adjust the padding to space the content from the border */
-  margin-right: 5px;  /* Adjust the margin to move the vertical line closer */
+  padding-right: 10px; /* Adjust the padding to space the content from the border */
+  margin-right: 5px; /* Adjust the margin to move the vertical line closer */
 }
 
 .footer__link--wrapper:nth-child(2) .footer__link--items {
-  padding-right: 5px;  /* Adjust the padding to move the vertical line even closer */
-  margin-right: 0;  /* Adjust the margin to move the vertical line even closer */
+  padding-right: 5px; /* Adjust the padding to move the vertical line even closer */
+  margin-right: 0; /* Adjust the margin to move the vertical line even closer */
 }
 .red-text {
   color: #ff6666; /* Adjust this color as needed */
 }
-.fa-map-marker-alt{
+.fa-map-marker-alt {
   color: #ff6666; /* Adjust this color as needed */
-  
 }
 
 .logo-container {
   display: flex;
-  align-items: center;  /* Vertically center the logo and text */
+  align-items: center; /* Vertically center the logo and text */
   justify-content: start; /* Layout children (logo and text) from start to end */
-
 }
 /* Position the .logo-text in the center of the header */
-
 
 /* Top Header Styles */
 .top-bar {
@@ -1377,18 +1340,18 @@ header {
 .top-bar-inner {
   display: flex;
   justify-content: space-between; /* Distribute the left and right sections */
-  max-width:80%; /* You can adjust this based on your website's design */
+  max-width: 80%; /* You can adjust this based on your website's design */
   margin: 0.01%; /* Center the inner content */
-  padding:0; /* Add some padding for better appearance */
+  padding: 0; /* Add some padding for better appearance */
 }
 
-.top-bar-left, .top-bar-right {
+.top-bar-left,
+.top-bar-right {
   display: flex;
   align-items: center;
 }
-.top-bar-left{
+.top-bar-left {
   gap: 3px; /* Space between working hours and social icons */
-
 }
 .top-bar-right {
   display: flex; /* Make sure the right side uses flex */
@@ -1396,21 +1359,17 @@ header {
   justify-content: flex-end; /* Push items to the right */
   gap: 20px; /* Space between working hours and social icons */
 }
-.top-bar-left  .phone-icon{
+.top-bar-left .phone-icon {
   color: #131313;
 }
 .top-bar-right .social__icons {
   display: flex; /* Layout the social icons in a row */
   gap: 10px; /* Space between each social icon */
-
-
 }
-.top-bar-right .social__icons .fa-phone{
+.top-bar-right .social__icons .fa-phone {
   color: #131313;
-
 }
 
-  .top-bar-right .social__icons a{
-    color: #131313;
-  }
-
+.top-bar-right .social__icons a {
+  color: #131313;
+}

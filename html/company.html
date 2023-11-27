@@ -1,140 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Company</title>
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="../css/compstyle.css"/>
-    <link rel="icon" href="/images/292435385_399551102196302_8171052786653938864_n.png" type="image/x-icon" />
-    <link rel="stylesheet" type="text/css" href="/css/who.css">
-  </head>
+
+<head>
+  <title>Company</title>
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+    integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="../css/compstyle.css" />
+  <link rel="icon" href="/images/292435385_399551102196302_8171052786653938864_n.png" type="image/x-icon" />
+  <link rel="stylesheet" type="text/css" href="/css/who.css">
+</head>
+
 <body>
-     <!-- Header -->
-     <header>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-         <!-- Add this inside your <header> -->
-          <div class="hamburger-menu" onclick="toggleSideMenu()">
-            <span id="menu-icon">&#9776;</span>
-          </div>
-       <!-- Side Menu -->
-       <div class="side-menu" id="sideMenu">
-        <div class="close-btn" onclick="closeSideMenu()">&times;</div>
-        <a href="/">Αρχική</a>
-        <a href="../html/company.html">Εταιρεία</a>
-        <a href="../html/services.html">Υπηρεσίες</a>
-        <a href="../html/news.html">Ενημέρωση</a>
-        <a href="../html/contactus.html">Επικοινωνία</a>
-        <div class="side-logo-container">
+  <!-- Header -->
+  <header>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Add this inside your <header> -->
+    <div class="hamburger-menu" onclick="toggleSideMenu()">
+      <span id="menu-icon">&#9776;</span>
+    </div>
+    <!-- Side Menu -->
+    <div class="side-menu" id="sideMenu">
+      <div class="close-btn" onclick="closeSideMenu()">&times;</div>
+      <a href="/">Αρχική</a>
+      <a href="../html/company.html">Εταιρεία</a>
+      <a href="../html/services.html">Υπηρεσίες</a>
+      <a href="../html/news.html">Ενημέρωση</a>
+      <a href="../html/contactus.html">Επικοινωνία</a>
+      <div class="side-logo-container">
         <div class="side-logo">
           <a href="/">
             <img id="side-logo-image" src="" alt="Logo">
           </a>
         </div>
       </div>
+    </div>
+    <!-- Logo and Logo Text -->
+    <div class="logo-container">
+      <!-- Logo -->
+      <div class="logo">
+        <img id="logo-image" src="" alt="Logo">
       </div>
-      <!-- Logo and Logo Text -->
-      <div class="logo-container">
-        <!-- Logo -->
-        <div class="logo">
-          <img id="logo-image" src="" alt="Logo">
-        </div>
-  
-        <!-- Logo Text -->
-        <div class="logo-text">
-          <a href="/">LOYALTAX</a>
-        </div>
+
+      <!-- Logo Text -->
+      <div class="logo-text">
+        <a href="/">LOYALTAX</a>
       </div>
-      <!-- Static categories -->
-      <div id="categories-list">
-        <div class="category-name-Home">
-          <a href="/">Αρχική</a>
-        </div>
-        <div class="category-name-Company">
-          <a href="/company">Εταιρεία</a> 
+    </div>
+    <!-- Static categories -->
+    <div id="categories-list">
+      <div class="category-name-Home">
+        <a href="/">Αρχική</a>
       </div>
-        <div class="category-name-Services">
-          <a href="/services">Υπηρεσίες</a>
-        </div>
-        <div class="category-name-News">
-          <a href="/news">Ενημέρωση</a>
-        </div>
-        <div class="category-name-Contact">
-          <a href="/contactus">Επικοινωνία</a>
-        </div>
-        <div class="language-selector">
-          <a href="#" id="selected-lang" data-lang="gr">GR</a>
-          <div class="language-dropdown">
-              <a href="#" data-lang="gr">GR</a>
-              <a href="#" data-lang="en">ENG</a>
-          </div>
+      <div class="category-name-Company">
+        <a href="/company">Εταιρεία</a>
       </div>
-      
-    </header>
-    <section id="history-section" class="history-vision-values-section lazy-load">
-      <div class="section-content">
-        <!-- Text Description Above Images -->
-        <div class="text-content">
-          <h1 id="historyTitle">Placeholder for History Title</h1>
-          <p id="historyDescription">Placeholder for History Description</p>
-        </div>
-        <!-- Images Container -->
-        <div class="images-container">
-          <img id="history-image" alt="History Image" style="display:none;">
-          <img id="values-image" alt="Values Section" class="values-image">
-          <img id="vision-image" src="" alt="Vision Image">
+      <div class="category-name-Services">
+        <a href="/services">Υπηρεσίες</a>
+      </div>
+      <div class="category-name-News">
+        <a href="/news">Ενημέρωση</a>
+      </div>
+      <div class="category-name-Contact">
+        <a href="/contactus">Επικοινωνία</a>
+      </div>
+      <div class="language-selector">
+        <a href="#" id="selected-lang" data-lang="gr">GR</a>
+        <div class="language-dropdown">
+          <a href="#" data-lang="gr">GR</a>
+          <a href="#" data-lang="en">ENG</a>
         </div>
       </div>
-    </section>
-<!-- Values Section -->
-<!-- <section id="values-section" class="history-vision-values-section lazy-load" data-bg-image="/api/values-image">
+
+  </header>
+  <section id="history-section" class="history-vision-values-section lazy-load">
+    <div class="section-content">
+      <!-- Text Description Above Images -->
+      <div class="text-content">
+        <h1 id="historyTitle">Placeholder for History Title</h1>
+        <p id="historyDescription">Placeholder for History Description</p>
+      </div>
+      <!-- Images Container -->
+      <div class="images-container">
+        <img id="history-image" alt="History Image" style="display:none;">
+        <img id="values-image" alt="Values Section" class="values-image">
+        <img id="vision-image" src="" alt="Vision Image">
+      </div>
+    </div>
+  </section>
+  <!-- Values Section -->
+  <!-- <section id="values-section" class="history-vision-values-section lazy-load" data-bg-image="/api/values-image">
   <div class="section-content">
     <div class="text-content">
       <h1 id="valuesTitle">Placeholder for Values Title</h1>
       <p id="valuesDescription">Placeholder for Values Description</p> -->
-    <!-- </div>
+  <!-- </div>
 
   </div>
 </section> -->
-      
-      <!--  Vision Section -->
+
+  <!--  Vision Section -->
   <!-- <section id="vision-section" class="history-vision-values-section lazy-load">
     <div class="section-content">
       <div class="text-content">
          <h1 id="visionTitle">Placeholder for Vision Title</h1>
         <p id="visionDescription">Placeholder for Vision Description</p> -->
-      <!-- </div>
+  <!-- </div>
       <div class="image-container"> -->
-        <!-- The img tag where the vision image will be displayed -->
-     
-   <!--   </div>
+  <!-- The img tag where the vision image will be displayed -->
+
+  <!--   </div>
     </div>
   </section>  -->
-  
+
   <section class="store-section lazy-load">
     <h2>Καταστημα Αγίου Μελετίου</h2>
-    <p>Στη LoyalTax πιστεύουμε στη δύναμη της Ομάδας. Προωθούμε και ευνοούμε καθημερινά τη συνεργασία μεταξύ των μελών της ομάδας, αναπτύσσοντας συνεχώς τις δεξιότητες των στελεχών μας προς αυτή τη κατεύθυνση.</p>
+    <p>Στη LoyalTax πιστεύουμε στη δύναμη της Ομάδας. Προωθούμε και ευνοούμε καθημερινά τη συνεργασία μεταξύ των μελών
+      της ομάδας, αναπτύσσοντας συνεχώς τις δεξιότητες των στελεχών μας προς αυτή τη κατεύθυνση.</p>
 
 
   </section>
-<section class="store-section lazy-load">
+  <section class="store-section lazy-load">
     <h2>Καταστημα Δεληγιάννη</h2>
-    <p>Στη LoyalTax πιστεύουμε στη δύναμη της Ομάδας. Προωθούμε και ευνοούμε καθημερινά τη συνεργασία μεταξύ των μελών της ομάδας, αναπτύσσοντας συνεχώς τις δεξιότητες των στελεχών μας προς αυτή τη κατεύθυνση.</p>
+    <p>Στη LoyalTax πιστεύουμε στη δύναμη της Ομάδας. Προωθούμε και ευνοούμε καθημερινά τη συνεργασία μεταξύ των μελών
+      της ομάδας, αναπτύσσοντας συνεχώς τις δεξιότητες των στελεχών μας προς αυτή τη κατεύθυνση.</p>
 
 
-</section>
-<!-- Team Section -->
-<section class="team-section">
-  <div class="team-content">
+  </section>
+  <!-- Team Section -->
+  <section class="team-section">
+    <div class="team-content">
       <h2>Meet Our Team</h2>
-      <p>Our team comprises of dedicated individuals who work tirelessly to provide the best service to our clients. Each member brings a unique set of skills and expertise, making us a well-rounded and cohesive team.</p>
-  </div>
-  <!-- Image Slider -->
-  <div class="team-slider">
+      <p>Our team comprises of dedicated individuals who work tirelessly to provide the best service to our clients.
+        Each member brings a unique set of skills and expertise, making us a well-rounded and cohesive team.</p>
+    </div>
+    <!-- Image Slider -->
+    <div class="team-slider">
       <div class="slide">
         <img src="/images/logistics2.jpg" alt="Team Member 1">
       </div>
-  </div>
-</section>
+    </div>
+  </section>
   <!-- Footer -->
   <footer>
     <div class="footer-container">
@@ -195,10 +201,10 @@
           </div>
           <div class="footer__link--wrapper">
             <div class="contact-form-section">
-              <h2>Contact Form</h2>
+              <h2>Φόρμα Επικοινωνίας</h2>
               <form id="footer-contact-form" action="/submit" method="post">
                 <div class="input-group">
-                  <label for="name">Name:</label>
+                  <label for="name">Όνομα:</label>
                   <input type="text" id="name" name="name" required>
                 </div>
                 <div class="input-group">
@@ -206,11 +212,11 @@
                   <input type="email" id="email" name="email" required>
                 </div>
                 <div class="input-group">
-                  <label for="message">Message:</label>
+                  <label for="message">Μήνυμα:</label>
                   <textarea id="message" name="message" rows="4" required></textarea>
                 </div>
                 <div class="input-group">
-                  <button type="submit">Submit</button>
+                  <button type="submit">Αποστολή</button>
                 </div>
               </form>
             </div>
@@ -218,9 +224,6 @@
         </div>
         <section class="social__media">
           <div class="social__media--wrap">
-            <div class="footer__logo">
-              <a href="/" id="footer__logo">LoyalTax</a>
-            </div>
             <p class="website__rights"> LoyalTax 2023. All rights reserved</p>
             <div class="social__icons">
               <a href="https://www.facebook.com/loyaltax" target="_blank" class="social__icon--link"><i
@@ -233,6 +236,7 @@
           </div>
   </footer>
 
+
   <script src="../js/vision.js"></script>
   <script src="../js/values.js"></script>
   <script src="../js/about.js"></script>
@@ -242,4 +246,5 @@
 
   <!-- <script src="../js/company.js"></script> -->
 </body>
+
 </html>

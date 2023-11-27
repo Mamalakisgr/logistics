@@ -43,22 +43,26 @@ const fetchBannerBlob = async (bannerId) => {
 // Function to fetch and display the dynamic paragraph
 const fetchAndDisplayDynamicParagraph = async () => {
   try {
-    const response = await fetch('/api/get-description');
+    const response = await fetch("/api/get-description");
     if (response.ok) {
       const data = await response.json();
-      
+
       // Update the description
-      const descriptionParagraph = document.querySelector('#dynamicDescription p');
+      const descriptionParagraph = document.querySelector(
+        "#dynamicDescription p"
+      );
       if (descriptionParagraph) {
         descriptionParagraph.textContent = data.description;
       } else {
-        console.error('Failed to find paragraph element inside #dynamicDescription.');
+        console.error(
+          "Failed to find paragraph element inside #dynamicDescription."
+        );
       }
     } else {
-      console.error('Failed to fetch description');
+      console.error("Failed to fetch description");
     }
   } catch (error) {
-    console.error('Error fetching description:', error);
+    console.error("Error fetching description:", error);
   }
 };
 const populateBanners = async () => {
@@ -92,7 +96,6 @@ const populateBanners = async () => {
     console.error("There was a problem fetching banners:", error);
   }
 };
-
 
 const showSlides = (n) => {
   const slides = document.getElementsByClassName("mySlides");
@@ -140,13 +143,14 @@ const fetchAndSetRegionOneImage = async () => {
 
     if (response.ok) {
       const imageBlob = await response.blob();
-      
-      if (imageBlob.size > 0) {  // Ensure the blob isn't empty
+
+      if (imageBlob.size > 0) {
+        // Ensure the blob isn't empty
         const imageUrl = URL.createObjectURL(imageBlob);
         const imageElement = document.querySelector(".region-one-image");
-        
+
         if (imageElement) {
-          imageElement.src = imageUrl;  // Set the src to immediately load the image
+          imageElement.src = imageUrl; // Set the src to immediately load the image
         } else {
           console.error("Image element not found in the DOM.");
         }
@@ -165,8 +169,8 @@ const fetchAndSetRegionOneImage = async () => {
 
 // This function returns the current selected language.
 const getCurrentLanguage = () => {
-    return document.getElementById("selected-lang").getAttribute("data-lang");
-}
+  return document.getElementById("selected-lang").getAttribute("data-lang");
+};
 // New function to handle fetching and displaying SEO content
 // New function to handle fetching and displaying SEO content
 const fetchAndDisplaySEOContent = async () => {
@@ -179,7 +183,10 @@ const fetchAndDisplaySEOContent = async () => {
     document.querySelector(".title").innerText = data.title;
     document.querySelector(".description p").innerText = data.description;
   } catch (error) {
-    console.error("There was a problem fetching and displaying SEO content:", error);
+    console.error(
+      "There was a problem fetching and displaying SEO content:",
+      error
+    );
   }
 };
 
@@ -200,15 +207,28 @@ const fetchAndDisplaySEOContent = async () => {
 //   }
 // };
 let companyCount = 0; // Global variable to store the company count
-
+function isElementInViewport(ele) {
+  const rect = ele.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <=
+      (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+}
 const fetchAndDisplayCompanyCount = async () => {
   try {
     const response = await fetch("/api/get-company-count");
     if (response.ok) {
       const data = await response.json();
-      companyCount = data.count; // Store the count in the global variable
+      companyCount = data.count;
+
       // Optionally, start the animation immediately if needed
-      // animateValue("counter", 0, companyCount, 2000);
+      // Check if the target element is visible and animate
+      if (isElementInViewport(target)) {
+        animateValue("counter", 0, companyCount, 2000);
+      }
     } else {
       console.error("Failed to fetch company count");
     }
@@ -226,7 +246,9 @@ const fetchAndDisplaySeoImage = async () => {
     })
     .then((imageBlob) => {
       const imageUrl = URL.createObjectURL(imageBlob);
-      const imageWrapper = document.querySelector(".image-wrapper:nth-of-type(2)");
+      const imageWrapper = document.querySelector(
+        ".image-wrapper:nth-of-type(2)"
+      );
       imageWrapper.style.backgroundImage = `url(${imageUrl})`;
     })
     .catch((error) => {
@@ -258,7 +280,7 @@ function animateValue(id, start, end, duration) {
 }
 
 // Trigger the animation
-animateValue("counter", 0, companyCount , 2000); // The last value is the duration of the animation in milliseconds
+animateValue("counter", 0, companyCount, 2000); // The last value is the duration of the animation in milliseconds
 let observerOptions = {
   root: null, // Use the viewport as the root
   rootMargin: "0px",
@@ -269,14 +291,12 @@ let observer = new IntersectionObserver(onIntersection, observerOptions);
 
 function onIntersection(entries) {
   entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      // Start the animation when the element is visible
-      animateValue("counter", 0, companyCount, 2000); // Use companyCount here
-      observer.disconnect(); // Disconnect observer after animating
+    if (entry.isIntersecting && companyCount > 0) {
+      animateValue("counter", 0, companyCount, 2000);
+      observer.disconnect();
     }
   });
 }
-
 // Start observing the element
 let target = document.getElementById("dynamicDescription");
 observer.observe(target);

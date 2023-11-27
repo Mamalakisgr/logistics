@@ -150,12 +150,12 @@ const handleServiceCardSubmit = async (event) => {
   const payload = {
     title: {
       en: titleEn,
-      gr: titleGr
+      gr: titleGr,
     },
     description: {
       en: descriptionEn,
-      gr: descriptionGr
-    }
+      gr: descriptionGr,
+    },
   };
 
   try {
@@ -179,10 +179,9 @@ const handleServiceCardSubmit = async (event) => {
   }
 };
 
-document.getElementById("service-card-form").addEventListener("submit", handleServiceCardSubmit);
-
-
-
+document
+  .getElementById("service-card-form")
+  .addEventListener("submit", handleServiceCardSubmit);
 
 // Function to update the Banner Dropdown
 const updateBannerDropdown = async () => {
@@ -233,8 +232,9 @@ const fetchSeoContent = async () => {
     const response = await fetch(`/api/seo-content?lang=${lang}`);
     const data = await response.json();
 
-    const titleInputId = lang === 'en' ? 'titleInputEn' : 'titleInputGr';
-    const descriptionInputId = lang === 'en' ? 'descriptionInputEn' : 'descriptionInputGr';
+    const titleInputId = lang === "en" ? "titleInputEn" : "titleInputGr";
+    const descriptionInputId =
+      lang === "en" ? "descriptionInputEn" : "descriptionInputGr";
     console.log(`Fetching content for language: ${lang}`);
 
     document.getElementById(titleInputId).value = data.title;
@@ -244,46 +244,42 @@ const fetchSeoContent = async () => {
   }
 };
 
-
 const languageDropdownItems = document.querySelectorAll(".language-dropdown a");
 
 const getCurrentLanguage = () => {
   if (document.getElementById("englishInputs").style.display !== "none") {
-      return 'en';
+    return "en";
   } else if (document.getElementById("greekInputs").style.display !== "none") {
-      return 'gr';
+    return "gr";
   }
   // Default to 'gr' or throw an error if neither is visible
-  return 'gr';
-}
+  return "gr";
+};
 
-languageDropdownItems.forEach(item => {
+languageDropdownItems.forEach((item) => {
   item.addEventListener("click", (e) => {
-    e.preventDefault();  // Prevent default link behavior
+    e.preventDefault(); // Prevent default link behavior
     const selectedLang = e.target.textContent.trim();
-    document.getElementById('selected-lang').textContent = selectedLang;
-    
+    document.getElementById("selected-lang").textContent = selectedLang;
+
     // Refetch the SEO content based on the new language
     fetchSeoContent();
   });
 });
 
-
-
-
-
 const handleSeoContentUpdate = async () => {
   try {
     const lang = getCurrentLanguage();
-    const titleInputId = lang === 'en' ? 'titleInputEn' : 'titleInputGr';
-    const descriptionInputId = lang === 'en' ? 'descriptionInputEn' : 'descriptionInputGr';
+    const titleInputId = lang === "en" ? "titleInputEn" : "titleInputGr";
+    const descriptionInputId =
+      lang === "en" ? "descriptionInputEn" : "descriptionInputGr";
 
     const title = document.getElementById(titleInputId).value;
     const description = document.getElementById(descriptionInputId).value;
 
     const payload = {};
 
-    if (lang === 'gr') {
+    if (lang === "gr") {
       payload.titleGr = title;
       payload.descriptionGr = description;
     } else {
@@ -310,7 +306,6 @@ const handleSeoContentUpdate = async () => {
     console.error("There was a problem updating SEO content:", error);
   }
 };
-
 
 // Function to update the dynamic company count
 // const updateDynamicCompanyCount = async () => {
@@ -427,53 +422,55 @@ const populateRegionOneImagesDropdown = async () => {
 };
 // Handle the image selection
 
-  const fetchAndPopulateDescription = async () => {
-    try {
-      const response = await fetch('/api/get-description'); 
+const fetchAndPopulateDescription = async () => {
+  try {
+    const response = await fetch("/api/get-description");
+    if (response.ok) {
+      const data = await response.json();
+      const descriptionInput = document.getElementById("descriptionInput-2");
+      if (descriptionInput) {
+        descriptionInput.value = data.description;
+      } else {
+        console.error(
+          'Failed to find input element with ID "descriptionInput"'
+        );
+      }
+    } else {
+      console.error("Failed to fetch description");
+    }
+  } catch (error) {
+    console.error("Error fetching description:", error);
+  }
+};
+const handleDescriptionUpdate = async () => {
+  try {
+    const descriptionInput = document.getElementById("descriptionInput-2");
+    if (descriptionInput) {
+      const description = descriptionInput.value;
+      const response = await fetch("/api/update-description", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          description,
+        }),
+      });
+
       if (response.ok) {
         const data = await response.json();
-        const descriptionInput = document.getElementById('descriptionInput-2');
-        if (descriptionInput) {
-            descriptionInput.value = data.description;
-        } else {
-            console.error('Failed to find input element with ID "descriptionInput"');
-        }
+        console.log("Successfully updated description:", data);
       } else {
-        console.error('Failed to fetch description');
+        const errorData = await response.json();
+        console.error("Error in updating description:", errorData);
       }
-    } catch (error) {
-      console.error('Error fetching description:', error);
+    } else {
+      console.error('Failed to find input element with ID "descriptionInput"');
     }
-  };
-  const handleDescriptionUpdate = async () => {
-    try {
-      const descriptionInput = document.getElementById('descriptionInput-2');
-      if (descriptionInput) {
-        const description = descriptionInput.value;
-        const response = await fetch('/api/update-description', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            description
-          }),
-        });
-  
-        if (response.ok) {
-          const data = await response.json();
-          console.log('Successfully updated description:', data);
-        } else {
-          const errorData = await response.json();
-          console.error('Error in updating description:', errorData);
-        }
-      } else {
-        console.error('Failed to find input element with ID "descriptionInput"');
-      }
-    } catch (error) {
-      console.error('There was a problem updating the description:', error);
-    }
-  };
+  } catch (error) {
+    console.error("There was a problem updating the description:", error);
+  }
+};
 // Function to fetch and populate the dynamic company count in backoffice.html
 const fetchAndPopulateCompanyCountInBackoffice = async () => {
   try {
@@ -498,7 +495,9 @@ const fetchAndPopulateCompanyCountInBackoffice = async () => {
 
 const handleRegionOneImageSelection = async () => {
   try {
-    const selectedImageId = document.getElementById("regionOneImagesDropdown").value;
+    const selectedImageId = document.getElementById(
+      "regionOneImagesDropdown"
+    ).value;
 
     const response = await fetch("/api/select-region-one-image", {
       method: "POST",
@@ -513,27 +512,35 @@ const handleRegionOneImageSelection = async () => {
       console.log("Successfully selected Region One image:", responseData);
 
       // Fetch the now-active image and set it on the frontend
-    //  handleRegionOneImage();  // Reuse the function you have
+      //  handleRegionOneImage();  // Reuse the function you have
     } else {
       const errorData = await response.json();
       console.error("Error in selecting Region One image:", errorData);
     }
   } catch (error) {
-    console.error("There was a problem with Region One image selection:", error);
+    console.error(
+      "There was a problem with Region One image selection:",
+      error
+    );
   }
 };
 const handleDeleteRegionOneImage = async () => {
   try {
-    const selectedImageId = document.getElementById("regionOneImagesDropdown").value;
+    const selectedImageId = document.getElementById(
+      "regionOneImagesDropdown"
+    ).value;
 
     if (!selectedImageId) {
       console.error("No Region One image selected for deletion.");
       return;
     }
 
-    const response = await fetch(`/api/delete-region-one-image/${selectedImageId}`, {
-      method: "DELETE",
-    });
+    const response = await fetch(
+      `/api/delete-region-one-image/${selectedImageId}`,
+      {
+        method: "DELETE",
+      }
+    );
 
     if (response.ok) {
       const responseData = await response.json();
@@ -551,7 +558,9 @@ const handleDeleteRegionOneImage = async () => {
 };
 const handleSetRegionOneImageAsActive = async () => {
   try {
-    const selectedImageId = document.getElementById("regionOneImagesDropdown").value;
+    const selectedImageId = document.getElementById(
+      "regionOneImagesDropdown"
+    ).value;
 
     const response = await fetch("/api/select-region-one-image", {
       method: "POST",
@@ -566,7 +575,7 @@ const handleSetRegionOneImageAsActive = async () => {
       console.log("Successfully set image as active:", data);
 
       // Optionally, refresh the image in the main page if needed
-      //handleRegionOneImage(); 
+      //handleRegionOneImage();
     } else {
       const errorData = await response.json();
       console.error("Error in setting image as active:", errorData);
@@ -576,49 +585,50 @@ const handleSetRegionOneImageAsActive = async () => {
   }
 };
 
-
-
-
 const saveSeoContentButton = document.getElementById("saveSeoContentButton");
 saveSeoContentButton.addEventListener("click", handleSeoContentUpdate);
 const handleRegionOneImage = () => {
   const regionOneImageForm = document.getElementById("regionOneImageForm");
 
   regionOneImageForm.addEventListener("submit", function (event) {
-      event.preventDefault();
+    event.preventDefault();
 
-      const formData = new FormData(regionOneImageForm);
+    const formData = new FormData(regionOneImageForm);
 
-      fetch("/api/upload-region-one-image", {
-          method: "POST",
-          body: formData,
+    fetch("/api/upload-region-one-image", {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data && data.message) {
+          console.log(data.message);
+        } else {
+          console.error("Unexpected server response:", data);
+        }
       })
-          .then(response => response.json())
-          .then(data => {
-              if (data && data.message) {
-                  console.log(data.message);
-              } else {
-                  console.error("Unexpected server response:", data);
-              }
-          })
-          .catch(error => {
-              console.error("Error uploading the image:", error);
-          });
+      .catch((error) => {
+        console.error("Error uploading the image:", error);
+      });
   });
 };
 // DOM Loaded Event
 document.addEventListener("DOMContentLoaded", function () {
-  document.getElementById("showEnglishInputs").addEventListener("click", function() {
-    document.getElementById("englishInputs").style.display = "block";
-    document.getElementById("greekInputs").style.display = "none";
-    fetchSeoContent();  // Fetch content after changing language
-});
+  document
+    .getElementById("showEnglishInputs")
+    .addEventListener("click", function () {
+      document.getElementById("englishInputs").style.display = "block";
+      document.getElementById("greekInputs").style.display = "none";
+      fetchSeoContent(); // Fetch content after changing language
+    });
 
-document.getElementById("showGreekInputs").addEventListener("click", function() {
-    document.getElementById("englishInputs").style.display = "none";
-    document.getElementById("greekInputs").style.display = "block";
-    fetchSeoContent();  // Fetch content after changing language
-});
+  document
+    .getElementById("showGreekInputs")
+    .addEventListener("click", function () {
+      document.getElementById("englishInputs").style.display = "none";
+      document.getElementById("greekInputs").style.display = "block";
+      fetchSeoContent(); // Fetch content after changing language
+    });
 
   fetchSeoContent();
   document
@@ -641,10 +651,10 @@ document.getElementById("showGreekInputs").addEventListener("click", function() 
       e.preventDefault(); // Prevent the form from submitting via default HTML action
       handleImageUpload("logo", "logo-upload-form"); // Call your existing handleImageUpload function
     });
-    document
-  .getElementById("delete-region-one-image-button")
-  .addEventListener("click", handleDeleteRegionOneImage);
-  
+  document
+    .getElementById("delete-region-one-image-button")
+    .addEventListener("click", handleDeleteRegionOneImage);
+
   fetchAndPopulateCompanyCountInBackoffice();
   fetch("/api/logos")
     .then((response) => response.json())
@@ -715,9 +725,9 @@ document.getElementById("showGreekInputs").addEventListener("click", function() 
       e.preventDefault(); // Prevent the form from submitting via default HTML action
       handleSeoImageUpload("seo-image-upload-form");
     });
-    document.getElementById("selectRegionOneImageButton").addEventListener("click", handleRegionOneImageSelection);
+  document
+    .getElementById("selectRegionOneImageButton")
+    .addEventListener("click", handleRegionOneImageSelection);
   updateSeoImageDropdown();
   populateRegionOneImagesDropdown();
 });
-
-
