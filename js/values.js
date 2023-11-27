@@ -62,8 +62,8 @@ const fetchAndUpdateValuesContent = async (lang = DEFAULT_LANG) => {
             const titleLang = data.valuesTitle?.[lang] ? lang : FALLBACK_LANG;
             const descLang = data.valuesDescription?.[lang] ? lang : FALLBACK_LANG;
 
-            document.getElementById('valuesTitle').textContent = data.valuesTitle[titleLang];
-            document.getElementById('valuesDescription').textContent = data.valuesDescription[descLang];
+            // document.getElementById('valuesTitle').textContent = data.valuesTitle[titleLang];
+            // document.getElementById('valuesDescription').textContent = data.valuesDescription[descLang];
 
             // Fetch and update images for history
             await displayImage('/api/values-image', 'values-image');

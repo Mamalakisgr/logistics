@@ -1,22 +1,27 @@
 // Imports
+require('dotenv').config();
+
 const express = require('express');
 const mongoose = require('mongoose');
+const session = require('express-session');
 const bodyParser = require('body-parser');
 const multer = require('multer');
 const nodemailer = require('nodemailer');
 const path = require('path');
-require('dotenv').config();
+
+const MongoStore = require('connect-mongo');
+
 
 // Model Imports
 const [
     Logo, SEOContent, SEOImage, ServiceCard, DynamicContent, CompanyContent,
     ValuesImage, HistoryImage, VisionImage, ServiceDetail, ServiceCategory,
-    RegionOneImage, CompanyCount, Banner, EmployeeSchema, TeamSchema
+    RegionOneImage, CompanyCount, Banner, EmployeeSchema, TeamSchema, User
 ] = [
     './models/Logo', './models/SEOContent', './models/SEOImage', './models/ServiceCard', './models/DynamicContent',
     './models/CompanyContent', './models/ValuesImage', './models/HistoryImage',
     './models/VisionImage', './models/ServiceDetail', './models/ServiceCategory',
-    './models/RegionOneImage', './models/CompanyCount', './models/Banner', './models/Employee', './models/Team'
+    './models/RegionOneImage', './models/CompanyCount', './models/Banner', './models/Employee', './models/Team' , './models/Users'
 ].map(require);
 
 // App Configurations
@@ -27,9 +32,10 @@ app.use(bodyParser.json());
 // Serve static files
 const staticDirs = ['css', 'js', 'html', 'images'];
 staticDirs.forEach(dir => app.use(`/${dir}`, express.static(path.join(__dirname, dir))));
+console.log(process.env.DB_USERNAME, process.env.DB_PASSWORD, process.env.DB_NAME);
 
 // MongoDB Connection
-mongoose.connect('mongodb+srv://admin:kolotripida12@cluster0.gsxb8us.mongodb.net/your_database_name', {
+mongoose.connect(`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.gsxb8us.mongodb.net/${process.env.DB_NAME}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 }).then(() => {
@@ -44,10 +50,32 @@ process.env.EMAIL_PASS = "zocc xfix pdsg ebxh";
 
 // Middlewares
 const upload = multer();
-
+app.use(session({
+  name: 'example.sid',
+  secret: 'Replace with your secret key', // Use a strong, unique secret
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+      httpOnly: true,
+      secure: false, // Set to true in production with HTTPS
+      maxAge: 1000 * 60 * 60 * 7 // Session expiry time
+  },
+store: MongoStore.create({
+    mongoUrl: 'mongodb+srv://admin:kolotripida12@cluster0.gsxb8us.mongodb.net/your_database_name'
+})
+}));
 // Routes
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'html', 'index.html')));
+app.get('/company', (req, res) => res.sendFile(path.join(__dirname, 'html', 'company.html')));
+app.get('/login', (req, res) => res.sendFile(path.join(__dirname, 'html', 'login.html')));
+app.get('/news', (req, res) => res.sendFile(path.join(__dirname, 'html', 'news.html')));
+app.get('/services', (req, res) => res.sendFile(path.join(__dirname, 'html', 'services.html')));
+app.get('/contactUs', (req, res) => res.sendFile(path.join(__dirname, 'html', 'contactus.html')));
 app.get('/js/backadmin.js', (req, res) => res.sendFile(path.join(__dirname, 'js', 'backadmin.js')));
+app.get('/backoffice',checkAdminSession,(req, res) => res.sendFile(path.join(__dirname, 'html', 'backoffice.html')));
+app.get('/aboutus-admin',checkAdminSession,(req, res) => res.sendFile(path.join(__dirname, 'html', 'aboutus-admin.html')));
+app.get('/company-admin',checkAdminSession,(req, res) => res.sendFile(path.join(__dirname, 'html', 'company-admin.html')));
+app.get('/services-admin',checkAdminSession,(req, res) => res.sendFile(path.join(__dirname, 'html', 'services-admin.html')));
 
 // Company Count Routes
 app.get('/api/get-company-count', async (req, res) => {
@@ -100,9 +128,26 @@ app.post('/api/update-team-data', upload.single('image'), async (req, res) => {
 
 
 
+app.get('/backoffice', checkAdminSession, (req, res) => {
+  res.sendFile(path.join(__dirname, 'path/to/backoffice.html'));
+});
 
 
+app.get('/aboutus-admin.html', checkAdminSession, (req, res) => {
+  res.sendFile('/aboutus-admin');
+});
 
+function checkAdminSession(req, res, next) {
+  if (req.session && req.session.isAdminLoggedIn) {
+    next();
+      console.log("Admin is logged in")
+  } else {
+      // Redirect to an error page or send an error response
+      res.redirect('../html/error-page.html'); // Assuming you have an error page
+      // Or send an error message directly
+      // res.status(401).send('Unauthorized: Admin not logged in');
+  }
+}
 // Fetch service cards
 app.get('/api/services-card', async (req, res) => {
   try {
@@ -973,8 +1018,40 @@ app.get('/api/service-categories/:id', async (req, res) => {
   }
 });
 
+app.post('/api/login', async function(req, res) {
+  const { username, password } = req.body;
 
+  try {
+      // Assuming you have a MongoDB collection named 'users'
+      // And the schema includes fields 'username' and 'password'
+      const user = await mongoose.model('Users').findOne({ username: username });
 
+      if (!user) {
+          res.json({ success: false, message: 'User not found' });
+      } else if (user.password === password) { // You should use password hashing in production
+        req.session.isAdminLoggedIn = true; // Set session flag only if auth is successful
+        res.json({ success: true });
+      } else {
+        res.json({ success: false });
+      }
+  } catch (err) {
+      res.json({ success: false, message: 'An error occurred' });
+  }
+});
+
+app.get('/logout', function(req, res) {
+  // Destroy the session
+  req.session.destroy(function(err) {
+      if (err) {
+          // Handle error
+          console.error('Session destruction error:', err);
+          res.send('Error occurred during logout');
+      } else {
+          // Redirect to login page or home page
+          res.redirect('/html/login.html'); // Modify this URL as needed
+      }
+  });
+});
 
 // Update an existing service category
 app.put('/api/service-categories/:id', async (req, res) => {

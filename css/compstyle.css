@@ -59,21 +59,33 @@ img {
     flex-direction: row;
     flex-wrap: wrap;
   }
-
+  .logo-text{
+    display: none;
+  }
   .section-content {
+    display: flex;
+
     /* Now using row, not row-reverse, with standard content justification */
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    width: 50%; 
+    margin-bottom: 20px;
   }
-
+   .text-content {
+    order: 1; /* Reset order to ensure text is on the left */
+  }
+  .images-container {
+    order: 2;
+  }
   .text-content,
-  .image-container {
-    flex: 1; /* Both text and image take up equal space */
-    padding: 20px; /* More padding for larger screens */
-    flex-basis: 50%; /* Adjust this value as needed */
+  .images-container {
+    flex-basis: auto; /* Adjust basis to auto for natural size */
   }
 
+  #history-section .images-container {
+    order: 2; /* Image on the right */
+  }
   #values-section .section-content {
     /* Ensure the values text and image are side by side */
     flex-direction: row; /* Text will be first, then the image */
@@ -105,7 +117,17 @@ img {
     transform: none; /* No transform */
     z-index: auto; /* Normal stacking order */
   }
+  #vision-image {
+    position: relative; /* Relative to the section-content */
+    width: auto; /* Width is auto to maintain aspect ratio */
+    max-width: 50%; /* Limits the image width to 50% of its container */
+    right: 0; /* No right offset */
+    max-height: 70vh; /* Optional: Limits the image height to 70% of the viewport height */
 
+    top: 0; /* No top offset */
+    transform: none; /* No transform */
+    z-index: auto; /* Normal stacking order */
+  }
   /* Correcting the right offset for images */
   #history-image {
     position: relative; /* Relative to the section-content */
@@ -129,11 +151,11 @@ img {
   display: none;
 }
   .text-content {
-    order: 2; /* Text content should be below */
+    order: 1; /* Text content should be below */
   }
 
   .image-container {
-    order: 1; /* Image should be top of the text content */
+    order: 2; /* Image should be top of the text content */
     width: 100%; /* Full width for the image */
   }
   .values-section .section-content {
@@ -141,7 +163,7 @@ img {
   }
 
   .values-section .text-content {
-    order: 2; /* Text content should be below the image */
+    order: 1; /* Text content should be below the image */
   }
 
   .values-section .values-image {
@@ -163,4 +185,17 @@ img {
   p {
     font-size: 1rem; /* Adjust font size for paragraphs */
   }
+}
+.images-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  order: 2;
+}
+
+.images-container img {
+  flex: 1; /* Each image will take equal width */
+  max-width: 20%; /* Limit maximum width to a third of the container */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover; /* This will ensure images cover the area nicely */
 }

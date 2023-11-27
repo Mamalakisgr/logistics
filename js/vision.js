@@ -56,8 +56,8 @@ const fetchAndUpdateVisionContent = async (lang = DEFAULT_LANG) => {
             const titleLang = data.visionTitle?.[lang] ? lang : FALLBACK_LANG;
             const descLang = data.visionDescription?.[lang] ? lang : FALLBACK_LANG;
 
-            document.getElementById('visionTitle').textContent = data.visionTitle[titleLang];
-            document.getElementById('visionDescription').textContent = data.visionDescription[descLang];
+            // document.getElementById('visionTitle').textContent = data.visionTitle[titleLang];
+            // document.getElementById('visionDescription').textContent = data.visionDescription[descLang];
 
             // Fetch and update images for history
             await displayImage('/api/vision-image', 'vision-image');
