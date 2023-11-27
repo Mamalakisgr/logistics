@@ -74,6 +74,7 @@ img {
   }
   .text-content {
     order: 1; /* Reset order to ensure text is on the left */
+    margin-bottom: 10%;
   }
   .images-container {
     order: 2;

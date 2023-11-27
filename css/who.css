@@ -44,22 +44,27 @@ p {
   justify-content: space-between;
   align-items: center;
   padding: 20px 0;
+  margin-top: 10%;
 }
 
 .team-content {
   flex: 0.5;
   padding: 20px;
+
 }
 
 .team-slider {
   position: relative;
   flex: 0.5;
+;
 }
 
 .slide {
   display: block; /* Hide by default, will be shown using JavaScript */
 }
-
+.slide img{
+ height: 80%
+}
 .slider-button {
   position: absolute;
   top: 50%;
