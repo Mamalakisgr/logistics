@@ -7,13 +7,7 @@
   <link rel="stylesheet" type="text/css" href="/css/style.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
   <link rel="icon" href="/images/292435385_399551102196302_8171052786653938864_n.png" type="image/x-icon" />
-  <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeSkk9Qx-_9R5PkHRO7pFpyFSq0_aMeDg&callback=console.debug&libraries=maps,marker&v=beta">
-  </script>
-  <script>
-    function initMap() {
-      console.log('Maps JavaScript API loaded.');
-    }
-  </script>
+
 </head>
 
 <body>
@@ -123,7 +117,7 @@
             </gmp-map>
             <section id="google-map">
               <h2 data-translatable data-en="Find us on Map" data-el="Βρείτε μας στον Χάρτη">Βρείτε μας στον Χάρτη</h2>
-              <div id="map-placeholder">Google Map Here</div>
+              <div id="map" style="width: 100%; height: 400px;"></div>
 
             </section>
         </main>
@@ -211,7 +205,22 @@
   </footer>
   <script src="../js/company-dropdown.js"></script>
   <script src="../js/ToggleMenu.js"></script>
-
+  <!-- <script src="../js/googlemap.js"></script> -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeSkk9Qx-_9R5PkHRO7pFpyFSq0_aMeDg&callback=initMap" async defer></script>
+  <script>
+    function initMap() {
+      var location = { lat: 37.836808, lng: 23.8141455 };
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 13,
+        center: location
+      });
+      var marker = new google.maps.Marker({
+        position: location,
+        map: map,
+        title: 'My location'
+      });
+    }
+  </script>
   <script src="../js/language-selector.js"></script>
         <script src="../js/contact_us.js"></script>
 </body>
