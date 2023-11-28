@@ -1,5 +1,4 @@
 // Fetches and displays the currently active logo for both header and footer
-// Fetches and displays the currently active logo for both header and footer
 const fetchAndDisplayLogo = async (elementId) => {
   try {
     const logoImage = document.getElementById(elementId);
@@ -31,7 +30,7 @@ const translations = {
   },
   gr: {
     "contact-information": "Πληροφορίες Επικοινωνίας",
-    "contact-form": "Επικοινωνείστε μαζί μας",
+    "contact-form": "Επικοινωνήστε μαζί μας",
     "google-map": "Βρείτε μας στον χάρτη",
   },
   // You can add more languages and translations here as needed

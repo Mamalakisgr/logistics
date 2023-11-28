@@ -19,40 +19,6 @@ async function deleteEmployee(employeeId) {
     console.error("Error deleting employee:", error);
   }
 }
-// async function updateEmployee(e) {
-//     e.preventDefault();
-
-//     const employeeId = document.getElementById('update-id').value;
-
-//     const formData = new FormData();
-//     formData.append('name[gr]', document.getElementById('update-name-gr').value);
-//     formData.append('name[en]', document.getElementById('update-name-en').value);
-//     formData.append('title[gr]', document.getElementById('update-title-gr').value);
-//     formData.append('title[en]', document.getElementById('update-title-en').value);
-
-//     const updatedImage = document.getElementById('update-image').files[0];
-//     if (updatedImage) {
-//         formData.append('image', updatedImage);
-//     }
-
-//     try {
-//         const response = await fetch(`${API_BASE_URL}/update-employee/${employeeId}`, {
-//             method: 'PUT',
-//             body: formData
-//         });
-
-//         const result = await response.json();
-
-//         if (response.ok) {
-//             console.log('Employee updated:', result);
-//             fetchAndDisplayEmployees();
-//         } else {
-//             console.error("Error updating employee:", result.message);
-//         }
-//     } catch (error) {
-//         console.error("Error updating employee:", error);
-//     }
-// }
 
 async function addEmployee(e) {
   e.preventDefault();

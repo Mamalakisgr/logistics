@@ -307,7 +307,6 @@ document.addEventListener("DOMContentLoaded", function () {
   fetchAndSetRegionOneImage();
 
   fetchAndDisplayLogo("logo-image"); // Fetch and display header logo
-  fetchAndDisplayLogo("logo-image-footer"); // Fetch and display footer logo
   fetchAndDisplayLogo("side-logo-image");
   fetchAndDisplayCompanyCount();
   fetchAndDisplaySEOContent(); // Fetch and display SEO content

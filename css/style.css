@@ -1062,7 +1062,12 @@ header {
   .top-bar {
     display: none;
   }
-
+  img {
+    max-width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
   .top-bar-inner {
     padding: 0;
     margin: 0;

@@ -60,11 +60,6 @@ const staticDirs = ["css", "js", "html", "images"];
 staticDirs.forEach((dir) =>
   app.use(`/${dir}`, express.static(path.join(__dirname, dir)))
 );
-console.log(
-  process.env.DB_USERNAME,
-  process.env.DB_PASSWORD,
-  process.env.DB_NAME
-);
 
 // MongoDB Connection
 mongoose
@@ -101,7 +96,7 @@ app.use(
     },
     store: MongoStore.create({
       mongoUrl:
-        "mongodb+srv://admin:kolotripida12@cluster0.gsxb8us.mongodb.net/your_database_name",
+      `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.gsxb8us.mongodb.net/${process.env.DB_NAME}`,
     }),
   })
 );
@@ -203,7 +198,6 @@ app.post("/api/update-team-data", upload.single("image"), async (req, res) => {
 function checkAdminSession(req, res, next) {
   if (req.session && req.session.isAdminLoggedIn) {
     next();
-    console.log("Admin is logged in");
   } else {
     res.redirect("/login");
   }
@@ -412,7 +406,6 @@ app.post("/api/service-details", async (req, res) => {
     await detail.save();
     res.json(detail);
   } catch (error) {
-    console.error("Detailed error:", error); // Log the detailed error
     res
       .status(500)
       .json({
