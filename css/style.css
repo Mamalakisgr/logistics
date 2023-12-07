@@ -1133,9 +1133,11 @@ header {
     display: none;
   }
   .seo-button.button.fifth {
-    align-items: center;
+   
   }
   .region-two {
+    width: 90%; /* Adjust as needed */
+    left: 0;
   }
   /* Adjust the SEO and Image containers within Region One and Region Two */
   .image-container,
