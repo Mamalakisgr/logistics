@@ -113,7 +113,8 @@ img {
     max-width: 50%; /* Limits the image width to 50% of its container */
     right: 0; /* No right offset */
     max-height: 70vh; /* Optional: Limits the image height to 70% of the viewport height */
-
+    margin-left: 35px;
+    margin-right: 35px;
     top: 0; /* No top offset */
     transform: none; /* No transform */
     z-index: auto; /* Normal stacking order */
