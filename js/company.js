@@ -33,12 +33,6 @@ const fetchAndUpdateCompanyContent = async () => {
       document.getElementById("historyTitle").textContent = data.historyTitle;
       document.getElementById("historyDescription").textContent =
         data.historyDescription;
-      document.getElementById("valuesTitle").textContent = data.valuesTitle;
-      document.getElementById("valuesDescription").textContent =
-        data.valuesDescription;
-      document.getElementById("visionTitle").textContent = data.visionTitle;
-      document.getElementById("visionDescription").textContent =
-        data.visionDescription;
     } else {
       console.error("Failed to fetch company content");
     }

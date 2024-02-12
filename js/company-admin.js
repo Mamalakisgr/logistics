@@ -111,22 +111,6 @@ async function updateAllSections() {
       Gr: document.getElementById("historyDescriptionInput").value,
       En: document.getElementById("historyDescriptionInputEn").value,
     };
-    const valuesTitle = {
-      Gr: document.getElementById("valuesTitleInput").value,
-      En: document.getElementById("valuesTitleInputEn").value,
-    };
-    const valuesDescription = {
-      Gr: document.getElementById("valuesDescriptionInput").value,
-      En: document.getElementById("valuesDescriptionInputEn").value,
-    };
-    const visionTitle = {
-      Gr: document.getElementById("visionTitleInput").value,
-      En: document.getElementById("visionTitleInputEn").value,
-    };
-    const visionDescription = {
-      Gr: document.getElementById("visionDescriptionInput").value,
-      En: document.getElementById("visionDescriptionInputEn").value,
-    };
 
     const response = await fetch("/api/company-content", {
       method: "POST",
@@ -136,10 +120,6 @@ async function updateAllSections() {
       body: JSON.stringify({
         historyTitle,
         historyDescription,
-        valuesTitle,
-        valuesDescription,
-        visionTitle,
-        visionDescription,
       }),
     });
 
@@ -187,37 +167,37 @@ document.addEventListener("DOMContentLoaded", () => {
       updateAllSections();
     });
 
-  document
-    .getElementById("showEnglishValuesInputs")
-    .addEventListener("click", function () {
-      document.getElementById("valuesEnglishInputs").style.display = "block";
-      document.getElementById("valuesGreekInputs").style.display = "none";
-      updateAllSections();
-    });
+  // document
+  //   .getElementById("showEnglishValuesInputs")
+  //   .addEventListener("click", function () {
+  //     document.getElementById("valuesEnglishInputs").style.display = "block";
+  //     document.getElementById("valuesGreekInputs").style.display = "none";
+  //     updateAllSections();
+  //   });
 
-  document
-    .getElementById("showGreekValuesInputs")
-    .addEventListener("click", function () {
-      document.getElementById("valuesEnglishInputs").style.display = "none";
-      document.getElementById("valuesGreekInputs").style.display = "block";
-      updateAllSections();
-    });
+  // document
+  //   .getElementById("showGreekValuesInputs")
+  //   .addEventListener("click", function () {
+  //     document.getElementById("valuesEnglishInputs").style.display = "none";
+  //     document.getElementById("valuesGreekInputs").style.display = "block";
+  //     updateAllSections();
+  //   });
 
-  document
-    .getElementById("showEnglishVisionInputs")
-    .addEventListener("click", function () {
-      document.getElementById("visionEnglishInputs").style.display = "block";
-      document.getElementById("visionGreekInputs").style.display = "none";
-      updateAllSections();
-    });
+  // document
+  //   .getElementById("showEnglishVisionInputs")
+  //   .addEventListener("click", function () {
+  //     document.getElementById("visionEnglishInputs").style.display = "block";
+  //     document.getElementById("visionGreekInputs").style.display = "none";
+  //     updateAllSections();
+  //   });
 
-  document
-    .getElementById("showGreekVisionInputs")
-    .addEventListener("click", function () {
-      document.getElementById("visionEnglishInputs").style.display = "none";
-      document.getElementById("visionGreekInputs").style.display = "block";
-      updateAllSections();
-    });
+  // document
+  //   .getElementById("showGreekVisionInputs")
+  //   .addEventListener("click", function () {
+  //     document.getElementById("visionEnglishInputs").style.display = "none";
+  //     document.getElementById("visionGreekInputs").style.display = "block";
+  //     updateAllSections();
+  //   });
   lazyLoadSections.forEach((section) => observer.observe(section));
 
   ["history", "values", "vision"].forEach((section) => {

@@ -14,10 +14,6 @@ const ContentSchema = new mongoose.Schema({
 const CompanyContentSchema = new mongoose.Schema({
   historyTitle: ContentSchema,
   historyDescription: ContentSchema,
-  valuesTitle: ContentSchema,
-  valuesDescription: ContentSchema,
-  visionTitle: ContentSchema,
-  visionDescription: ContentSchema,
 });
 
 const CompanyContent = mongoose.model('CompanyContent', CompanyContentSchema);

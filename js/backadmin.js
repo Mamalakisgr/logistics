@@ -139,50 +139,6 @@ const handleSeoImageSelection = async () => {
   }
 };
 
-const handleServiceCardSubmit = async (event) => {
-  event.preventDefault();
-
-  const titleEn = document.getElementById("serviceTitleEn").value;
-  const descriptionEn = document.getElementById("serviceDescriptionEn").value;
-  const titleGr = document.getElementById("serviceTitleGr").value;
-  const descriptionGr = document.getElementById("serviceDescriptionGr").value;
-
-  const payload = {
-    title: {
-      en: titleEn,
-      gr: titleGr,
-    },
-    description: {
-      en: descriptionEn,
-      gr: descriptionGr,
-    },
-  };
-
-  try {
-    const response = await fetch("/api/services-card", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
-    });
-
-    if (response.ok) {
-      const data = await response.json();
-      console.log("Service card saved successfully:", data);
-    } else {
-      const errorData = await response.json();
-      console.error("Error saving service card:", errorData);
-    }
-  } catch (error) {
-    console.error("There was a problem saving the service card:", error);
-  }
-};
-
-document
-  .getElementById("service-card-form")
-  .addEventListener("submit", handleServiceCardSubmit);
-
 // Function to update the Banner Dropdown
 const updateBannerDropdown = async () => {
   try {

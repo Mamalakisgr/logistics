@@ -53,8 +53,8 @@ const fetchAndUpdateVisionContent = async (lang = DEFAULT_LANG) => {
     if (response.ok) {
       const data = await response.json();
 
-      const titleLang = data.visionTitle?.[lang] ? lang : FALLBACK_LANG;
-      const descLang = data.visionDescription?.[lang] ? lang : FALLBACK_LANG;
+      // const titleLang = data.visionTitle?.[lang] ? lang : FALLBACK_LANG;
+      // const descLang = data.visionDescription?.[lang] ? lang : FALLBACK_LANG;
 
       // document.getElementById('visionTitle').textContent = data.visionTitle[titleLang];
       // document.getElementById('visionDescription').textContent = data.visionDescription[descLang];

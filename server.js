@@ -30,6 +30,8 @@ const [
   EmployeeSchema,
   TeamSchema,
   User,
+  StoreSection,
+  TeamSection
 ] = [
   "./models/Logo",
   "./models/SEOContent",
@@ -48,6 +50,8 @@ const [
   "./models/Employee",
   "./models/Team",
   "./models/Users",
+  "./models/StoreSection",
+  "./models/AboutDescription"
 ].map(require);
 
 // App Configurations
@@ -64,7 +68,7 @@ staticDirs.forEach((dir) =>
 // MongoDB Connection
 mongoose
   .connect(
-    `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.gsxb8us.mongodb.net/${process.env.DB_NAME}`,
+    `mongodb://admin:kolotripida12@ac-msftt37-shard-00-00.gsxb8us.mongodb.net:27017,ac-msftt37-shard-00-01.gsxb8us.mongodb.net:27017,ac-msftt37-shard-00-02.gsxb8us.mongodb.net:27017/your_database_name?replicaSet=atlas-qhtmiu-shard-0&authSource=admin&tls=true    `,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -228,6 +232,64 @@ app.get("/api/get-description", async (req, res) => {
 app.post("/api/update-description", async (req, res) => {
   try {
     const { description } = req.body;
+
+// Get all store sections
+app.get("/api/store-section", async (req, res) => {
+  try {
+    const sections = await StoreSection.find({});
+    res.status(200).json(sections);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+// Get all team sections
+app.get("/api/team-sections", async (req, res) => {
+  try {
+    const sections = await TeamSection.find({});
+    res.status(200).json(sections);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+// Endpoint to add/update a Store Section
+// Endpoint to add/update a Store Section
+app.post("/api/store-section", async (req, res) => {
+  const updateData = {};
+
+  // Check and structure the incoming data as per the new schema
+  if (req.body.title) {
+    updateData["title"] = req.body.title;
+  }
+  if (req.body.description) {
+    updateData["description"] = req.body.description;
+  }
+
+  // Use findOneAndUpdate for adding or updating the store section
+  try {
+    const section = await StoreSection.findOneAndUpdate(
+      { /* criteria to find the section, if it's an update */ },
+      { $set: updateData },
+      { new: true, upsert: true }
+    );
+    res.status(201).json(section);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
+
+// Add a new team section
+app.post("/api/team-sections", async (req, res) => {
+  const section = new TeamSection(req.body);
+  try {
+    const newSection = await section.save();
+    res.status(201).json(newSection);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+});
+
 
     // Update the description, or create a new record if none exists
     const updatedParagraph = await CompanyCount.findOneAndUpdate(
@@ -868,10 +930,6 @@ app.post("/api/company-content", async (req, res) => {
   const {
     historyTitle,
     historyDescription,
-    valuesTitle,
-    valuesDescription,
-    visionTitle,
-    visionDescription,
   } = req.body;
 
   // Update the content in the database
@@ -883,16 +941,16 @@ app.post("/api/company-content", async (req, res) => {
         Gr: historyDescription.Gr,
         En: historyDescription.En || "",
       },
-      valuesTitle: { Gr: valuesTitle.Gr, En: valuesTitle.En || "" },
-      valuesDescription: {
-        Gr: valuesDescription.Gr,
-        En: valuesDescription.En || "",
-      },
-      visionTitle: { Gr: visionTitle.Gr, En: visionTitle.En || "" },
-      visionDescription: {
-        Gr: visionDescription.Gr,
-        En: visionDescription.En || "",
-      },
+      // valuesTitle: { Gr: valuesTitle.Gr, En: valuesTitle.En || "" },
+      // valuesDescription: {
+      //   Gr: valuesDescription.Gr,
+      //   En: valuesDescription.En || "",
+      // },
+      // visionTitle: { Gr: visionTitle.Gr, En: visionTitle.En || "" },
+      // visionDescription: {
+      //   Gr: visionDescription.Gr,
+      //   En: visionDescription.En || "",
+      // },
     },
     { new: true, upsert: true }
   );
@@ -959,10 +1017,6 @@ app.get("/api/company-content", async (req, res) => {
     res.json({
       historyTitle: { Gr: "", En: "" },
       historyDescription: { Gr: "", En: "" },
-      valuesTitle: { Gr: "", En: "" },
-      valuesDescription: { Gr: "", En: "" },
-      visionTitle: { Gr: "", En: "" },
-      visionDescription: { Gr: "", En: "" },
     });
   } else {
     res.json(content);

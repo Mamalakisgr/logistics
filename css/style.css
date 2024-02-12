@@ -28,7 +28,7 @@ header {
   top: 0;
   background-color: black;
   color: black;
-  height: 70px;
+  
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -812,7 +812,16 @@ header {
 }
 
 @media screen and (max-width: 480px) {
- 
+  .mySlides{
+    height: 350px;
+  }
+  .region-two .seo-container{
+  left: 0;
+  right: 0;
+  }
+  .region-two .seo-button.button.fifth{
+    margin-top: 395px;
+  }
 }
 
 .contact-form-section h2 {
@@ -925,7 +934,13 @@ header {
     z-index: 100;
     color: white;
   }
- 
+  .top-bar {
+    display: none;
+  }
+  .header{
+    height: 0;
+    width: 100%;
+  }
 }
 
 /* Media Query for Mobile screens */
@@ -1111,6 +1126,8 @@ header {
 }
 .top-bar-left {
   gap: 3px; /* Space between working hours and social icons */
+  margin-right: auto; /* Pushes everything to center but respects space-between */
+
 }
 .top-bar-right {
   display: flex; /* Make sure the right side uses flex */

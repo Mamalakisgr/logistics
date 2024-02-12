@@ -280,7 +280,7 @@ function animateValue(id, start, end, duration) {
 }
 
 // Trigger the animation
-animateValue("counter", 0, companyCount, 2000); // The last value is the duration of the animation in milliseconds
+animateValue("counter", 0, 100, 150); // The last value is the duration of the animation in milliseconds
 let observerOptions = {
   root: null, // Use the viewport as the root
   rootMargin: "0px",
@@ -291,8 +291,8 @@ let observer = new IntersectionObserver(onIntersection, observerOptions);
 
 function onIntersection(entries) {
   entries.forEach((entry) => {
-    if (entry.isIntersecting && companyCount > 0) {
-      animateValue("counter", 0, companyCount, 2000);
+    if (entry.isIntersecting && 100 > 0) {
+      animateValue("counter", 0, 100, 2000);
       observer.disconnect();
     }
   });

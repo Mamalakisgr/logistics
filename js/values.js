@@ -58,8 +58,8 @@ const fetchAndUpdateValuesContent = async (lang = DEFAULT_LANG) => {
     if (response.ok) {
       const data = await response.json();
 
-      const titleLang = data.valuesTitle?.[lang] ? lang : FALLBACK_LANG;
-      const descLang = data.valuesDescription?.[lang] ? lang : FALLBACK_LANG;
+      // const titleLang = data.valuesTitle?.[lang] ? lang : FALLBACK_LANG;
+      // const descLang = data.valuesDescription?.[lang] ? lang : FALLBACK_LANG;
 
       // document.getElementById('valuesTitle').textContent = data.valuesTitle[titleLang];
       // document.getElementById('valuesDescription').textContent = data.valuesDescription[descLang];
