@@ -1,11 +1,20 @@
 const mongoose = require('mongoose');
 
 const ServiceSchema = new mongoose.Schema({
-  categoryName: String,
+  categoryName: {
+    en: { type: String },
+    gr: { type: String }
+  },
   services: [
     {
-      serviceName: String,
-      description: String,
+      serviceName: {
+        en: { type: String },
+        gr: { type: String }
+      },
+      description: {
+        en: { type: String},
+        gr: { type: String}
+      },
     },
   ],
 });

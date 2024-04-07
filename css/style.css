@@ -1,3 +1,20 @@
+::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar
+{
+  width: 10px;
+  background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb
+{
+  background-color:#242526 ;
+  border: 2px solid #555555;
+}
 /* Reset some default styles for better consistency */
 body,
 h1,
@@ -7,7 +24,37 @@ p {
   margin: 0;
   padding: 0;
 }
+.swiper {
+  height: 700px; /* Example height, adjust as needed */
+}
 
+/* Ensure the slides adjust to the new height of the container */
+.swiper-slide {
+  height: 100%;
+}
+
+/* Adjust the image to cover the available space without distortion */
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* This ensures the image covers the slide without stretching */
+}
+/* Red active bullet */
+/* Style for the active bullet */
+.swiper-container .swiper-pagination-bullet-active {
+  background-color: red !important;
+}
+@media (max-width: 768px) {
+  .swiper {
+    height: 250px; /* Smaller height for tablets and below */
+  }
+}
+
+@media (max-width: 480px) {
+  .swiper {
+    height: 200px; /* Even smaller height for phones */
+  }
+}
 /* Apply a modern font for a sleek look */
 /* Apply base styles */
 body {
@@ -19,15 +66,15 @@ body {
 .container {
   max-width: 100%;
   margin: 0 auto;
-  padding: 20px;
+  padding: 1%;
 }
 
 /* Header */
 header {
   position: sticky;
   top: 0;
-  background-color: black;
-  color: black;
+  background-color: #242526;
+  color: #242526;
   
   display: flex;
   justify-content: space-between;
@@ -42,7 +89,7 @@ header {
 .region-one .image-container {
   width: 100%; /* Full width */
   height: auto; /* Height adjusts to maintain aspect ratio */
-  padding: 20px; /* Padding around the container */
+  padding: 1%; /* Padding around the container */
   text-align: center; /* Center align text in the image container */
   overflow: hidden; /* Hide anything that goes outside the container */
 }
@@ -316,7 +363,7 @@ header {
   justify-content: space-between; /* Space the children out, pushing them to the extremes */
   align-items: center; /* Vertically center the children */
   width: 100%; /* Full width of its parent */
-  height: 400px; /* Set the height */
+  height: 100%; /* Set the height */
   position: relative; /* Relative positioning for background image */
   background: url("/api/get-selected-seo-image") center/cover; /* shorthand for setting bg image */
 }
@@ -329,7 +376,6 @@ header {
 
 .region-two .seo-container {
   position: absolute; /* Allow for precise positioning */
-  bottom: 0px; /* Reduced from 50px to 30px */
   left: 65px; /* Align to the LEFT instead of the right */
   padding: 20px;
   /* height: 50px; */
@@ -514,7 +560,7 @@ header {
   flex: 1;
   width: 100%; /* Static width */
   height: 100%; /* Static height */
-  padding: 20px;
+  padding: 4%;
   text-align: center; /* Center align text in the image container */
   position: relative; /* Add position relative for better control */
   overflow: hidden; /* Hide anything that goes outside the container */
@@ -664,7 +710,9 @@ header {
   position: relative;
   left: -100px; /* Shift the button a little to the left */
 }
-
+.description-container .button-container .seo-button.button.fifth:nth-of-type(1) {
+  left: 0px ;
+}
 .lazyload {
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
@@ -730,7 +778,7 @@ header {
   align-items: flex-start;
   margin: 16px;
   text-align: left;
-  width: 160px;
+  width: 186px;
   box-sizing: border-box;
 }
 
@@ -813,14 +861,22 @@ header {
 
 @media screen and (max-width: 480px) {
   .mySlides{
-    height: 350px;
+    height: 100%;
+  }
+  .region-one .image-container {
+    flex: auto;
+    padding: 3%; /* Even more padding */
+    /* Adjust other properties as needed */
+  }
+  .region-two .seo-container{
+    
   }
   .region-two .seo-container{
   left: 0;
   right: 0;
   }
   .region-two .seo-button.button.fifth{
-    margin-top: 395px;
+    margin-top: 200%;
   }
 }
 
@@ -920,7 +976,25 @@ header {
 .side-menu a:hover {
   color: #f1f1f1;
 }
+.side-language-selector {
+  margin: 20px;
+  padding: 10px;
+  color: white;
+  text-align: left;
+}
+.side-language-selector  a{
+padding: 5px 0px;
+font-size: 20px;
+color: #27ae60;
+display: block;
+}
 
+.side-language-selector a:hover {
+  color: #f1f1f1;
+}
+.side-language-selector:hover {
+display: block;
+}
 /* Media Query for Tablet and smaller screens */
 @media screen and (max-width: 768px) {
   .logo {
@@ -939,7 +1013,7 @@ header {
   }
   .header{
     height: 0;
-    width: 100%;
+    width: 80%;
   }
 }
 
@@ -1028,14 +1102,14 @@ header {
 /* Vertical dividers for sections in the footer */
 .footer__link--wrapper:not(:last-child) {
   border-right: 2px solid rgba(255, 255, 255, 0.5); /* Add a vertical border to the right */
-  padding-right: 20px; /* Add some spacing to the right of the content */
+  /* Add some spacing to the right of the content */
   margin-right: 20px; /* Add some spacing to the right of the border */
 }
 
 /* Vertical divider for .footer__link--items */
 .footer__link--wrapper .footer__link--items:not(:last-child) {
   border-right: 2px solid rgba(255, 255, 255, 0.5); /* Add a vertical border to the right */
-  padding-right: 20px; /* Add some spacing to the right of the content */
+  /* Add some spacing to the right of the content */
   margin-right: 20px; /* Add some spacing to the right of the border */
 }
 
@@ -1079,11 +1153,12 @@ header {
 .footer__link--wrapper:nth-child(3) {
   flex: 4; /* Increase the space allocated to the contact form */
 }
-
+.footer__link--wrapper:nth-child(2)
 /* Adjustments for the vertical line between the contact form and the social media links */
 .footer__link--wrapper:nth-child(2) {
   padding-right: 10px; /* Adjust the padding to space the content from the border */
   margin-right: 5px; /* Adjust the margin to move the vertical line closer */
+  
 }
 
 .footer__link--wrapper:nth-child(2) .footer__link--items {

@@ -228,3 +228,9 @@ h2 {
   display: flex;
   flex-wrap: wrap;
 }
+
+.video-class{
+  width: 100%;
+  height: auto;
+
+}

@@ -1,15 +1,29 @@
 .store-section {
   box-sizing: border-box;
-  padding: 10px;
-  margin-bottom: 20px;
+  padding: 2%;
   width: 70%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 5px;
+  gap: 40px;
   align-items: center; /* Add this line to vertically center the content */
   justify-content: center; /* Add this line to horizontally center the entire section */
-}
+  transform:translateX(22%);
 
+  
+}
+.test {
+  margin-top: 127px;
+  background-color: #f4f4f4;
+}
+.store-section:nth-of-type(4) h2 {
+  display: none;
+}
+.store-section:nth-of-type(5) h2 {
+  display: none;
+}
+/* .store-section:nth-of-type(5) p {
+  display: none;
+} */
 h2 {
   text-align: center;
   grid-column: span 4; /* Make the title span across all 4 columns */
@@ -24,10 +38,12 @@ p {
   align-items: center;
   padding: 5px; /* Optional padding for a bit of spacing within the employee content */
 }
-
+p.employeeDescription{
+  border: none;
+}
 .employee-img {
-  width: 90px; /* Reduced a bit to bring them closer visually */
-  height: 90px;
+  width: 80%; /* Reduced a bit to bring them closer visually */
+  height: 80;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid #ccc;
@@ -38,32 +54,62 @@ p {
 .employeeDescription {
   margin: 0;
   text-align: center;
+  border: none;
 }
+p.employeeDescription{
+  border: none;
+  
+}
+.employeeDescription, .employeeTitle {
+  margin: 0;
+  text-align: center;
+  border: none; /* Ensuring no border is applied */
+}
+
 .team-section {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 0;
-  margin-top: 10%;
+  padding: 1% ;
+  left: 4%;
+  flex-direction: row-reverse;
 }
 
 .team-content {
   flex: 0.5;
   padding: 20px;
+  position: relative;
+  right: 4%;
 
 }
-
+.team-content p{
+  border: 1px solid black;
+  padding: 18px;
+  
+}
+.store-section p {
+  border:  1px solid black;
+ padding-top: 9px;
+ padding-bottom: 9px;
+}
+.employeeDescription p{
+  border: none;
+}
+.employeeTitle p{
+  border: none;
+}
 .team-slider {
   position: relative;
   flex: 0.5;
-;
+left: 4%;
 }
 
 .slide {
   display: block; /* Hide by default, will be shown using JavaScript */
 }
 .slide img{
- height: 80%
+ height: 80%;
+ max-width: 80%;
 }
 .slider-button {
   position: absolute;
@@ -96,8 +142,8 @@ p {
   }
 
   .employee-img {
-    width: 90px; /* Smaller images */
-    height: 90px;
+    width: 30%; /* Smaller images */
+    height: 100%;
   }
 
   .team-section {
@@ -121,7 +167,18 @@ p {
   }
 
   .employee-img {
-    width: 50px; /* Even smaller images */
-    height: 50px;
+    width: 100%; /* Even smaller images */
+    height: 100%;
   }
+}
+
+
+p.employeeDescription{
+  border: none;
+  padding: 0%;
+}
+
+p.employeeTitle{
+  border: none;
+  padding: 0%;
 }

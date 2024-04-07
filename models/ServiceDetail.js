@@ -2,14 +2,12 @@ const mongoose = require('mongoose');
 
 const ServiceDetailSchema = new mongoose.Schema({
     title: {
-        type: String,
-        required: true,
-        trim: true
-    },
+        en: { type: String },
+        gr: { type: String }
+      },
     description: {
-        type: String,
-        required: true,
-        trim: true
+        en: { type: String },
+        gr: { type: String }
     }
 });
 

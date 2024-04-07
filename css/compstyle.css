@@ -173,6 +173,7 @@ img {
   }
   .images-container img{
   max-width: 100%;
+  padding: 2%;
 }
   .values-section .section-content {
     flex-direction: column; /* Keep the column direction */

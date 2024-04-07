@@ -166,38 +166,6 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("greekInputs").style.display = "block";
       updateAllSections();
     });
-
-  // document
-  //   .getElementById("showEnglishValuesInputs")
-  //   .addEventListener("click", function () {
-  //     document.getElementById("valuesEnglishInputs").style.display = "block";
-  //     document.getElementById("valuesGreekInputs").style.display = "none";
-  //     updateAllSections();
-  //   });
-
-  // document
-  //   .getElementById("showGreekValuesInputs")
-  //   .addEventListener("click", function () {
-  //     document.getElementById("valuesEnglishInputs").style.display = "none";
-  //     document.getElementById("valuesGreekInputs").style.display = "block";
-  //     updateAllSections();
-  //   });
-
-  // document
-  //   .getElementById("showEnglishVisionInputs")
-  //   .addEventListener("click", function () {
-  //     document.getElementById("visionEnglishInputs").style.display = "block";
-  //     document.getElementById("visionGreekInputs").style.display = "none";
-  //     updateAllSections();
-  //   });
-
-  // document
-  //   .getElementById("showGreekVisionInputs")
-  //   .addEventListener("click", function () {
-  //     document.getElementById("visionEnglishInputs").style.display = "none";
-  //     document.getElementById("visionGreekInputs").style.display = "block";
-  //     updateAllSections();
-  //   });
   lazyLoadSections.forEach((section) => observer.observe(section));
 
   ["history", "values", "vision"].forEach((section) => {

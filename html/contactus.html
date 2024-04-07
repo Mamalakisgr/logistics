@@ -75,21 +75,22 @@
       </div>
 
   </header>
+
   <div class="contact-form-container">
 
     <main id="contact-main">
       <div class="contact-info-form">
-        <section id="contact-form">
-          <h2 data-translatable data-en="Get in Touch" data-el="Επικοινωνήστε μαζί μας">Επικοινωνήστε μαζί μας</h2>
-          <form action="/submit" method="POST">
-            <input type="text" name="name" placeholder="Name">
-            <input type="email" name="email" placeholder="Email">
-            <textarea name="message" placeholder="Message"></textarea>
-            <button type="submit">Submit</button>
+        <div id="calendly-inline-widget"style="min-width:520px;height: 900px;">        </div>
 
-          </form>
+        <gmp-map center="40.12150192260742,-100.45039367675781" zoom="4" map-id="e49afa2efca13623">
+          <gmp-advanced-marker position="40.12150192260742,-100.45039367675781" title="My location">
+          </gmp-advanced-marker>
+        </gmp-map>
+        <section id="google-map">
+          <h2 data-translatable data-en="Find us on Map" data-el="Βρείτε μας στον Χάρτη">Βρείτε μας στον Χάρτη</h2>
+          <div id="map" style="width: 100%; height: 400px;"></div>
+  
         </section>
-
         <section id="contact-information">
           <h2 data-translatable data-en="Contact Information" data-el="Πληροφορίες Επικοινωνίας">Πληροφορίες
             Επικοινωνίας</h2>
@@ -112,23 +113,14 @@
           </ul>
         </section>
       </div>
-      <gmp-map center="40.12150192260742,-100.45039367675781" zoom="4" map-id="e49afa2efca13623">
-        <gmp-advanced-marker position="40.12150192260742,-100.45039367675781" title="My location">
-        </gmp-advanced-marker>
-      </gmp-map>
-      <section id="google-map">
-        <h2 data-translatable data-en="Find us on Map" data-el="Βρείτε μας στον Χάρτη">Βρείτε μας στον Χάρτη</h2>
-        <div id="map" style="width: 100%; height: 400px;"></div>
 
-      </section>
     </main>
 
 
 
-    <!-- Footer -->
     <footer>
       <div class="footer-container">
-
+    
         <!--Footer Section-->
         <div class="footer__container">
           <div class="footer__link">
@@ -155,8 +147,7 @@
               <div class="footer__link--wrapper">
                 <div class="footer__link--items">
                   <a href="https://tinyurl.com/y93wm9ka">
-                    <i class="fa fa-location-arrow" style="color: white;"></i>
-                    Αγίου Μελετίου 23, Αθήνα
+                    <i class="fa fa-location-arrow" style="color: white;"></i>Αγίου Μελετίου 23, Αθήνα
                   </a>
                   <!-- Working hours for the first location -->
                   <div class="working-hours">
@@ -183,6 +174,12 @@
                 <a href="https://wa.me/[6957553954]" target="_blank">WhatsApp</a>
               </div>
             </div>
+            <div class="footer__link--wrapper">
+              <div class="close-date">
+                <p>Κλείστε άμεσα ένα ραντεβού μαζί μας κάνοντας click <a href="#" style="text-decoration: none; color: rgb(217, 47, 47);" onclick="Calendly.initPopupWidget({url:'https://calendly.com/loyaltax/30min?'});return false;">εδώ</a>.</p>
+              </div>
+              
+          </div>
           </div>
           <section class="social__media">
             <div class="social__media--wrap">
@@ -199,6 +196,16 @@
               </div>
             </div>
     </footer>
+    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js"></script>
+    <script type="text/javascript">
+      Calendly.initInlineWidget({
+        url: 'https://calendly.com/loyaltax/30min?',
+        parentElement: document.getElementById('calendly-inline-widget'),
+        prefill: {},
+        utm: {}
+      });
+    </script>
+ 
 
     <script src="../js/company-dropdown.js"></script>
     <script src="../js/ToggleMenu.js"></script>

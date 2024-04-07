@@ -433,6 +433,12 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "html", "index.html"));
 });
 
+// Serve index.html
+app.get("/robots.txt", (req, res) => {
+  res.sendFile(path.join(__dirname, "html", "robots.txt"));
+});
+
+
 app.post("/api/set-active-image/:section/:id", async (req, res) => {
   const { section, id } = req.params;
 
@@ -463,24 +469,41 @@ app.post("/api/set-active-image/:section/:id", async (req, res) => {
 
 // Create a new detailed service
 app.post("/api/service-details", async (req, res) => {
+  const { title, description } = req.body;
+
+  // Basic validation to check both languages are provided for title and description
+  if (!title || !title.en || !title.gr || !description || !description.en || !description.gr) {
+    return res.status(400).json({
+      message: "Both English and Greek fields for title and description are required."
+    });
+  }
+
   try {
-    const detail = new ServiceDetail(req.body);
+    const detail = new ServiceDetail({ title, description });
     await detail.save();
     res.json(detail);
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        message: "Error adding service detail.",
-        detailedError: error.message,
-      });
+    res.status(500).json({
+      message: "Error adding service detail.",
+      detailedError: error.message,
+    });
   }
 });
 
-// Fetch all detailed services
 app.get("/api/service-details", async (req, res) => {
   try {
-    const details = await ServiceDetail.find();
+    let details = await ServiceDetail.find();
+
+    // Optionally filter by language if a lang query parameter is provided
+    const lang = req.query.lang; // Example usage: /api/service-details?lang=en
+    if (lang) {
+      details = details.map(detail => ({
+        _id: detail._id,
+        title: detail.title[lang] || detail.title['en'], // Fallback to English
+        description: detail.description[lang] || detail.description['en'], // Fallback to English
+      }));
+    }
+
     res.json(details);
   } catch (error) {
     res.status(500).json({ message: "Error fetching service details." });
@@ -501,23 +524,29 @@ app.get("/api/service-details/:id", async (req, res) => {
   }
 });
 
-// Update an existing detailed service by ID
 app.put("/api/service-details/:id", async (req, res) => {
+  const { lang, data } = req.body;
+
+  // Construct the update object dynamically based on the provided language
+  let update = {};
+  if (data.title) update[`title.${lang}`] = data.title;
+  if (data.description) update[`description.${lang}`] = data.description;
+
   try {
-    const updatedDetail = await ServiceDetail.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true }
-    );
+    const updatedDetail = await ServiceDetail.findByIdAndUpdate(req.params.id, {
+      $set: update
+    }, { new: true });
+
     if (!updatedDetail) {
-      res.status(404).json({ message: "Service detail not found." });
-    } else {
-      res.json(updatedDetail);
+      return res.status(404).json({ message: "Service detail not found." });
     }
+
+    res.json(updatedDetail);
   } catch (error) {
-    res.status(500).json({ message: "Error updating service detail." });
+    res.status(500).json({ message: "Error updating service detail.", detailedError: error.message });
   }
 });
+
 
 // Delete a detailed service by ID
 app.delete("/api/service-details/:id", async (req, res) => {
@@ -1208,7 +1237,12 @@ app.get("/api/service-categories", async (req, res) => {
 
 // Add a new service category
 app.post("/api/service-categories", async (req, res) => {
-  const newCategory = new ServiceCategory(req.body);
+  const { categoryName, services } = req.body;
+  // Ensure the incoming data structure conforms to the bilingual schema
+  const newCategory = new ServiceCategory({
+    categoryName, // This should be an object with 'en' and 'gr' properties
+    services // Each service should also have 'en' and 'gr' properties for 'serviceName' and 'description'
+  });
 
   try {
     const savedCategory = await newCategory.save();
@@ -1217,6 +1251,7 @@ app.post("/api/service-categories", async (req, res) => {
     res.status(500).json({ message: "Failed to add category." });
   }
 });
+// Fetch a single service category by its ID
 app.get("/api/service-categories/:id", async (req, res) => {
   try {
     const category = await ServiceCategory.findById(req.params.id);

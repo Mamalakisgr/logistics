@@ -21,7 +21,77 @@ const fetchAndDisplayLogo = async (elementId) => {
     console.error("There was a problem", error);
   }
 };
+const servicesTextContent = {
+  en: {
+      title: "Services",
+      cards: [
+          {
+              title: "Company Formation – Business Start-up",
+              description: "We undertake the complete establishment of your company up to the issuance of a VAT number with all legal procedures.",
+              more: "Learn More"
+          },
+          {
+              title: "Accounting Organization & Supervision",
+              description: "We know exactly how to protect your business. Organization and maintenance of your accounting at a high level.",
+              more: "Learn More"
+          },
+          {
+              title: "Payroll",
+              description: "We provide specialized services in Payroll management and human resources administration for any form of companies.",
+              more: "Learn More"
+          },
+          {
+              title: "MyData",
+              description: "We offer consulting services for transitioning to the digital platform.",
+              more: "Learn More"
+          }
+      ]
+  },
+  gr: {
+      title: "Υπηρεσίες",
+      cards: [
+          {
+              title: "Σύσταση – Έναρξη Επιχειρήσεως",
+              description: "Αναλαμβάνουμε την εξ ολοκλήρου ίδρυση της εταιρίας σας μέχρι και την απόδοση Α.Φ.Μ. με όλες τις νόμιμες διαδικασίες.",
+              more: "Περισσότερα"
+          },
+          {
+            title: "Οργάνωση Επίβλεψη Λογιστηρίου",
+            description: "Γνωρίζουμε άριστα πως να προφυλάξουμε την επιχείρηση σας. Οργάνωση και διατήρηση σε υψηλό επίπεδο του λογιστηρίου σας.",
+            more: "Learn More"
+        },
+        {
+            title: "Μισθοδοσία",
+            description: "Παρέχουμε εξειδικευμένες υπηρεσίες στη διαχείριση της Μισθοδοσίας και στη διοίκηση του ανθρώπινου δυναμικού για οποιαδήποτε μορφή εταιρειών.",
+            more: "Learn More"
+        },
+        {
+            title: "MyData",
+            description: "Παρέχουμε συμβουλευτικές υπηρεσίες μετάβασης στην ψηφιακή πλατφόρμα.",
+            more: "Learn More"
+        }
+      ]
+  }
+};
+// This function updates the Services Section based on the given language
+function updateServicesSectionLanguage(lang) {
+  const selectedLang = lang || localStorage.getItem("selectedLanguage") || 'en';
+  const content = servicesTextContent[selectedLang];
 
+  document.querySelector('#services > h1').textContent = content.title;
+
+  const serviceCards = document.querySelectorAll('.services__card');
+  serviceCards.forEach((card, index) => {
+    const cardContent = content.cards[index];
+    if (cardContent) {
+      card.querySelector('h2').textContent = cardContent.title;
+      card.querySelector('p').textContent = cardContent.description;
+      card.querySelector('button').textContent = cardContent.more;
+    }
+  });
+}
+// Call this function when the page loads and whenever the language is changed
+document.addEventListener('DOMContentLoaded', updateServicesSectionLanguage);
 let slideInterval; // Declare this variable at the top of your script to store the interval ID
 
 let slideIndex = 1; // Start at first slide
@@ -65,30 +135,59 @@ const fetchAndDisplayDynamicParagraph = async () => {
     console.error("Error fetching description:", error);
   }
 };
+//  Initialize Swiper
+//  Initialize Swiper
+let swiper = new Swiper(".mySwiper", {
+  autoplay: {
+    delay: 5000, // Delay between slides in milliseconds
+    disableOnInteraction: false, // Disable autoplay on user interaction
+  },
+  
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+});
+// Assuming Swiper initialization is correct and included after the populateBanners function
 const populateBanners = async () => {
   try {
     const response = await fetch("/api/banners");
     const banners = await response.json();
 
-    const bannerList = document.getElementById("banner-list");
+    // Check if there are banners to display
+    if (banners.length === 0) {
+      console.error("No banners were found.");
+      return;
+    }
 
-    for (const banner of banners) {
-      const blob = await fetchBannerBlob(banner._id);
+    const bannerList = document.getElementById("swiper-wrap");
+
+    // Fetch all banners in parallel
+    const fetchPromises = banners.map((banner, i) => fetchBannerBlob(banner._id).then(blob => {
       if (blob) {
         const imageUrl = URL.createObjectURL(blob);
         const slideDiv = document.createElement("div");
-        slideDiv.className = "mySlides fade";
+        slideDiv.className = `swiper-slide slide_${i}`;
         slideDiv.innerHTML = `<img src="${imageUrl}" alt="${banner.name}">`;
-        bannerList.appendChild(slideDiv);
-
-        // If it's the first image, display it immediately
-        if (bannerList.childElementCount === 1) {
-          showSlides(slideIndex);
-        }
+        return slideDiv; // Return the slide div for later processing
       }
-    }
+      return null;
+    }));
 
-    // If no images were added, show error
+    // Wait for all fetches to complete
+    const slides = await Promise.all(fetchPromises);
+
+    // Append fetched slides to the banner list
+    slides.forEach(slide => {
+      if (slide) {
+        bannerList.appendChild(slide);
+      }
+    });
+
+    // After all slides are added, update Swiper
+    swiper.update();
+
+    // If no images were added, show an error
     if (!bannerList.hasChildNodes()) {
       console.error("No banners were added to the slideshow.");
     }
@@ -97,46 +196,11 @@ const populateBanners = async () => {
   }
 };
 
-const showSlides = (n) => {
-  const slides = document.getElementsByClassName("mySlides");
 
-  if (slides.length === 0) {
-    console.error("No slides found.");
-    return;
-  }
+// Ensure this script runs after the Swiper initialization script
 
-  if (n > slides.length) {
-    slideIndex = 1;
-  }
-  if (n < 1) {
-    slideIndex = slides.length;
-  }
 
-  for (let i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
 
-  if (slides[slideIndex - 1]) {
-    slides[slideIndex - 1].style.display = "block";
-  } else {
-    console.error(`Slide at index ${slideIndex - 1} does not exist.`);
-  }
-  // Clear previous interval
-  clearInterval(slideInterval);
-
-  // Set a new interval
-  slideInterval = setInterval(() => {
-    slideIndex++;
-    if (slideIndex > slides.length) {
-      slideIndex = 1;
-    }
-    showSlides(slideIndex);
-  }, 5000); // 5000 milliseconds = 5 seconds
-};
-// Function to change slides
-const plusSlides = (n) => {
-  showSlides((slideIndex += n));
-};
 const fetchAndSetRegionOneImage = async () => {
   try {
     const response = await fetch("/api/fetch-active-region-one-image");
@@ -236,25 +300,25 @@ const fetchAndDisplayCompanyCount = async () => {
     console.error("Error fetching company count:", error);
   }
 };
-const fetchAndDisplaySeoImage = async () => {
-  fetch("/api/get-selected-seo-image")
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      return response.blob();
-    })
-    .then((imageBlob) => {
-      const imageUrl = URL.createObjectURL(imageBlob);
-      const imageWrapper = document.querySelector(
-        ".image-wrapper:nth-of-type(2)"
-      );
-      imageWrapper.style.backgroundImage = `url(${imageUrl})`;
-    })
-    .catch((error) => {
-      console.error("Failed to fetch selected SEO image:", error);
-    });
-};
+// const fetchAndDisplaySeoImage = async () => {
+//   fetch("/api/get-selected-seo-image")
+//     .then((response) => {
+//       if (!response.ok) {
+//         throw new Error("Network response was not ok");
+//       }
+//       return response.blob();
+//     })
+//     .then((imageBlob) => {
+//       const imageUrl = URL.createObjectURL(imageBlob);
+//       const imageWrapper = document.querySelector(
+//         ".image-wrapper:nth-of-type(2)"
+//       );
+//       imageWrapper.style.backgroundImage = `url(${imageUrl})`;
+//     })
+//     .catch((error) => {
+//       console.error("Failed to fetch selected SEO image:", error);
+//     });
+// };
 function animateValue(id, start, end, duration) {
   let obj = document.getElementById(id);
   let range = end - start;
@@ -305,17 +369,51 @@ observer.observe(target);
 document.addEventListener("DOMContentLoaded", function () {
   populateBanners();
   fetchAndSetRegionOneImage();
+  const target = document.getElementById('counter'); // Make sure this is the element you want to observe
 
   fetchAndDisplayLogo("logo-image"); // Fetch and display header logo
   fetchAndDisplayLogo("side-logo-image");
   fetchAndDisplayCompanyCount();
+  const observer = new IntersectionObserver(function(entries, observer) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Element is now in the viewport, animate if not already done
+        if (companyCount > 0 && !entry.target.classList.contains('animated')) {
+          animateValue("counter", 0, companyCount, 2000);
+          entry.target.classList.add('animated'); // Prevents re-animation
+        }
+      }
+    });
+  }, observerOptions);
+
+  observer.observe(target);
   fetchAndDisplaySEOContent(); // Fetch and display SEO content
   // fetchAndUpdateDynamicContent();
-  fetchAndDisplaySeoImage();
+  // fetchAndDisplaySeoImage();
   fetchAndDisplayDynamicParagraph();
   const lazyImages = document.querySelectorAll(".lazyload");
   const form = document.getElementById("footer-contact-form");
+  const savedLang = localStorage.getItem("selectedLanguage");
+  if (savedLang) {
+    updateServicesSectionLanguage(savedLang); // Update services section upon page load
+    // fetchAndUpdateDynamicContent();
+  }
 
+  const dropdownItems = document.querySelectorAll(".language-dropdown a");
+  dropdownItems.forEach((item) => {
+    item.addEventListener("click", async function (event) {
+      event.preventDefault(); // Prevent default link action
+      const selectedLang = this.getAttribute("data-lang");
+  
+      // Store the selected language in localStorage
+      localStorage.setItem("selectedLanguage", selectedLang);
+  
+      // Update all page content according to the selected language
+      updateServicesSectionLanguage(selectedLang); // You're already doing this
+      await fetchAndDisplaySEOContent(); // Fetch and display SEO content according to the selected language
+      // Add calls to update other parts of the page if necessary
+    });
+  });
   form.addEventListener("submit", function (event) {
     event.preventDefault();
 

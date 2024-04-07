@@ -21,32 +21,60 @@
 
   <h2>Add/Update Service Category</h2>
   <form id="service-form">
-    <label for="categoryName">Category Name:</label>
-    <input type="text" id="categoryName" name="categoryName">
+    <div>
+      <button type="button" id="switch-eng">EN</button>
+      <button type="button" id="switch-el">GR</button>
+    </div>
+ <!-- English Inputs -->
+<label for="categoryName-en">Category Name EN:</label>
+<input type="text" id="categoryName-en" name="categoryNameEn">
 
-    <label for="serviceName">Service Name:</label>
-    <input type="text" id="serviceName" name="serviceName">
+<label for="serviceName-en">Service Name EN:</label>
+<input type="text" id="serviceName-en" name="serviceNameEn">
 
-    <label for="description">Description:</label>
-    <input type="text" id="description" name="description">
+<label for="description-en">Description EN:</label>
+<input type="text" id="description-en" name="descriptionEn">
 
-    <button type="submit">Add/Update</button>
+<!-- Greek Inputs -->
+<label for="categoryName-gr">Category Name GR:</label>
+<input type="text" id="categoryName-gr" name="categoryNameGr">
+
+<label for="serviceName-gr">Service Name GR:</label>
+<input type="text" id="serviceName-gr" name="serviceNameGr">
+
+<label for="description-gr">Description GR:</label>
+<input type="text" id="description-gr" name="descriptionGr">
+
+
+
+<button type="submit">Add/Update</button>
   </form>
-
-  <h2>Existing Services</h2>
   <div id="service-list">
-
     <!-- Existing services will be populated here -->
   </div>
+
   <h2>Manage Detailed Services</h2>
-
   <form id="detail-form">
-    <label for="detailTitle">Service Detail Title:</label>
-    <input type="text" id="detailTitle" name="detailTitle">
-
-    <label for="detailDescription">Description:</label>
-    <input type="text" id="detailDescription" name="detailDescription">
-
+    <!-- English Inputs -->
+    <div id="en-inputs">
+      <label for="detailTitle-en">Service Detail Title (EN):</label>
+      <input type="text" id="detailTitle-en" name="detailTitleEn">
+    
+      <label for="detailDescription-en">Description (EN):</label>
+      <input type="text" id="detailDescription-en" name="detailDescriptionEn">
+    </div>
+    
+    <!-- Greek Inputs -->
+    <div id="gr-inputs" style="display: none;">
+      <label for="detailTitle-gr">Service Detail Title (GR):</label>
+      <input type="text" id="detailTitle-gr" name="detailTitleGr">
+    
+      <label for="detailDescription-gr">Description (GR):</label>
+      <input type="text" id="detailDescription-gr" name="detailDescriptionGr">
+    </div>
+    
+    <button type="button" id="switch-en2">EN</button>
+    <button type="button" id="switch-el2">GR</button>
     <button type="submit">Add/Update</button>
   </form>
 
